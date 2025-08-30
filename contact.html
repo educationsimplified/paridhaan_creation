@@ -9,73 +9,103 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Base styles */
-        body {
+        /* BASE STYLES & THEMES */
+        body, html {
+            margin: 0;
+            padding: 0;
             font-family: 'Roboto', sans-serif;
-            background-color: #0c0c0c;
-            color: #f5f5f5;
+            background-color: #1f2937;
+            color: #e5e7eb;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
-        .header {
-            background-color: #111827;
-            padding: 1.5rem 1rem;
+
+        /* HEADER */
+        .premium-header {
+            width: 100%;
+            padding: 1rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #111827;
+            color: #ffffff;
+            position: relative; /* Positioned relative to allow absolute positioning of the home link */
         }
-        .header-title {
+
+        .premium-header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             font-weight: 700;
             letter-spacing: 0.15em;
             line-height: 1;
-            margin-bottom: 0.2rem;
+            margin: 0;
         }
-        .header-subtitle-container {
+
+        .premium-header .subtitle-container {
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 0.2rem;
         }
-        .header-line {
+
+        .premium-header .line {
             width: 30px;
             height: 1px;
             background-color: #ffffff;
             margin: 0 0.5rem;
         }
-        .header-subtitle {
+
+        .premium-header .subtitle {
             font-family: 'Roboto', sans-serif;
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
             letter-spacing: 0.2em;
             text-transform: uppercase;
         }
+        
         .header-home-link {
             position: absolute;
-            top: 2rem;
-            left: 2rem;
+            top: 50%; /* Center vertically */
+            left: 1rem; /* Adjust left position */
+            transform: translateY(-50%); /* Fine-tune vertical centering */
             font-size: 1.1rem;
             color: #d4af37;
             text-decoration: none;
             transition: color 0.2s;
         }
+
         .header-home-link:hover {
             color: #e5c14f;
         }
+
+        /* MAIN CONTENT & FORM */
         .main-content {
             flex: 1;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 2rem;
-        }
-        .contact-form-container {
-            max-width: 500px;
             width: 100%;
-            padding: 2.5rem;
+            padding: 2rem 1rem;
+            box-sizing: border-box;
+            background-color: #1f2937;
+        }
+
+        .contact-form-container {
+            width: 100%;
+            max-width: 500px;
+            padding: 2rem;
             background-color: #1a1a1a;
             border-radius: 12px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-top: 2rem;
         }
+        
+        @media (min-width: 768px) {
+            .contact-form-container {
+                margin-top: 0;
+            }
+        }
+
         .input-field {
             width: 100%;
             padding: 0.75rem;
@@ -84,23 +114,29 @@
             color: #e0e0e0;
             border-radius: 6px;
         }
+
         .input-field:focus {
             outline: none;
             border-color: #d4af37;
             box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5);
         }
+
+        /* FOOTER */
         .footer {
+            width: 100%;
             background-color: #111827;
             padding: 1rem;
             text-align: center;
             font-size: 0.9rem;
             border-top: 1px solid #2a2a2a;
         }
+        
         .footer a {
             color: #d4af37;
             text-decoration: none;
             transition: color 0.2s;
         }
+
         .footer a:hover {
             color: #e5c14f;
         }
@@ -108,19 +144,23 @@
 </head>
 <body>
 
-    <div id="app">
-        <header class="header relative">
+    <div id="app" class="flex flex-col min-h-screen">
+        <!-- HEADER -->
+        <header class="premium-header">
+            <!-- Home link is now absolutely positioned inside the relative header -->
             <a href="index.html" class="header-home-link">Home</a>
+            <!-- Header content wrapper is now centered by default due to parent's text-align -->
             <div class="header-content">
-                <h1 class="header-title">PARIDHAAN</h1>
-                <div class="header-subtitle-container">
-                    <span class="header-line"></span>
-                    <span class="header-subtitle">CREATION</span>
-                    <span class="header-line"></span>
+                <h1>PARIDHAAN</h1>
+                <div class="subtitle-container">
+                    <span class="line"></span>
+                    <span class="subtitle">CREATION</span>
+                    <span class="line"></span>
                 </div>
             </div>
         </header>
 
+        <!-- MAIN CONTENT -->
         <main class="main-content">
             <div class="contact-form-container">
                 <h2 class="text-3xl font-bold mb-8 text-center text-white">Contact Us</h2>
@@ -147,6 +187,7 @@
             </div>
         </main>
 
+        <!-- FOOTER -->
         <footer class="footer">
             <p>&copy; {{ currentYear }} Paridhaan Creation</p>
             <p>Developed by <a href="https://uzairb2b.blogspot.com" target="_blank">Uzair B2B Services</a></p>
