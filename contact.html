@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paridhaan Creation - Contact Us</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0c0c0c;
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .header {
+            background-color: #111827;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .header-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+        .header-subtitle-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-line {
+            width: 30px;
+            height: 1px;
+            background-color: #ffffff;
+            margin: 0 0.5rem;
+        }
+        .header-subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        .header-home-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 1.1rem;
+            color: #d4af37;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .header-home-link:hover {
+            color: #e5c14f;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .contact-form-container {
+            max-width: 500px;
+            width: 100%;
+            padding: 2.5rem;
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .input-field {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            border-radius: 6px;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5);
+        }
+        .footer {
+            background-color: #111827;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #2a2a2a;
+        }
+        .footer a {
+            color: #d4af37;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer a:hover {
+            color: #e5c14f;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <header class="header relative">
+            <a href="index.html" class="header-home-link">Home</a>
+            <div class="header-content">
+                <h1 class="header-title">PARIDHAAN</h1>
+                <div class="header-subtitle-container">
+                    <span class="header-line"></span>
+                    <span class="header-subtitle">CREATION</span>
+                    <span class="header-line"></span>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="contact-form-container">
+                <h2 class="text-3xl font-bold mb-8 text-center text-white">Contact Us</h2>
+                <form @submit.prevent="sendWhatsappMessage">
+                    <div class="mb-5">
+                        <label for="name" class="block text-sm font-medium mb-2">Your Name</label>
+                        <input type="text" id="name" v-model="name" class="input-field" required>
+                    </div>
+                    
+                    <div class="mb-5">
+                        <label for="contact" class="block text-sm font-medium mb-2">Contact Number</label>
+                        <input type="tel" id="contact" v-model="contact" class="input-field" required>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <label for="message" class="block text-sm font-medium mb-2">Message (Optional)</label>
+                        <textarea id="message" v-model="message" rows="4" class="input-field"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-4 rounded-lg transition-colors">
+                        Send via WhatsApp
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; {{ currentYear }} Paridhaan Creation</p>
+            <p>Developed by <a href="https://uzairb2b.blogspot.com" target="_blank">Uzair B2B Services</a></p>
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const { createApp, ref } = Vue;
+
+        createApp({
+            setup() {
+                const currentYear = new Date().getFullYear();
+                const name = ref('');
+                const contact = ref('');
+                const message = ref('');
+
+                const sendWhatsappMessage = () => {
+                    const whatsappMessage = `Name: ${name.value}\nContact: ${contact.value}\nMessage: ${message.value}`;
+                    const encodedMessage = encodeURIComponent(whatsappMessage);
+                    const phoneNumber = '919451535206';
+                    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                    
+                    window.open(whatsappUrl, '_blank');
+                };
+
+                return {
+                    currentYear,
+                    name,
+                    contact,
+                    message,
+                    sendWhatsappMessage
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
