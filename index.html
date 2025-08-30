@@ -251,7 +251,7 @@
             frameborder="0"
         ></iframe>
 
-<!-- Ad Popup Overlay -->
+<!-- Simple Ad Popup Overlay -->
 <div id="ad-popup" style="
   position: fixed;
   top: 0; left: 0;
@@ -263,9 +263,8 @@
   z-index: 9999;
 ">
 
-  <!-- Ad Box (Clickable link) -->
-  <a href="#" target="_blank" 
-     style="position: relative; background: #fff; border-radius: 12px; overflow: hidden; max-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); text-decoration: none; color: inherit;">
+  <!-- Ad Box -->
+  <div style="position: relative; background: #fff; border-radius: 12px; overflow: hidden; max-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
     
     <!-- Close Button -->
     <button type="button" onclick="document.getElementById('ad-popup').style.display='none'" 
@@ -286,7 +285,7 @@
         Your favorite dresses, delivered to your doorstep.
       </p>
     </div>
-  </a>
+  </div>
 </div>
 
 
