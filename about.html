@@ -3,21 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paridhaan Creation - The Pinnacle of Royal Elegance</title>
+    <title>Paridhaan Creation - About Us</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cormorant Garamond for headings, Inter for body -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Roboto:wght@400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --royal-gold: #B8860B;
         }
-        body {
+        body, html {
+            margin: 0;
+            padding: 0;
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            background-color: #0c0c0c;
+            background-color: #1f2937; /* Consistent with contact page */
+            color: #e5e7eb; /* Consistent with contact page */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Cormorant Garamond', serif;
@@ -37,85 +43,90 @@
             background-size: cover;
             background-position: center;
         }
-        /* Header specific styling */
-        .header {
-            background-color: #111827;
-            padding: 1.5rem 1rem;
+        /* Header styles from contact.html */
+        .premium-header {
+            width: 100%;
+            padding: 1rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #111827;
+            color: #ffffff;
             position: relative;
         }
-        .header-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .header-title {
+        .premium-header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
+            font-size: clamp(2rem, 5vw, 2.8rem);
             font-weight: 700;
             letter-spacing: 0.15em;
             line-height: 1;
-            margin-bottom: 0.2rem;
-            color: #ffffff;
+            margin: 0;
         }
-        .header-subtitle-container {
+        .premium-header .subtitle-container {
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-top: 0.2rem;
         }
-        .header-line {
+        .premium-header .line {
             width: 30px;
             height: 1px;
             background-color: #ffffff;
             margin: 0 0.5rem;
         }
-        .header-subtitle {
+        .premium-header .subtitle {
             font-family: 'Roboto', sans-serif;
-            font-size: 0.9rem;
+            font-size: clamp(0.7rem, 2vw, 0.9rem);
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: #ffffff;
         }
-        .nav-links {
+        .header-home-link {
             position: absolute;
             top: 50%;
-            left: 2rem;
+            left: 1rem;
             transform: translateY(-50%);
-            display: flex;
-            gap: 1.5rem;
-        }
-        .nav-links a {
-            color: var(--royal-gold);
-            text-decoration: none;
             font-size: 1.1rem;
-            font-weight: 500;
+            color: #d4af37;
+            text-decoration: none;
             transition: color 0.2s;
         }
-        .nav-links a:hover {
+        .header-home-link:hover {
+            color: #e5c14f;
+        }
+        /* Footer styles from contact.html */
+        .footer {
+            width: 100%;
+            background-color: #111827;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #2a2a2a;
+        }
+        .footer a {
+            color: #d4af37;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer a:hover {
             color: #e5c14f;
         }
     </style>
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/><meta name='google-adsense-platform-domain' content='blogspot.com'/></head>
+    <meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/><meta name='google-adsense-platform-domain' content='blogspot.com'/>
+</head>
 <body class="bg-zinc-950 text-gray-300">
-    <div id="app">
-        <!-- Header & Navigation Bar -->
-        <header class="header">
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-               
-                     </div>
+    <div id="app" class="flex flex-col min-h-screen">
+        <!-- HEADER -->
+        <header class="premium-header">
+            <a href="index.html" class="header-home-link">Home</a>
             <div class="header-content">
-                <h1 class="header-title">PARIDHAAN</h1>
-                <div class="header-subtitle-container">
-                    <span class="header-line"></span>
-                    <span class="header-subtitle">CREATION</span>
-                    <span class="header-line"></span>
+                <h1>PARIDHAAN</h1>
+                <div class="subtitle-container">
+                    <span class="line"></span>
+                    <span class="subtitle">CREATION</span>
+                    <span class="line"></span>
                 </div>
             </div>
         </header>
-        
+
         <!-- Hero Section -->
         <section class="hero-bg relative min-h-screen flex items-center justify-center text-center p-8 md:p-16">
             <div class="absolute inset-0 bg-black opacity-70"></div>
@@ -127,7 +138,7 @@
                     Woven with tradition, worn by royalty.
                 </p>
                 <a href="#contact" class="bg-gray-800 text-white font-bold text-xl py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl animate-glowing-accent inline-block" style="border: 2px solid var(--royal-gold);">
-                    Download Brochar
+                    Download Brochure
                 </a>
             </div>
         </section>
@@ -251,13 +262,10 @@
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="bg-zinc-950 text-gray-500 py-16">
-            <div class="container mx-auto px-6 text-center space-y-6">
-                
-                <p>&copy; 2024 Paridhaan Creation. All Rights Reserved.</p>
-                <p>Developed by <a href="https://uzairb2b.blogspot.com" target="_blank" class="hover:text-white transition-colors duration-300">Uzair B2B Services</a></p>
-            </div>
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>&copy; {{ currentYear }} Paridhaan Creation</p>
+            <p>Developed by <a href="https://uzairb2b.blogspot.com" target="_blank">Uzair B2B Services</a></p>
         </footer>
     </div>
     
@@ -267,20 +275,22 @@
 
         createApp({
             setup() {
+                const currentYear = new Date().getFullYear();
                 const name = ref('');
                 const contact = ref('');
                 const message = ref('');
 
                 const sendWhatsappMessage = () => {
-                    const whatsappMessage = `*Private Viewing Inquiry*\n\nName: ${name.value}\nContact: ${contact.value}\nMessage: ${message.value}`;
+                    const whatsappMessage = `Name: ${name.value}\nContact: ${contact.value}\nMessage: ${message.value}`;
                     const encodedMessage = encodeURIComponent(whatsappMessage);
                     const phoneNumber = '919451535206';
                     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
+                    
                     window.open(whatsappUrl, '_blank');
                 };
 
                 return {
+                    currentYear,
                     name,
                     contact,
                     message,
