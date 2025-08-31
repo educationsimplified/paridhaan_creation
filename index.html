@@ -25,9 +25,6 @@
         /* HEADER & MARQUEE */
         .header-section {
             width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
             z-index: 10;
         }
 
@@ -99,28 +96,20 @@
         .dark .address-bar { background-color: #1a1a1a; }
         .dark .address-text { color: #ffffff; }
 
-        /* IFRAME & RESPONSIVENESS */
-        #embeddedWebsite {
-            width: 100vw;
-            height: calc(100vh - 120px);
-            border: none;
-            position: absolute;
-            top: 120px;
-            left: 0;
-            z-index: 1;
-        }
-        
-        /* Adjust iframe height for different screens */
-        @media (max-width: 768px) {
-            #embeddedWebsite {
-                top: 100px;
-                height: calc(100vh - 100px);
-            }
-            .premium-header {
-                padding: 0.75rem;
-            }
+        /* IFRAME & RESPONSIVENESS - **NEW FLEXBOX LAYOUT** */
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
         }
 
+        #embeddedWebsite {
+            width: 100%;
+            flex-grow: 1; /* This is the key change */
+            border: none;
+            overflow-y: auto; /* Allow scrolling within the iframe */
+        }
+        
         /* SIDEBAR & TOGGLE BUTTON */
         #sidebar {
             width: 0;
@@ -215,8 +204,7 @@
     </style>
 </head>
 <body :class="{ 'light': isLightMode, 'dark': !isLightMode }">
-    <div id="app">
-        <!-- HEADER & MARQUEE -->
+    <div id="app" class="content-container">
         <div class="header-section" :class="{ 'light': isLightMode, 'dark': !isLightMode }">
             <header class="premium-header">
                 <button @click="toggleTheme" id="theme-toggle" aria-label="Toggle Theme">
@@ -241,7 +229,6 @@
             </div>
         </div>
 
-        <!-- EMBEDDED WEBSITE -->
         <iframe
             id="embeddedWebsite"
             src="https://paridhaancreation.mini.store/"
@@ -249,7 +236,6 @@
             frameborder="0"
         ></iframe>
 
-        <!-- AD POPUP -->
         <div id="ad-popup" style="
             position: fixed;
             top: 0; left: 0;
@@ -278,7 +264,6 @@
             </div>
         </div>
 
-        <!-- SIDEBAR -->
         <aside id="sidebar" :class="{ 'open': isSidebarOpen }">
             <button @click="toggleSidebar" id="sidebar-close" aria-label="Close Sidebar">
                 &times;
@@ -286,11 +271,10 @@
             <nav class="flex flex-col items-center justify-center h-full">
                 <ul>
                     <li class="mb-4">
-    <a href="https://share.google/D17PSeMLZ7XBuczJA" class="sidebar-link" target="_blank" rel="noopener noreferrer">
-        <span>Rate us on Google</span>
-    </a>
-</li>
-
+                        <a href="https://share.google/D17PSeMLZ7XBuczJA" class="sidebar-link" target="_blank" rel="noopener noreferrer">
+                            <span>Rate us on Google</span>
+                        </a>
+                    </li>
                     <li class="mb-4">
                         <a href="index.html" class="sidebar-link">
                             <span>Our Collection</span>
@@ -310,7 +294,6 @@
             </nav>
         </aside>
 
-        <!-- SIDEBAR TOGGLE BUTTON -->
         <button @click="toggleSidebar" id="sidebar-toggle" aria-label="Toggle Sidebar"
             :class="{ 'open': isSidebarOpen, 'light': isLightMode, 'dark': !isLightMode }">
             <svg v-if="!isSidebarOpen" id="menu-icon" class="h-6 w-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
