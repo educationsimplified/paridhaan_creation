@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paridhaan Creation - Where Elegance Meets Tradition</title>
+    <meta name="description" content="Explore exquisite traditional Indian wear by Paridhaan Creation. Specializing in handcrafted Banarasi sarees, suits, dupattas, and men's ethnic wear.">
+    <meta name="keywords" content="Paridhaan Creation, Banarasi saree, Indian ethnic wear, traditional clothing, Banarasi suits, silk sarees, handmade">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --royal-gold: #B8860B;
+            --main-bg: #0c0c0c;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--main-bg);
+            color: #f5f5f5;
+            overflow: hidden; /* Prevent scrolling during loader */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Loading Screen Animations */
+        @keyframes loader-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes image-slide-up {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        #loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--main-bg);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 9999;
+            transition: opacity 1s ease-out;
+            opacity: 1;
+        }
+
+        .loader-content {
+            animation: loader-fade-in 1.5s ease-in-out;
+        }
+        .loader-icon {
+            animation: image-slide-up 1.5s ease-out;
+        }
+        
+        /* Iframe styling for the main website */
+        .full-page-iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0; /* Start hidden for fade-in */
+            transition: opacity 1s ease-in-out; /* Fade-in transition */
+        }
+    </style>
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+</head>
+<body class="bg-zinc-950 text-gray-300">
+    <!-- Loader Section -->
+    <div id="loader">
+        <div class="loader-content flex flex-col items-center text-center p-4">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl text-white font-extrabold mb-4" style="font-family: 'Playfair Display', serif;">Paridhaan Creation</h1>
+            <p class="text-xl md:text-2xl text-gray-400 mb-8 tracking-wide">Where Elegance Meets Tradition</p>
+            <div class="flex flex-wrap justify-center items-center space-x-4 md:space-x-6 text-white text-6xl md:text-8xl">
+                <!-- Indian Rupee Symbol -->
+                <i class="fa-solid fa-indian-rupee-sign loader-icon" style="animation-delay: 0.2s;"></i>
+                <i class="fa-solid fa-indian-rupee-sign loader-icon" style="animation-delay: 0.4s;"></i>
+                <i class="fa-solid fa-indian-rupee-sign loader-icon" style="animation-delay: 0.6s;"></i>
+            </div>
+            <p class="text-lg text-gray-500 mt-8">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Embedded Website Section -->
+    <iframe
+        id="embeddedWebsite"
+        src="https://educationsimplified.github.io/paridhaan_creation/"
+        class="full-page-iframe"
+        title="Embedded Website"
+    ></iframe>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('loader');
+            const embeddedWebsite = document.getElementById('embeddedWebsite');
+            const delayTime = 3000; // 3 seconds delay for the loader
+
+            // Show the loader initially
+            loader.style.display = 'flex';
+            embeddedWebsite.style.display = 'none';
+
+            setTimeout(() => {
+                // Fade out the loader
+                loader.style.opacity = '0';
+                loader.style.pointerEvents = 'none'; // Disable interactions on loader
+
+                // After fade-out, hide loader and show iframe with fade-in
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    embeddedWebsite.style.display = 'block';
+                    embeddedWebsite.style.opacity = '1'; // Trigger fade-in
+                    document.body.style.overflow = 'auto'; // Allow scrolling on the main page
+                }, 1000); // This should match the CSS transition duration for loader opacity
+            }, delayTime);
+        });
+    </script>
+</body>
+</html>
