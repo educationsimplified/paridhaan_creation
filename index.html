@@ -14,13 +14,13 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
             font-family: 'Roboto', sans-serif;
             transition: background-color 0.3s ease;
         }
 
         body.light { background-color: #F5EFE6; color: #1f2937; }
         body.dark { background-color: #1f2937; color: #e5e7eb; }
+        body.no-scroll { overflow: hidden; } /* New class to control scrolling */
 
         /* HEADER & MARQUEE */
         .header-section {
@@ -96,7 +96,7 @@
         .dark .address-bar { background-color: #1a1a1a; }
         .dark .address-text { color: #ffffff; }
 
-        /* IFRAME & RESPONSIVENESS - **NEW FLEXBOX LAYOUT** */
+        /* IFRAME & RESPONSIVENESS */
         .content-container {
             display: flex;
             flex-direction: column;
@@ -105,9 +105,9 @@
 
         #embeddedWebsite {
             width: 100%;
-            flex-grow: 1; /* This is the key change */
+            flex-grow: 1;
             border: none;
-            overflow-y: auto; /* Allow scrolling within the iframe */
+            overflow-y: auto;
         }
         
         /* SIDEBAR & TOGGLE BUTTON */
@@ -193,7 +193,7 @@
 
         /* WHATSAPP WIDGET OVERRIDE */
         #delightchat-whatsapp-widget {
-            z-index: 1 !important; /* Make sure it's below the sidebar */
+            z-index: 1 !important;
             transition: opacity 0.3s ease-in-out;
         }
 
@@ -203,7 +203,7 @@
         }
     </style>
 </head>
-<body :class="{ 'light': isLightMode, 'dark': !isLightMode }">
+<body :class="{ 'light': isLightMode, 'dark': !isLightMode, 'no-scroll': isSidebarOpen }">
     <div id="app" class="content-container">
         <div class="header-section" :class="{ 'light': isLightMode, 'dark': !isLightMode }">
             <header class="premium-header">
@@ -304,7 +304,7 @@
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script type="module">
-        const { createApp, ref, onMounted } = Vue;
+        const { createApp, ref, onMounted, watch } = Vue;
 
         createApp({
             setup() {
@@ -319,6 +319,15 @@
                 const toggleSidebar = () => {
                     isSidebarOpen.value = !isSidebarOpen.value;
                 };
+
+                // Add a watcher to control body overflow
+                watch(isSidebarOpen, (newValue) => {
+                    if (newValue) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = 'auto';
+                    }
+                });
 
                 onMounted(() => {
                     const savedTheme = localStorage.getItem('theme');
