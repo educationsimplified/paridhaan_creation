@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saree Emporium - A Premium Collection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLp3Qd3iYp3a0E5l+VfXoB13e8Uu+W2hR3a2u/kSg+3/0vI3rJ6tA9e5U7Z0sFpW62yK2E0Kj7Xy4gU" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7F3E9; /* Off-white background */
+            color: #4A4A4A;
+        }
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .white-gold-theme {
+            background-color: #F7F3E9;
+            color: #4A4A4A;
+        }
+        .gold-accent {
+            color: #D4AF37;
+        }
+        .bg-gold-accent {
+            background-color: #D4AF37;
+        }
+        .border-gold {
+            border-color: #D4AF37;
+        }
+        .shadow-gold {
+            box-shadow: 0 4px 6px -1px rgba(212, 175, 55, 0.1), 0 2px 4px -1px rgba(212, 175, 55, 0.06);
+        }
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .modal {
+            /* Keep this as is for the script to manage visibility */
+            display: none;
+        }
+    </style>
+</head>
+<body class="white-gold-theme antialiased">
+
+    <header class="bg-white shadow-sm p-4 sticky top-0 z-50 rounded-b-xl">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold gold-accent">
+                PARIDHAAN CREATION
+            </a>
+            <div class="flex items-center space-x-4">
+                <div id="cart-icon" class="relative cursor-pointer text-gray-600 hover:text-gold-accent transition-colors">
+                    <i class="fas fa-shopping-cart fa-lg"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-gold-accent text-white rounded-full text-xs font-bold w-5 h-5 flex items-center justify-center">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section class="my-6">
+            <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 items-center justify-between">
+                <input type="text" id="search-input" placeholder="Search products..." class="flex-grow p-3 border border-gray-300 rounded-full shadow-inner focus:outline-none focus:ring-2 focus:ring-gold-accent transition-shadow">
+            </div>
+        </section>
+
+        <section class="my-6">
+            <h2 class="text-2xl font-bold gold-accent mb-4">Categories</h2>
+            <div id="categories-container" class="flex flex-wrap gap-2">
+                </div>
+        </section>
+
+        <section class="my-8">
+            <h2 class="text-2xl font-bold gold-accent mb-4">All Products</h2>
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                </div>
+        </section>
+    </main>
+
+    <div id="product-modal" class="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-[100]">
+        <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col lg:flex-row relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors">
+                <i class="fas fa-times-circle fa-2x"></i>
+            </button>
+            <div class="lg:w-1/2 p-6 flex items-center justify-center">
+                <img id="modal-image" src="" alt="Product" class="rounded-lg shadow-lg max-h-[500px] object-contain">
+            </div>
+            <div class="lg:w-1/2 p-6 flex flex-col justify-between">
+                <div>
+                    <h3 id="modal-name" class="text-3xl font-bold gold-accent mb-2"></h3>
+                    <p id="modal-category" class="text-sm text-gray-500 mb-2 font-medium"></p>
+                    <p id="modal-description" class="text-gray-600 mb-4"></p>
+                    <p class="text-xl font-semibold mb-2">
+                        Price: <span id="modal-price" class="gold-accent"></span>
+                    </p>
+                    <p id="modal-availability" class="font-bold text-lg mb-4"></p>
+                </div>
+                <button id="add-to-cart-btn" class="bg-gold-accent text-white font-bold py-3 px-6 rounded-lg hover:bg-yellow-600 transition-colors w-full mt-4">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-modal" class="modal fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-[100]">
+        <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-2xl w-full relative p-6">
+            <button id="close-cart-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition-colors">
+                <i class="fas fa-times-circle fa-2x"></i>
+            </button>
+            <h3 class="text-2xl font-bold gold-accent mb-4">Shopping Cart</h3>
+            <div id="cart-items" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                </div>
+            <div class="border-t border-gray-200 mt-4 pt-4 flex justify-between items-center font-bold text-xl">
+                <span>Total:</span>
+                <span id="cart-total" class="gold-accent">₹0</span>
+            </div>
+            <button id="checkout-btn" class="bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-colors w-full mt-4">
+                Checkout on WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <div id="message-box" class="fixed top-4 left-1/2 -translate-x-1/2 z-[200] p-4 rounded-lg text-white font-semibold transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+    <script>
+        // Owner's WhatsApp number for the checkout button (replace with the actual number)
+        const ownerWhatsApp = "919876543210"; 
+
+        // Public CSV URL from Google Sheets
+        const googleSheetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=1086133643&single=true&output=csv";
+
+        // DOM elements
+        const productsGrid = document.getElementById('products-grid');
+        const categoriesContainer = document.getElementById('categories-container');
+        const searchInput = document.getElementById('search-input');
+        const cartIcon = document.getElementById('cart-icon');
+        const cartCount = document.getElementById('cart-count');
+        const productModal = document.getElementById('product-modal');
+        const cartModal = document.getElementById('cart-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const closeCartModalBtn = document.getElementById('close-cart-modal');
+        const addToCartBtn = document.getElementById('add-to-cart-btn');
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartTotalSpan = document.getElementById('cart-total');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const messageBox = document.getElementById('message-box');
+
+        // Global state
+        let allProducts = [];
+        let displayedProducts = [];
+        let cart = {}; // Using an object for easier quantity management
+        let selectedProduct = null;
+
+        // --- Data Fetching and Parsing ---
+        async function fetchProducts() {
+            try {
+                const response = await fetch(googleSheetCsvUrl);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const csvText = await response.text();
+                allProducts = parseCsv(csvText);
+                displayedProducts = [...allProducts];
+                renderCategories();
+                renderProducts(displayedProducts);
+            } catch (error) {
+                console.error("Error fetching or parsing CSV:", error);
+                productsGrid.innerHTML = '<p class="text-red-500 text-center col-span-full">Failed to load products. Please check the data source URL.</p>';
+            }
+        }
+
+        function parseCsv(csv) {
+            const lines = csv.trim().split('\n');
+            if (lines.length < 2) return [];
+
+            const headers = lines[0].split(',').map(header => header.trim());
+            const products = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',').map(value => value.trim());
+                if (values.length !== headers.length) continue; // Skip malformed rows
+                
+                const product = {};
+                for (let j = 0; j < headers.length; j++) {
+                    const header = headers[j];
+                    let value = values[j];
+                    
+                    if (header === 'SellingPrice' || header === 'CostPrice' || header === 'CurrentStock' || header === 'MinimumStock') {
+                        value = !isNaN(Number(value)) && value !== '' ? Number(value) : value;
+                    }
+                    product[header] = value;
+                }
+                products.push(product);
+            }
+            return products;
+        }
+
+        // --- UI Message Function ---
+        function showMessage(message, type = 'info') {
+            messageBox.textContent = message;
+            messageBox.classList.remove('opacity-0', 'pointer-events-none', 'bg-red-500', 'bg-green-500', 'bg-gray-700');
+            
+            if (type === 'error') {
+                messageBox.classList.add('bg-red-500');
+            } else if (type === 'success') {
+                messageBox.classList.add('bg-green-500');
+            } else {
+                messageBox.classList.add('bg-gray-700');
+            }
+            
+            messageBox.classList.add('opacity-100');
+            messageBox.classList.remove('pointer-events-none');
+
+            setTimeout(() => {
+                messageBox.classList.remove('opacity-100');
+                messageBox.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // --- Rendering Functions ---
+
+        function renderCategories() {
+            const categories = [...new Set(allProducts.map(p => p.Category))].filter(Boolean);
+            categoriesContainer.innerHTML = '';
+            
+            const allBtn = document.createElement('button');
+            allBtn.textContent = 'All';
+            allBtn.className = 'category-btn bg-gold-accent text-white py-2 px-4 rounded-full font-semibold shadow-sm hover:opacity-80 transition-all';
+            allBtn.onclick = () => filterProducts('All');
+            categoriesContainer.appendChild(allBtn);
+
+            categories.forEach(category => {
+                const btn = document.createElement('button');
+                btn.textContent = category;
+                btn.className = 'category-btn bg-gray-200 text-gray-700 py-2 px-4 rounded-full font-semibold hover:bg-gray-300 transition-colors';
+                btn.onclick = () => filterProducts(category);
+                categoriesContainer.appendChild(btn);
+            });
+        }
+
+        function renderProducts(products) {
+            productsGrid.innerHTML = '';
+            if (products.length === 0) {
+                productsGrid.innerHTML = '<p class="text-center text-gray-500 col-span-full">No products found.</p>';
+                return;
+            }
+
+            products.forEach(product => {
+                const stock = Number(product['CurrentStock']);
+                const isAvailable = !isNaN(stock) && stock > 0;
+                const card = document.createElement('div');
+                card.className = `product-card bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1`;
+                card.innerHTML = `
+                    <div class="relative w-full h-64 overflow-hidden">
+                        <img src="${product.ImageUrl}" alt="${product.Name}" class="w-full h-full object-cover rounded-t-xl" onerror="this.onerror=null;this.src='https://placehold.co/400x400/F0EFEA/D4AF37?text=Image+Unavailable';">
+                    </div>
+                    <div class="p-4">
+                        <h4 class="font-bold text-xl gold-accent truncate mb-1">${product.Name}</h4>
+                        <p class="text-sm text-gray-500 mb-2 truncate">${product.Description}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-semibold text-gray-800">₹${product.SellingPrice}</span>
+                            <span class="font-bold text-sm px-2 py-1 rounded-full ${isAvailable ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+                                ${isAvailable ? 'Available' : 'Unavailable'}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => showProductDetails(product));
+                productsGrid.appendChild(card);
+            });
+        }
+
+        function renderCart() {
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            const cartItems = Object.values(cart);
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-center text-gray-500 py-8">Your cart is empty.</p>';
+                checkoutBtn.disabled = true;
+                checkoutBtn.classList.add('bg-gray-400', 'cursor-not-allowed');
+                checkoutBtn.classList.remove('bg-green-500', 'hover:bg-green-600');
+            } else {
+                checkoutBtn.disabled = false;
+                checkoutBtn.classList.remove('bg-gray-400', 'cursor-not-allowed');
+                checkoutBtn.classList.add('bg-green-500', 'hover:bg-green-600');
+
+                cartItems.forEach(item => {
+                    total += item.SellingPrice * item.quantity;
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'flex items-center space-x-4 border-b pb-4 last:border-b-0';
+                    itemElement.innerHTML = `
+                        <img src="${item.ImageUrl}" alt="${item.Name}" class="w-16 h-16 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/F0EFEA/D4AF37?text=Img';">
+                        <div class="flex-grow">
+                            <h4 class="font-semibold text-md">${item.Name}</h4>
+                            <p class="text-sm text-gray-500">Qty: ${item.quantity} | Price: ₹${item.SellingPrice}</p>
+                        </div>
+                        <span class="font-bold text-gray-800">₹${item.SellingPrice * item.quantity}</span>
+                        <button class="remove-from-cart text-red-500 hover:text-red-700" data-id="${item.ID}">
+                           <i class="fas fa-trash-alt"></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(itemElement);
+                });
+                document.querySelectorAll('.remove-from-cart').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const productId = e.currentTarget.getAttribute('data-id');
+                        delete cart[productId];
+                        updateCartCount();
+                        renderCart();
+                        showMessage("Item removed from cart.", 'info');
+                    });
+                });
+            }
+
+            cartTotalSpan.textContent = `₹${total.toFixed(2)}`;
+            updateCartCount();
+        }
+
+        // --- Modal & Interaction Functions ---
+        function showProductDetails(product) {
+            selectedProduct = product;
+            document.getElementById('modal-image').src = product.ImageUrl;
+            document.getElementById('modal-name').textContent = product.Name;
+            document.getElementById('modal-category').textContent = product.Category;
+            document.getElementById('modal-description').textContent = product.Description;
+            document.getElementById('modal-price').textContent = `₹${product.SellingPrice}`;
+            
+            const stock = Number(product['CurrentStock']);
+            const isAvailable = !isNaN(stock) && stock > 0;
+            const availabilityText = isAvailable ? 'Available' : 'Unavailable';
+            const availabilityClass = isAvailable ? 'text-green-600' : 'text-red-600';
+            document.getElementById('modal-availability').innerHTML = `Availability: <span class="font-semibold ${availabilityClass}">${availabilityText}</span>`;
+            
+            addToCartBtn.disabled = !isAvailable;
+            addToCartBtn.classList.toggle('bg-gray-400', !isAvailable);
+            addToCartBtn.classList.toggle('hover:bg-yellow-600', isAvailable);
+            
+            productModal.style.display = 'flex';
+        }
+        
+        function hideProductModal() {
+            productModal.style.display = 'none';
+            selectedProduct = null;
+        }
+
+        function hideCartModal() {
+            cartModal.style.display = 'none';
+        }
+
+        function filterProducts(category) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-gold-accent', 'text-white', 'bg-gray-200');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+                if (btn.textContent === category || (category === 'All' && btn.textContent === 'All')) {
+                    btn.classList.remove('bg-gray-200', 'text-gray-700');
+                    btn.classList.add('bg-gold-accent', 'text-white');
+                }
+            });
+
+            if (category === 'All') {
+                displayedProducts = [...allProducts];
+            } else {
+                displayedProducts = allProducts.filter(p => p.Category === category);
+            }
+            renderProducts(displayedProducts);
+            searchInput.value = '';
+        }
+
+        function searchProducts(searchTerm) {
+            const lowerCaseSearch = searchTerm.toLowerCase();
+            displayedProducts = allProducts.filter(p => 
+                (p.Name && p.Name.toLowerCase().includes(lowerCaseSearch)) || 
+                (p.Description && p.Description.toLowerCase().includes(lowerCaseSearch)) ||
+                (p.Category && p.Category.toLowerCase().includes(lowerCaseSearch))
+            );
+            renderProducts(displayedProducts);
+            // Highlight the "All" category button when searching
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('bg-gold-accent', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            document.querySelector('.category-btn').classList.remove('bg-gray-200', 'text-gray-700');
+            document.querySelector('.category-btn').classList.add('bg-gold-accent', 'text-white');
+        }
+
+        function addToCart() {
+            const stock = Number(selectedProduct['CurrentStock']);
+            const isAvailable = !isNaN(stock) && stock > 0;
+            
+            if (selectedProduct && isAvailable) {
+                const productId = selectedProduct.ID;
+                if (cart[productId]) {
+                    if (cart[productId].quantity >= stock) {
+                        showMessage(`You have reached the maximum stock (${stock}) for this item.`, 'error');
+                        return;
+                    }
+                    cart[productId].quantity++;
+                } else {
+                    cart[productId] = { ...selectedProduct, quantity: 1 };
+                }
+                updateCartCount();
+                hideProductModal();
+                showMessage("Product added to cart!", 'success');
+            } else {
+                showMessage("This product is currently unavailable.", 'error');
+            }
+        }
+        
+        function updateCartCount() {
+            const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        function checkoutOnWhatsApp() {
+            if (Object.keys(cart).length === 0) {
+                showMessage("Your cart is empty. Please add products before checking out.", 'error');
+                return;
+            }
+
+            const productsList = Object.values(cart).map(item => `\n- ${item.Name} (Qty: ${item.quantity}, Price: ₹${item.SellingPrice})`).join('');
+            const message = `Namaste, I would like to place an enquiry for the following products from your website:\n${productsList}\n\nThank you!`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${ownerWhatsApp}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // --- Event Listeners ---
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchProducts();
+            
+            // Add a small delay to ensure modals are hidden after the page loads
+            setTimeout(() => {
+                productModal.style.display = 'none';
+                cartModal.style.display = 'none';
+            }, 100);
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            searchProducts(e.target.value);
+        });
+
+        cartIcon.addEventListener('click', () => {
+            renderCart();
+            cartModal.style.display = 'flex';
+        });
+
+        closeModalBtn.addEventListener('click', hideProductModal);
+        closeCartModalBtn.addEventListener('click', hideCartModal);
+        
+        addToCartBtn.addEventListener('click', addToCart);
+
+        checkoutBtn.addEventListener('click', checkoutOnWhatsApp);
+
+        window.addEventListener('click', function(event) {
+            if (event.target == productModal) {
+                hideProductModal();
+            }
+            if (event.target == cartModal) {
+                hideCartModal();
+            }
+        });
+    </script>
+</body>
+</html>
