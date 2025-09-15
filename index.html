@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARIDHAAN CREATION</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme Palette - Elegant & Traditional */
+            --light-bg: #fdfaf6; /* A soft, warm off-white, like parchment */
+            --light-text: #2c2f33; /* Deep charcoal for elegant contrast */
+            --light-card-bg: #ffffff; /* Clean white for product cards */
+            --light-border: #ece3d3; /* A muted beige for borders */
+            --gold-accent: #b48554; /* A sophisticated, vintage gold */
+        }
+        
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--light-bg); /* Default to light theme */
+            color: var(--light-text);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        /* Specific light theme classes */
+        .gold-accent {
+            color: var(--gold-accent);
+        }
+
+        .bg-gold-accent {
+            background-color: var(--gold-accent);
+        }
+
+        .card-bg {
+            background-color: var(--light-card-bg);
+        }
+
+        .card-border {
+            border-color: var(--light-border);
+        }
+
+        /* Hero section background and overlay */
+        .hero-bg {
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-bg img {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .hero-bg img.active {
+            opacity: 1;
+        }
+
+        /* Custom glowing animation for light theme */
+        @keyframes glowing-light {
+            0% { box-shadow: 0 0 10px var(--gold-accent); }
+            50% { box-shadow: 0 0 25px var(--gold-accent); }
+            100% { box-shadow: 0 0 10px var(--gold-accent); }
+        }
+
+        .animate-glowing-accent {
+            animation: glowing-light 3s infinite ease-in-out;
+        }
+
+        /* Mobile menu specific styling */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+        /* Marquee animation */
+        @keyframes marquee-ltr {
+          0%   { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .animate-marquee-ltr {
+          animation: marquee-ltr 30s linear infinite;
+          display: inline-block;
+        }
+        /* Carousel dots */
+        .dot {
+            height: 10px;
+            width: 10px;
+            background-color: #ffffff80;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+        .dot.active {
+            background-color: var(--gold-accent);
+        }
+    </style>
+</head>
+<body class="antialiased light-theme">
+    <div id="app" class="min-h-screen flex flex-col">
+        <div class="w-full bg-gold-accent text-white py-2 text-center text-sm font-medium sticky top-0 z-50">
+            <p><strong>Contact Us:</strong> +91 95465 47657 | <strong>Email:</strong> info@paridhaancreation.com</p>
+        </div>
+
+        <header class="bg-white/95 backdrop-blur-sm shadow-lg p-4 sticky top-10 z-50">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#" class="text-4xl font-extrabold tracking-wider text-black">Paridhaan <span class="gold-accent">Creation</span></a>
+                
+                <div class="hidden md:flex items-center space-x-8 text-lg font-medium">
+                    <a href="https://script.google.com/macros/s/AKfycbzKp2Y4jbt_dlzmpTBsLNteeFP_GVr2febY9yW3fM_BLLo9Y7FPMBrILKw6GaBWmnF2/exec" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Admin Login</a>
+                    <a href="#collections" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Our Collections</a>
+                    <a href="https://share.google/D17PSeMLZ7XBuczJA" target="_blank" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Rate us on Google</a>
+                    <a href="#about" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">About Us</a>
+                    
+                    <a href="#socialmedia" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Social Media</a>
+                    <a href="https://wa.link/un7nwf" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Join WhatsApp Group</a>
+                    <a href="#testimonials" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Testimonials</a>
+                   
+                    <a href="#contact" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Contact</a>
+                    
+
+
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="text" v-model="searchTerm" @input="searchProducts" placeholder="Search..." class="p-2 pl-10 rounded-full shadow-inner focus:outline-none focus:ring-2 focus:ring-gold-accent transition-shadow bg-gray-100 text-gray-800 placeholder-gray-500 border border-gray-300">
+                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                        </div>
+                        <div @click="openCartModal" class="relative cursor-pointer hover:text-gold-accent transition-colors text-gray-700">
+                            <i class="fas fa-shopping-cart fa-lg"></i>
+                            <span v-if="cartItemsCount > 0" class="absolute -top-2 -right-2 bg-gold-accent text-white rounded-full text-xs font-bold w-5 h-5 flex items-center justify-center">{{ cartItemsCount }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4 md:hidden">
+                    <div @click="openCartModal" class="relative cursor-pointer hover:text-gold-accent transition-colors text-gray-700">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                        <span v-if="cartItemsCount > 0" class="absolute -top-2 -right-2 bg-gold-accent text-white rounded-full text-xs font-bold w-5 h-5 flex items-center justify-center">{{ cartItemsCount }}</span>
+                    </div>
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-gold-accent focus:outline-none">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div id="mobile-menu-overlay" class="mobile-menu fixed top-0 right-0 w-full h-full bg-white/95 z-50 flex flex-col justify-center items-center backdrop-blur-lg md:hidden">
+            <button id="close-menu-button" class="absolute top-8 right-8 focus:outline-none text-gray-800 hover:text-gray-600">
+                <i class="fas fa-times fa-2x"></i>
+            </button>
+            <div class="flex flex-col space-y-12 text-3xl font-bold text-center">
+                <a href="https://script.google.com/macros/s/AKfycbzKp2Y4jbt_dlzmpTBsLNteeFP_GVr2febY9yW3fM_BLLo9Y7FPMBrILKw6GaBWmnF2/exec" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Admin Login</a>
+                <a href="#collections" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Our Collection</a>
+                <a href="https://share.google/D17PSeMLZ7XBuczJA" target="_blank" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Rate us on Google</a>
+                <a href="#about" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">About Us</a>
+                <a href="#socialmedia" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Social Media</a>
+                <a href="https://wa.link/un7nwf" target="_blank" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Join WhatsApp Group</a>
+                <a href="#testimonials" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Testimonials</a>
+
+                <a href="#contact" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Contact</a>
+
+
+
+
+            </div>
+        </div>
+
+        <main class="flex-grow">
+            <section id="hero-carousel" class="relative min-h-screen flex items-center justify-center text-center p-8 md:p-16 overflow-hidden">
+                <div id="carousel-track" class="absolute inset-0 w-full h-full z-0">
+                    <img src="https://images.unsplash.com/photo-1621287406894-3a52c1e40a01?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Saree model 1" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="https://media.urbanwomania.com/wp-content/uploads/2022/08/Latest-Banarasi-Sarees-Design.jpg" alt="Saree model 2" class="absolute inset-0 w-full h-full object-cover">
+                    <img src="https://www.kalkifashion.com/blogs/wp-content/uploads/2023/04/Types-of-Banarasi-Sarees-Trending-In-2023.jpg" alt="Saree model 3" class="absolute inset-0 w-full h-full object-cover">
+                </div>
+                <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+                <div class="relative z-20 max-w-6xl">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight tracking-tighter mb-6">
+                        The Pinnacle of Royal Elegance from the holy city of Varanasi.
+                    </h1>
+                    <p class="text-2xl md:text-3xl font-light text-gray-100 mb-12">
+                        Woven with tradition, worn by royalty.
+                    </p>
+                    <a href="#products" class="bg-white text-gold-accent font-bold text-xl py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl inline-block border-2" style="border-color: var(--gold-accent);">
+                        DOWNLOAD OUR BROCHURE
+                    </a>
+                    <div id="carousel-dots" class="flex justify-center mt-8 space-x-2"></div>
+                </div>
+            </section>
+            
+            <script>
+                const carouselImages = [
+                    "https://images.unsplash.com/photo-1621287406894-3a52c1e40a01?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                    "https://media.urbanwomania.com/wp-content/uploads/2022/08/Latest-Banarasi-Sarees-Design.jpg",
+                    "https://www.kalkifashion.com/blogs/wp-content/uploads/2023/04/Types-of-Banarasi-Sarees-Trending-In-2023.jpg"
+                ];
+                const track = document.getElementById("carousel-track");
+                const dotsContainer = document.getElementById("carousel-dots");
+                
+                let currentImageIndex = 0;
+                
+                function createCarousel() {
+                    track.innerHTML = '';
+                    dotsContainer.innerHTML = '';
+
+                    carouselImages.forEach((src, index) => {
+                        const img = document.createElement("img");
+                        img.src = src;
+                        img.alt = `Saree model ${index + 1}`;
+                        img.className = 'absolute inset-0 w-full h-full object-cover';
+                        track.appendChild(img);
+
+                        const dot = document.createElement('span');
+                        dot.className = 'dot';
+                        dot.addEventListener('click', () => {
+                            showImage(index);
+                        });
+                        dotsContainer.appendChild(dot);
+                    });
+                    showImage(currentImageIndex);
+                }
+
+                function showImage(index) {
+                    const images = track.querySelectorAll('img');
+                    const dots = dotsContainer.querySelectorAll('.dot');
+                    
+                    images.forEach((img, i) => {
+                        img.classList.remove('active');
+                        dots[i].classList.remove('active');
+                    });
+                    
+                    images[index].classList.add('active');
+                    dots[index].classList.add('active');
+                    currentImageIndex = index;
+                }
+
+                function nextImage() {
+                    let nextIndex = (currentImageIndex + 1) % carouselImages.length;
+                    showImage(nextIndex);
+                }
+
+                setInterval(nextImage, 4000); // Change image every 4 seconds
+
+                window.addEventListener('load', createCarousel);
+            </script>
+            
+          
+
+<section class="bg-stone-100 py-16 sm:py-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-y-12 md:grid-cols-3 md:gap-x-12">
+
+      <div class="group transform transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex flex-col items-center justify-center space-y-4 rounded-lg bg-white p-8 text-center shadow-sm border border-transparent group-hover:border-amber-400">
+          <div class="text-3xl text-amber-600 transition-colors duration-300 group-hover:text-amber-500">
+            <i class="fa-solid fa-rotate-left"></i> </div>
+          <h3 class="text-xl font-semibold text-gray-800">Free Return</h3>
+          <p class="text-sm text-gray-600">30 days money-back guarantee.</p>
+        </div>
+      </div>
+
+      <div class="group transform transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex flex-col items-center justify-center space-y-4 rounded-lg bg-white p-8 text-center shadow-sm border border-transparent group-hover:border-amber-400">
+          <div class="text-3xl text-amber-600 transition-colors duration-300 group-hover:text-amber-500">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800">Free Shipping</h3>
+          <p class="text-sm text-gray-600">On all orders over $100.</p>
+        </div>
+      </div>
+
+      <div class="group transform transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
+        <div class="flex flex-col items-center justify-center space-y-4 rounded-lg bg-white p-8 text-center shadow-sm border border-transparent group-hover:border-amber-400">
+          <div class="text-3xl text-amber-600 transition-colors duration-300 group-hover:text-amber-500">
+            <i class="fa-solid fa-headset"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800">Support 24/7</h3>
+          <p class="text-sm text-gray-600">Dedicated and fast customer support.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>      
+
+ <hr class="my-12 border-t border-light-border">
+
+
+<section id="collections" class="bg-stone-100 px-6 py-24 sm:py-32">
+  <div class="container mx-auto">
+    <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Our Exquisite Categories</h2>
+    <p class="text-center text-xl text-gray-700 mb-20">Discover our collection of woven traditions, worn by royalty.</p>
+    
+    <div id="collections-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12"></div>
+  </div>
+</section>
+
+<script>
+    const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=1086133643&single=true&output=csv";
+
+    async function loadCollections() {
+        const response = await fetch(csvUrl);
+        const data = await response.text();
+
+        // Parse CSV
+        const rows = data.split("\n").map(r => r.split(","));
+        const headers = rows.shift();
+
+        const categoryIndex = headers.indexOf("Category");
+        const imageIndex = headers.indexOf("ImageUrl");
+
+        const categoryMap = {};
+
+        rows.forEach(row => {
+            const category = row[categoryIndex]?.trim();
+            const image = row[imageIndex]?.trim();
+            if (category && !categoryMap[category] && image) {
+                categoryMap[category] = image; // store only first image for category
+            }
+        });
+
+        const grid = document.getElementById("collections-grid");
+        
+        // Clear previous content
+        grid.innerHTML = '';
+
+        Object.keys(categoryMap).forEach(category => {
+            const imageUrl = categoryMap[category];
+            const card = `
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg transform transition-transform duration-500 hover:scale-105 hover:shadow-2xl hover:border hover:border-amber-400">
+                    <div class="w-full h-80 overflow-hidden">
+                        <img src="${imageUrl}" alt="${category}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 text-center">
+                        <h3 class="text-2xl font-bold text-gray-800">${category}</h3>
+                    </div>
+                </div>
+            `;
+            grid.innerHTML += card;
+        });
+    }
+
+    loadCollections();
+</script>
+
+
+
+ <hr class="my-12 border-t border-light-border">
+
+
+  <section id="collections" class="container mx-auto p-4 md:p-8">
+                <div class="my-6 block sm:block md:hidden relative">
+                    <input
+                        type="text"
+                        v-model="searchTerm"
+                        @input="searchProducts"
+                        placeholder="Search products..."
+                        class="w-full p-2 pl-10 rounded-full shadow-inner focus:outline-none focus:ring-2 focus:ring-gold-accent transition-shadow z-20 relative bg-gray-100 text-gray-800 placeholder-gray-500 border border-gray-300"
+                    >
+                    <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-30 text-gray-500"></i>
+                </div>
+                
+
+               
+
+                <section class="my-6">
+                    <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Categories</h2>
+                      
+                    <div class="flex flex-wrap gap-2">
+                        <button @click="filterByCategory('All')" :class="{'bg-gold-accent text-white': selectedCategory === 'All', 'hover:opacity-80': true, 'bg-gray-200 text-gray-700': selectedCategory !== 'All'}" class="py-2 px-4 rounded-full font-semibold shadow-sm transition-all">All</button>
+                        <button v-for="category in categories" :key="category" @click="filterByCategory(category)" :class="{'bg-gold-accent text-white': selectedCategory === category, 'hover:opacity-80': true, 'bg-gray-200 text-gray-700': selectedCategory !== category}" class="py-2 px-4 rounded-full font-semibold shadow-sm transition-all">
+                            {{ category }}
+                        </button>
+                    </div>
+                </section>
+
+                <section class="my-8">
+                    <h2 class="text-3xl font-bold gold-accent mb-4">All Products</h2>
+                    <div v-if="filteredProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        <div v-for="product in filteredProducts" :key="product.ID" @click="openProductModal(product)" class="product-card rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1 bg-white">
+                            <div class="relative w-full h-64 overflow-hidden">
+                                <img :src="product.ImageUrl" :alt="product.Name" class="w-full h-full object-cover rounded-t-xl" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fdfaf6/b48554?text=Image+Unavailable';">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-bold text-xl gold-accent truncate mb-1">{{ product.Name }}</h4>
+                                <p class="text-sm mb-2 truncate text-gray-600">{{ product.Description }}</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-2xl font-semibold text-gray-900">₹{{ product.SellingPrice }}</span>
+                                    <span :class="{'bg-green-700 text-white': isAvailable(product), 'bg-red-700 text-white': !isAvailable(product)}" class="font-bold text-sm px-2 py-1 rounded-full">
+                                        {{ isAvailable(product) ? 'Available' : 'Unavailable' }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else class="text-center col-span-full text-gray-600">
+                        No products found.
+                    </div>
+                </section>
+            </section>
+            
+            <div id="ad-popup" style="
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.5); display: flex; justify-content: center;
+                align-items: center; z-index: 9999;
+            ">
+                <div style="position: relative; background: #fff; border-radius: 12px; overflow: hidden; max-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                    <button type="button" onclick="document.getElementById('ad-popup').style.display='none'"
+                        style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 18px; line-height: 30px; z-index: 100;">
+                        ✕
+                    </button>
+                    <img src="https://tilfi.com/cdn/shop/products/SKAKJRD10056Red_Hera_PureKatanSilkKadwaGoldRoseBootaJanglaSaree70_1200x.jpg"
+                        alt="Banarasee Collection" style="width: 100%; display: block;">
+                    <div style="padding: 12px; text-align: center; background: #fff;">
+                        <h3 style="margin: 0; font-size: 16px; color: #b22222; font-weight: bold;">
+                            View our latest Banarasee Collection
+                        </h3>
+                        <p style="margin: 5px 0 0; font-size: 14px; color: #333;">
+                            Your favorite dresses, delivered to your doorstep.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+             <hr class="my-12 border-t border-light-border">
+            
+            <section id="socialmedia" class="container mx-auto p-4 md:p-8">
+                <div class="max-w-7xl mx-auto px-6">
+                    <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Social Media Updates</h2>
+          
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                        <div class="p-6 rounded-2xl bg-white border border-light-border shadow-md transition duration-500 hover:scale-105 hover:shadow-xl hover:border-gold-accent">
+                            <h3 class="text-xl font-bold mb-4 text-gray-900 tracking-wide">Instagram Updates</h3>
+                            <iframe src="https://www.instagram.com/uzairb2b/embed"
+                                     class="w-full h-80 rounded-lg border border-gray-200"
+                                     frameborder="0">
+                            </iframe>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-white border border-light-border shadow-md transition duration-500 hover:scale-105 hover:shadow-xl hover:border-gold-accent">
+                            <h3 class="text-xl font-bold mb-4 text-gray-900 tracking-wide">Facebook Updates</h3>
+                            <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61572256829850&tabs=timeline&width=340&height=500"
+                                     class="w-full h-80 rounded-lg border border-gray-200"
+                                     frameborder="0" scrolling="no">
+                            </iframe>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-white border border-light-border shadow-md transition duration-500 hover:scale-105 hover:shadow-xl hover:border-gold-accent">
+                            <h3 class="text-xl font-bold mb-4 text-gray-900 tracking-wide">YouTube Updates</h3>
+                            <iframe src="https://www.youtube.com/embed?listType=user_uploads&list=uzairb2b"
+                                     class="w-full h-80 rounded-lg border border-gray-200"
+                                     frameborder="0">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+      
+<hr class="my-12 border-t border-light-border">
+
+                <section class="my-6">
+          <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Our Products</h2>
+     
+                    <div class="flex flex-wrap gap-2">
+                        <button @click="filterByCategory('All')" :class="{'bg-gold-accent text-white': selectedCategory === 'All', 'hover:opacity-80': true, 'bg-gray-200 text-gray-700': selectedCategory !== 'All'}" class="py-2 px-4 rounded-full font-semibold shadow-sm transition-all">All</button>
+                        <button v-for="category in categories" :key="category" @click="filterByCategory(category)" :class="{'bg-gold-accent text-white': selectedCategory === category, 'hover:opacity-80': true, 'bg-gray-200 text-gray-700': selectedCategory !== category}" class="py-2 px-4 rounded-full font-semibold shadow-sm transition-all">
+                            {{ category }}
+                        </button>
+                    </div>
+                </section>
+
+                <section class="my-8">
+                    <h2 class="text-3xl font-bold gold-accent mb-4">All Products</h2>
+                    <div v-if="filteredProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        <div v-for="product in filteredProducts" :key="product.ID" @click="openProductModal(product)" class="product-card rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1 bg-white">
+                            <div class="relative w-full h-64 overflow-hidden">
+                                <img :src="product.ImageUrl" :alt="product.Name" class="w-full h-full object-cover rounded-t-xl" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fdfaf6/b48554?text=Image+Unavailable';">
+                            </div>
+                            <div class="p-4">
+                                <h4 class="font-bold text-xl gold-accent truncate mb-1">{{ product.Name }}</h4>
+                                <p class="text-sm mb-2 truncate text-gray-600">{{ product.Description }}</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-2xl font-semibold text-gray-900">₹{{ product.SellingPrice }}</span>
+                                    <span :class="{'bg-green-700 text-white': isAvailable(product), 'bg-red-700 text-white': !isAvailable(product)}" class="font-bold text-sm px-2 py-1 rounded-full">
+                                        {{ isAvailable(product) ? 'Available' : 'Unavailable' }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else class="text-center col-span-full text-gray-600">
+                        No products found.
+                    </div>
+                </section>
+            </section>
+
+ <hr class="my-12 border-t border-light-border">
+
+
+            <section id="about" class="container mx-auto px-6 py-16 bg-light-bg">
+     <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Welcome to Paridhaan Creation</h2>
+                <h2 class="text-4xl font-extrabold text-center gold-accent mb-12">Khubsurti Hai Aapse</h2>
+                 
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-1/2">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjR5IUHqyowtRad29n-SMLeeE1VG_PowPM93eBhy3BvaIa0J02oinLkTYwaYe2R5q15Jr430HC4s-d8FONuc0FSUwamJed1g20zTrIrVgjcx7iv9SMnlQiRXO35Q4hR5iFhj4tLcL_4q2QGmpK4abeNTPhYj1Xtrru3FwHVzapJ2HNXJvaZsWhkpRx6n2ke/s320/paridhyaan%20creation.png" alt="Elegant Saree draped on a woman" class="rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="w-full md:w-1/2 space-y-6 text-lg leading-relaxed text-light-text">
+                        <p>
+                            For generations, Paridhaan Creation has been a custodian of a timeless art. We honor the intricate craft of hand-weaving, creating pieces that are not merely garments, but a rich tapestry of history and culture. Each piece is a masterpiece, meticulously crafted by master artisans who have perfected their skill over a lifetime.
+                        </p>
+                        <p>
+                            Our commitment is to preserve this heritage while bringing it to the modern woman who appreciates true luxury. From the finest silk threads to the stunning zari work, every element is chosen for its quality, ensuring an heirloom you will cherish for years to come.
+                        </p>
+                        <a href="#collections" class="inline-block mt-8 font-semibold border-b-2 text-gray-600 hover:text-black border-gold-accent">
+                            Explore Our Collections →
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-12 border-t border-light-border">
+            
+            <section id="testimonials" class="container mx-auto px-6 py-16 bg-light-bg">
+                <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Stories From Customers</h2>
+
+<!-- Elfsight Google Reviews | Untitled Google Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-40426d39-4748-4fd5-ae8e-129da5a17e35" data-elfsight-app-lazy></div>
+
+
+
+            </section>
+
+            <hr class="my-12 border-t border-light-border">
+            
+            <section class="w-full overflow-hidden bg-gray-200 border-y-2 border-gold-accent py-2">
+                <div class="inline-block whitespace-nowrap font-medium text-gray-800 text-sm animate-marquee-ltr">
+                    J 21/197 A, near Jaitpura, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttarpradesh - PARIDHAAN CREATION | FREE HOME DELIEVERY ON THE PURCHASE ABOVE 10K | "We bring our products to your home. Browse, select, and buy the saree you adore." | CONTACT US: +91 94515 35206
+                </div>
+            </section>
+<hr class="my-12 border-t border-light-border">
+
+          <section class="bg-stone-100 py-16 sm:py-24 px-4 sm:px-6 lg:px-8" id="contact">
+  <div class="mx-auto max-w-7xl">
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Contact Information</h2>
+  
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
+        <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
+            <i class="fas fa-map-marker-alt text-lg"></i>
+          </div>
+          <div class="flex-grow flex flex-col justify-center">
+            <h4 class="text-xl font-bold text-gray-800 text-center">Address</h4>
+         <a href="https://share.google/iOYSp2tP8GiWsQlZd" target="_blank" class="hover:text-amber-500 transition-colors duration-300">J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</a>  
+        
+        </div>
+        </div>
+      </div>
+      
+      <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
+        <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
+            <i class="fas fa-phone-alt text-lg"></i>
+          </div>
+          <div class="flex-grow flex flex-col justify-center">
+            <h4 class="text-xl font-bold text-gray-800 text-center">Phone</h4>
+            <p class="text-gray-600 mt-1 text-center">
+              <a href="tel:+919335723334" target="_blank" class="hover:text-amber-500 transition-colors duration-300">+91 93357 23334</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
+        <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
+            <i class="fas fa-envelope text-lg"></i>
+          </div>
+          <div class="flex-grow flex flex-col justify-center">
+            <h4 class="text-xl font-bold text-gray-800 text-center">Email</h4>
+            <p class="text-gray-600 mt-1 text-center">
+              <a href="mailto:uzairb2bservices@gmail.com" target="_blank" class="hover:text-amber-500 transition-colors duration-300">uzairb2bservices@gmail.com</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+            <hr class="my-12 border-t border-light-border">
+        <footer class="py-16 bg-gradient-to-t from-amber-800 to-amber-900 text-gray-200 shadow-xl" id="contact">
+  <div class="container mx-auto px-6 text-center space-y-6">
+    <p class="text-4xl font-extrabold text-amber-300">Paridhaan <span class="text-white">Creation</span></p>
+    <p class="text-xl font-medium text-amber-100">Contact Us</p>
+    <div class="space-y-2">
+      <p class="text-md text-gray-200">
+        <i class="fa-solid fa-map-marker-alt text-amber-300 mr-2"></i>
+        <strong>Address:</strong> B.24/29-A-1, Bhelupur, Varanasi, Uttar Pradesh, India - 221005
+      </p>
+      <p class="text-md text-gray-200">
+        <i class="fa-solid fa-phone text-amber-300 mr-2"></i>
+        <strong>Phone:</strong> +91 95465 47657
+      </p>
+      <p class="text-md text-gray-200">
+        <i class="fa-solid fa-envelope text-amber-300 mr-2"></i>
+        <strong>Email:</strong> info@paridhaancreation.com
+      </p>
+    </div>
+    
+    <div class="h-px w-24 bg-amber-300 mx-auto my-8"></div>
+    
+    <div class="flex flex-wrap justify-center space-x-4 sm:space-x-8 text-lg">
+      <a href="#" class="text-white hover:text-amber-300 transition-colors duration-300 font-semibold">Privacy Policy</a>
+      <a href="#" class="text-white hover:text-amber-300 transition-colors duration-300 font-semibold">Terms of Service</a>
+      <a href="#" class="text-white hover:text-amber-300 transition-colors duration-300 font-semibold">Sitemap</a>
+    </div>
+  </div>
+</footer>
+        </main>
+
+        <div v-if="showProductModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-[100]">
+            <div class="rounded-xl shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col lg:flex-row relative card-bg text-gray-800">
+                <button @click="closeProductModal" class="absolute top-4 right-4 hover:text-gold-accent transition-colors text-gray-700">
+                    <i class="fas fa-times-circle fa-2x"></i>
+                </button>
+                <div class="lg:w-1/2 p-6 flex items-center justify-center">
+                    <img :src="selectedProduct.ImageUrl" :alt="selectedProduct.Name" class="rounded-lg shadow-lg max-h-[500px] object-contain" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fdfaf6/b48554?text=Image+Unavailable';">
+                </div>
+                <div class="lg:w-1/2 p-6 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-3xl font-bold gold-accent mb-2">{{ selectedProduct.Name }}</h3>
+                        <p class="text-sm mb-2 font-medium text-gray-600">{{ selectedProduct.Category }}</p>
+                        <p class="mb-4">{{ selectedProduct.Description }}</p>
+                        <p class="text-xl font-semibold mb-2">
+                            Price: <span class="gold-accent">₹{{ selectedProduct.SellingPrice }}</span>
+                        </p>
+                        <p class="font-bold text-lg mb-4" :class="{'text-green-500': isAvailable(selectedProduct), 'text-red-500': !isAvailable(selectedProduct)}">
+                            Availability: <span>{{ isAvailable(selectedProduct) ? 'Available' : 'Unavailable' }}</span>
+                        </p>
+                    </div>
+                    <button @click="addToCart" :disabled="!isAvailable(selectedProduct)" class="text-white font-bold py-3 px-6 rounded-lg transition-colors w-full mt-4" :class="{'bg-gold-accent hover:opacity-80': isAvailable(selectedProduct), 'bg-gray-400 cursor-not-allowed': !isAvailable(selectedProduct)}">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div v-if="showCartModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-[100]">
+            <div class="rounded-xl shadow-2xl overflow-hidden max-w-2xl w-full relative p-6 card-bg text-gray-800">
+                <button @click="closeCartModal" class="absolute top-4 right-4 hover:text-gold-accent transition-colors text-gray-700">
+                    <i class="fas fa-times-circle fa-2x"></i>
+                </button>
+                <h3 class="text-2xl font-bold gold-accent mb-4">Shopping Cart</h3>
+                <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                    <div v-if="cartItems.length === 0" class="text-center py-8 text-gray-600">Your cart is empty.</div>
+                    <div v-for="item in cartItems" :key="item.ID" class="flex items-center space-x-4 border-b pb-4 last:border-b-0 border-gray-300">
+                        <img :src="item.ImageUrl" :alt="item.Name" class="w-16 h-16 object-cover rounded-lg" onerror="this.onerror=null;this.src='https://placehold.co/100x100/fdfaf6/b48554?text=Img';">
+                        <div class="flex-grow">
+                            <h4 class="font-semibold text-md">{{ item.Name }}</h4>
+                            <p class="text-sm text-gray-600">Qty: {{ item.quantity }} | Price: ₹{{ item.SellingPrice }}</p>
+                        </div>
+                        <span class="font-bold">₹{{ item.SellingPrice * item.quantity }}</span>
+                        <button @click="removeFromCart(item.ID)" class="text-red-500 hover:text-red-700">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="border-t mt-4 pt-4 flex justify-between items-center font-bold text-xl border-gray-300">
+                    <span>Total:</span>
+                    <span class="gold-accent">₹{{ cartTotal.toFixed(2) }}</span>
+                </div>
+                <button @click="checkout" :disabled="cartItems.length === 0" class="text-white font-bold py-3 px-6 rounded-lg transition-colors w-full mt-4" :class="{'bg-green-500 hover:bg-green-600': cartItems.length > 0, 'bg-gray-400 cursor-not-allowed': cartItems.length === 0}">
+                    Checkout
+                </button>
+            </div>
+        </div>
+        
+        <div v-if="message.text" class="fixed top-4 left-1/2 -translate-x-1/2 z-[200] p-4 rounded-lg text-white font-semibold transition-opacity duration-300" :class="{'bg-green-500': message.type === 'success', 'bg-red-500': message.type === 'error', 'bg-gray-700': message.type === 'info'}">
+            {{ message.text }}
+        </div>
+    </div>
+<script src="https://elfsightcdn.com/platform.js" async></script><div class="elfsight-app-0f3c9a33-19f6-44f4-8b36-a6eff9bbc2aa" data-elfsight-app-lazy></div>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                ownerWhatsApp: "9451535206",
+                googleSheetCsvUrl: "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=1086133643&single=true&output=csv",
+                products: [],
+                searchTerm: '',
+                selectedCategory: 'All',
+                cart: {},
+                showProductModal: false,
+                showCartModal: false,
+                selectedProduct: null,
+                message: { text: '', type: '' },
+                messageTimeout: null,
+                isDarkTheme: false // Set the initial theme to light
+            },
+            computed: {
+                filteredProducts() {
+                    let filtered = this.products;
+                    if (this.selectedCategory !== 'All') {
+                        filtered = filtered.filter(p => p.Category === this.selectedCategory);
+                    }
+                    if (this.searchTerm) {
+                        const lowerCaseSearch = this.searchTerm.toLowerCase();
+                        filtered = filtered.filter(p =>
+                            (p.Name && p.Name.toLowerCase().includes(lowerCaseSearch)) ||
+                            (p.Description && p.Description.toLowerCase().includes(lowerCaseSearch)) ||
+                            (p.Category && p.Category.toLowerCase().includes(lowerCaseSearch))
+                        );
+                    }
+                    return filtered;
+                },
+                categories() {
+                    const uniqueCategories = [...new Set(this.products.map(p => p.Category))].filter(Boolean);
+                    return uniqueCategories;
+                },
+                bestSellers() {
+                    // Placeholder logic: Assume products with 'BestSeller' in the 'Tags' column are best sellers.
+                    // You can modify this to sort by sales count or a specific 'BestSeller' column.
+                    return this.products.filter(p => p.Tags && p.Tags.toLowerCase().includes('bestseller'));
+                },
+                cartItemsCount() {
+                    return Object.values(this.cart).reduce((sum, item) => sum + item.quantity, 0);
+                },
+                cartItems() {
+                    return Object.values(this.cart);
+                },
+                cartTotal() {
+                    return this.cartItems.reduce((sum, item) => sum + item.SellingPrice * item.quantity, 0);
+                }
+            },
+            methods: {
+                isAvailable(product) {
+                    const stock = Number(product['CurrentStock']);
+                    return !isNaN(stock) && stock > 0;
+                },
+                async fetchProducts() {
+                    try {
+                        const response = await fetch(this.googleSheetCsvUrl);
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        const csvText = await response.text();
+                        this.products = this.parseCsv(csvText);
+                    } catch (error) {
+                        console.error("Error fetching or parsing CSV:", error);
+                        this.showMessage("Failed to load products. Please check the data source.", 'error');
+                    }
+                },
+                parseCsv(csv) {
+                    const lines = csv.trim().split('\n');
+                    if (lines.length < 2) return [];
+                    const headers = lines[0].split(',').map(header => header.trim());
+                    const products = [];
+                    for (let i = 1; i < lines.length; i++) {
+                        const values = lines[i].split(',').map(value => value.trim());
+                        if (values.length !== headers.length) continue;
+                        const product = {};
+                        for (let j = 0; j < headers.length; j++) {
+                            const header = headers[j];
+                            let value = values[j];
+                            if (['SellingPrice', 'CostPrice', 'CurrentStock', 'MinimumStock'].includes(header)) {
+                                value = !isNaN(Number(value)) && value !== '' ? Number(value) : value;
+                            }
+                            product[header] = value;
+                        }
+                        products.push(product);
+                    }
+                    return products;
+                },
+                filterByCategory(category) {
+                    this.selectedCategory = category;
+                    this.searchTerm = '';
+                },
+                searchProducts() {
+                    this.selectedCategory = 'All';
+                },
+                openProductModal(product) {
+                    this.selectedProduct = product;
+                    this.showProductModal = true;
+                },
+                closeProductModal() {
+                    this.showProductModal = false;
+                    this.selectedProduct = null;
+                },
+                openCartModal() {
+                    this.showCartModal = true;
+                },
+                closeCartModal() {
+                    this.showCartModal = false;
+                },
+                addToCart() {
+                    if (this.isAvailable(this.selectedProduct)) {
+                        const productId = this.selectedProduct.ID;
+                        const stock = Number(this.selectedProduct['CurrentStock']);
+                        if (!this.cart[productId]) {
+                            this.$set(this.cart, productId, { ...this.selectedProduct, quantity: 1 });
+                        } else {
+                            if (this.cart[productId].quantity >= stock) {
+                                this.showMessage(`You have reached the maximum stock (${stock}) for this item.`, 'error');
+                                return;
+                            }
+                            this.cart[productId].quantity++;
+                        }
+                        this.closeProductModal();
+                        this.showMessage("Product added to cart!", 'success');
+                    } else {
+                        this.showMessage("This product is currently unavailable.", 'error');
+                    }
+                },
+                removeFromCart(productId) {
+                    this.$delete(this.cart, productId);
+                    this.showMessage("Item removed from cart.", 'info');
+                },
+                checkout() {
+                    if (this.cartItems.length === 0) {
+                        this.showMessage("Your cart is empty. Please add products before checking out.", 'error');
+                        return;
+                    }
+                    const productsList = this.cartItems.map(item => `\n- ${item.Name} (Qty: ${item.quantity}, Price: ₹${item.SellingPrice})`).join('');
+                    const message = `Namaste, I would like to place an enquiry for the following products from your website:\n${productsList}\n\nThank you!`;
+                    const encodedMessage = encodeURIComponent(message);
+                    const whatsappUrl = `https://wa.me/${this.ownerWhatsApp}?text=${encodedMessage}`;
+                    window.open(whatsappUrl, '_blank');
+                    this.showMessage("Opening WhatsApp to complete your order.", 'success');
+                },
+                showMessage(text, type = 'info') {
+                    if (this.messageTimeout) {
+                        clearTimeout(this.messageTimeout);
+                    }
+                    this.message = { text, type };
+                    this.messageTimeout = setTimeout(() => {
+                        this.message = { text: '', type: '' };
+                    }, 3000);
+                }
+            },
+            mounted() {
+                this.fetchProducts();
+            }
+        });
+
+        // Mobile Menu JavaScript
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+        function openMenu() {
+            mobileMenuOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenuOverlay.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        }
+
+        mobileMenuButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+
+        document.querySelectorAll('#mobile-menu-overlay a').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+    </script>
+       
+</body>
+</html>
