@@ -251,7 +251,11 @@
                 window.addEventListener('load', createCarousel);
             </script>
             
-          
+<hr class="my-12 border-t border-light-border">
+
+          <!-- Elfsight Website Translator | Untitled Website Translator -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-4cc07176-d1be-46ed-ae12-9e34acc4a6a3" data-elfsight-app-lazy></div>
 
 <section class="bg-stone-100 py-16 sm:py-24">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -325,9 +329,11 @@
   </div>
 </section>      
 
+<!-- Elfsight Slider | Untitled Slider -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-9d0ab410-1a7d-4853-bed5-8492f06e51a6" data-elfsight-app-lazy></div>
 
-
-<section id="collections" class="bg-stone-100 px-6 py-24 sm:py-32">
+<section class="bg-stone-100 px-6 py-24 sm:py-32">
   <div class="container mx-auto">
     
     <div id="collections-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12"></div>
@@ -335,54 +341,51 @@
 </section>
 
 <script>
-    const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=1086133643&single=true&output=csv";
+const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=1086133643&single=true&output=csv";
 
-    async function loadCollections() {
-        const response = await fetch(csvUrl);
-        const data = await response.text();
+async function loadCollections() {
+    const response = await fetch(csvUrl);
+    const data = await response.text();
 
-        // Parse CSV
-        const rows = data.split("\n").map(r => r.split(","));
-        const headers = rows.shift();
+    const rows = data.split("\n").map(r => r.split(","));
+    const headers = rows.shift();
 
-        const categoryIndex = headers.indexOf("Category");
-        const imageIndex = headers.indexOf("ImageUrl");
+    const categoryIndex = headers.indexOf("Category");
+    const imageIndex = headers.indexOf("ImageUrl");
 
-        const categoryMap = {};
+    const categoryMap = {};
 
-        rows.forEach(row => {
-            const category = row[categoryIndex]?.trim();
-            const image = row[imageIndex]?.trim();
-            if (category && !categoryMap[category] && image) {
-                categoryMap[category] = image; // store only first image for category
-            }
-        });
+    rows.forEach(row => {
+        const category = row[categoryIndex]?.trim();
+        const image = row[imageIndex]?.trim();
+        if (category && !categoryMap[category] && image) {
+            categoryMap[category] = image;
+        }
+    });
 
-        const grid = document.getElementById("collections-grid");
-        
-        // Clear previous content
-        grid.innerHTML = '';
+    const grid = document.getElementById("collections-grid");
+    grid.innerHTML = '';
 
-        Object.keys(categoryMap).forEach(category => {
-            const imageUrl = categoryMap[category];
-            const card = `
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg transform transition-transform duration-500 hover:scale-105 hover:shadow-2xl hover:border hover:border-amber-400">
-                    <div class="w-full h-80 overflow-hidden">
-                        <img src="${imageUrl}" alt="${category}" class="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 text-center">
-                        <h3 class="text-2xl font-bold text-gray-800">${category}</h3>
-                    </div>
+    Object.keys(categoryMap).forEach(category => {
+        const imageUrl = categoryMap[category];
+        const card = `
+            <a href="#collections" class="group block relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-105 hover:border-2 hover:border-amber-400">
+                <div class="relative w-full aspect-video">
+                    <img src="${imageUrl}" alt="${category}" class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-stone-950 bg-opacity-40 transition-opacity duration-500 group-hover:bg-opacity-10"></div>
                 </div>
-            `;
-            grid.innerHTML += card;
-        });
-    }
+                <div class="absolute inset-0 flex items-center justify-center p-4">
+                    <h3 class="text-4xl font-serif font-semibold text-amber-300 text-shadow-lg text-center uppercase tracking-widest leading-none">${category}</h3>
+                </div>
+            </a>
+        `;
+        grid.innerHTML += card;
+    });
+}
 
-    loadCollections();
+loadCollections();
+
 </script>
-
-
 
  <hr class="my-12 border-t border-light-border">
 
@@ -463,8 +466,66 @@
                 </div>
             </div>
 
-             <hr class="my-12 border-t border-light-border">
             
+            
+      
+<hr class="my-12 border-t border-light-border">
+
+                
+
+
+            <section id="about" class="container mx-auto px-6 py-16 bg-light-bg">
+     <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Welcome to Paridhaan Creation</h2>
+                <h2 class="text-4xl font-extrabold text-center gold-accent mb-12">Kyuki Khubsurti Hai Aapse</h2>
+                 
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="w-full md:w-1/2">
+                        <img src="https://educationsimplified.github.io/paridhaan_creation/Paridhaan creation.png" alt="Elegant Saree draped on a woman" class="rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
+                    </div>
+                    <div class="w-full md:w-1/2 space-y-6 text-lg leading-relaxed text-light-text">
+<p>
+    <strong><em>Paridhaan Creation… Kyuki Khubsurati Hai Aapse.</em></strong><br>
+    At <strong>Paridhaan Creation</strong>, we believe that true beauty begins within you, and our
+    exquisite collection of women’s ethnic wear is thoughtfully crafted to mirror that inner elegance
+    and confidence. Every piece is more than clothing—it is a celebration of your individuality.
+</p>
+
+<p>
+    Rooted in the <strong>timeless traditions of Banaras</strong>, we bring you an enchanting range of
+    <strong>Banarasi sarees</strong>, lehengas, and bespoke ethnic ensembles that blend
+    centuries-old artistry with modern sophistication.  
+    Each saree in our collection is a living masterpiece, handwoven by skilled artisans who carry forward
+    the legacy of their forefathers. Featuring <em>intricate zari work</em>, rich silks, and luxurious textures,
+    these creations are heirlooms that embody culture, grace, and enduring beauty.
+</p>
+
+<p>
+    From the first thread spun on the loom to the final drape around your shoulders,
+    every <strong>Paridhaan Creation</strong> saree travels a journey of dedication and passion.  
+    Whether you are dressing for <strong>weddings</strong>, festive celebrations, or intimate gatherings,
+    our ensembles are designed to make every moment memorable, radiating
+    <em>elegance</em>, <em>tradition</em>, and contemporary charm.
+</p>
+
+<p>
+    Discover the magic of <strong>Premium Banarasi Sarees—From Loom to Home</strong>, where
+    authentic craftsmanship meets uncompromising quality.  
+    With direct sourcing from artisans, we ensure fair practices, unmatched purity of fabric,
+    and a personal touch that speaks of heritage and heart.  
+    At Paridhaan Creation, you don’t just wear a saree—you carry a story of art, love,
+    and the timeless spirit of Banaras.
+</p>
+
+                        <a href="https://wa.link/ygdo3d" target="_blank" class="inline-block mt-8 font-semibold border-b-2 text-gray-600 hover:text-black border-gold-accent">
+                            <strong>Know More About Us →</strong> 
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+
+
+ <hr class="my-12 border-t border-light-border">
             <section id="socialmedia" class="container mx-auto p-4 md:p-8">
                 <div class="max-w-7xl mx-auto px-6">
                     <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Social Media Updates</h2>
@@ -501,88 +562,15 @@
                 </div>
             </section>
             
-      
-<hr class="my-12 border-t border-light-border">
-
-                
-
-
-            <section id="about" class="container mx-auto px-6 py-16 bg-light-bg">
-     <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Welcome to Paridhaan Creation</h2>
-                <h2 class="text-4xl font-extrabold text-center gold-accent mb-12">Kyuki Khubsurti Hai Aapse</h2>
-                 
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="w-full md:w-1/2">
-                        <img src="https://educationsimplified.github.io/paridhaan_creation/Paridhaan creation.png" alt="Elegant Saree draped on a woman" class="rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
-                    </div>
-                    <div class="w-full md:w-1/2 space-y-6 text-lg leading-relaxed text-light-text">
-<p>
-    <strong><em>Paridhaan Creation… Kyuki Khubsurati Hai Aapse.</em></strong><br>
-    At <strong>Paridhaan Creation</strong>, we believe that true beauty resides within you, and our
-    exquisite collection of women's ethnic wear is designed to reflect that inner elegance.
-</p>
-
-<p>
-    Rooted in the <strong>timeless traditions of Banaras</strong>, we present an enchanting range of
-    <strong>Banarasi sarees</strong>, lehengas, and ethnic ensembles that seamlessly blend heritage and
-    modern sophistication.<br>
-    Each Banarasi saree in our collection is a living testament to centuries-old artistry,
-    featuring <em>intricate zari work</em> and luxurious fabrics that create heirloom pieces rich with
-    culture and grace.
-</p>
-
-<p>
-    Whether for <strong>weddings</strong>, festive celebrations, or special occasions,
-    <strong>Paridhaan Creation</strong> is your destination for timeless fashion—where
-    <em>elegance</em>, <em>tradition</em>, and contemporary style come together to celebrate the
-    beauty that is uniquely yours.
-</p>
-
-                        <a href="https://wa.link/ygdo3d" target="_blank" class="inline-block mt-8 font-semibold border-b-2 text-gray-600 hover:text-black border-gold-accent">
-                            <strong>Know More →</strong> 
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-<section class="my-6">
-          <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Our Products</h2>
-     
-                    <div class="flex flex-wrap gap-2">
-                        <button @click="filterByCategory('All')" :class="{'bg-gold-accent text-white': selectedCategory === 'All', 'hover:opacity-80': true, 'bg-gray-200 text-gray-700': selectedCategory !== 'All'}" class="py-2 px-4 rounded-full font-semibold shadow-sm transition-all">All</button>
-                        <button v-for="category in categories" :key="category" @click="filterByCategory(category)" :class="{'bg-gold-accent text-white': selectedCategory === category, 'hover:opacity-80': true, 'bg-gray-200 text-gray-700': selectedCategory !== category}" class="py-2 px-4 rounded-full font-semibold shadow-sm transition-all">
-                            {{ category }}
-                        </button>
-                    </div>
-                </section>
-
-                <section class="my-8">
-                    <h2 class="text-3xl font-bold gold-accent mb-4">All Products</h2>
-                    <div v-if="filteredProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        <div v-for="product in filteredProducts" :key="product.ID" @click="openProductModal(product)" class="product-card rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1 bg-white">
-                            <div class="relative w-full h-64 overflow-hidden">
-                                <img :src="product.ImageUrl" :alt="product.Name" class="w-full h-full object-cover rounded-t-xl" onerror="this.onerror=null;this.src='https://placehold.co/400x400/fdfaf6/b48554?text=Image+Unavailable';">
-                            </div>
-                            <div class="p-4">
-                                <h4 class="font-bold text-xl gold-accent truncate mb-1">{{ product.Name }}</h4>
-                                <p class="text-sm mb-2 truncate text-gray-600">{{ product.Description }}</p>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-2xl font-semibold text-gray-900">₹{{ product.SellingPrice }}</span>
-                                    <span :class="{'bg-green-700 text-white': isAvailable(product), 'bg-red-700 text-white': !isAvailable(product)}" class="font-bold text-sm px-2 py-1 rounded-full">
-                                        {{ isAvailable(product) ? 'Available' : 'Unavailable' }}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div v-else class="text-center col-span-full text-gray-600">
-                        No products found.
-                    </div>
-                </section>
-            </section>
 
  <hr class="my-12 border-t border-light-border">
 
+ <!-- Elfsight Blog | Untitled Blog -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-80d51bf6-0bce-4ac9-af26-41d933d28146" data-elfsight-app-lazy></div>
+
+
+<hr class="my-12 border-t border-light-border">
 
             <hr class="my-12 border-t border-light-border">
             
@@ -607,6 +595,11 @@
         CONTACT US: +91 94515 35206
     </div>
 </section>
+
+<!-- Elfsight Sales Notification | Untitled Sales Notification -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-ec036e32-abe5-4e43-87e5-f44f294eb45b" data-elfsight-app-lazy></div>
+
 
 <hr class="my-12 border-t border-light-border">
 
@@ -660,6 +653,12 @@
     </div>
   </div>
 </section>
+
+
+<!-- Elfsight Subscription Form | Untitled Subscription Form -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-fb032b2e-5f27-4ebe-a575-52118e58b6d3" data-elfsight-app-lazy></div>
+
             <hr class="my-12 border-t border-light-border">
 <footer class="bg-[#8A5E3A] text-white pt-16 pb-8 shadow-xl relative overflow-hidden" id="contact">
   <div class="container mx-auto px-6">
@@ -748,6 +747,10 @@
   </ul>
 </div>
 
+
+<!-- Elfsight WhatsApp Chat | Untitled WhatsApp Chat -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-215ef826-cea0-404c-b5fd-37ae6d12e42f" data-elfsight-app-lazy></div>
           
 
       <!-- Contact + Social icons with hover -->
@@ -784,6 +787,11 @@
          Paridhaan Creation. All rights reserved.</p>
     </div>
   </div>
+  <!-- Elfsight Visitor Counter | Untitled Visitor Counter -->
+
+
+  <script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-99092b30-faad-45e3-a910-ff53bff6ac05" data-elfsight-app-lazy></div>
 </footer>
 
         </main>
@@ -849,7 +857,7 @@
             {{ message.text }}
         </div>
     </div>
-<script src="https://elfsightcdn.com/platform.js" async></script><div class="elfsight-app-0f3c9a33-19f6-44f4-8b36-a6eff9bbc2aa" data-elfsight-app-lazy></div>
+
     <script>
         const app = new Vue({
             el: '#app',
