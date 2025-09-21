@@ -85,32 +85,31 @@
     
 
 
-script type="application/ld+json">
+<script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@context": "https://paridhaancreation.in/",
   "@graph": [
     {
       "@type": "WebSite",
       "@id": "https://paridhaancreation.in",
       "url": "https://paridhaancreation.in",
-      "name": "Paridhaan Creation....Best and Finest Sarees & Dress Materials From Banaras",
-      "description": "Paridhaan Creation…Kyuki khubsurati hai aapse.. At Paridhaan Creation, we believe that true beauty lies within you, and our exquisite collection of women's ethnic wear is designed to reflect just that. Rooted in the timeless traditions of Banaras, we bring you an enchanting range of Banarasi sarees, lehengas, and ethnic ensembles that weave elegance, heritage, and modernity together. Each Banarasi saree in our collection is a testament to the centuries-old artistry of Banaras, blending intricate zari work and luxurious fabrics to create heirloom pieces that tell a story of elegance and culture. Whether it’s for a wedding, a festive celebration, or a special occasion, Paridhaan Creation is your destination for timeless fashion that speaks of",
+      "name": "Paridhaan Creation - Best and Finest Sarees & Dress Materials From Banaras",
+      "description": "Paridhaan Creation…Kyuki khubsurati hai aapse. We offer an exquisite collection of women's ethnic wear, including Banarasi sarees, lehengas, and ensembles.",
       "inLanguage": "en-IN",
       "publisher": {
-        "@id": "https://paridhaancreation.in"
+        "@type": "Organization",
+        "name": "Paridhaan Creation",
+        "url": "https://paridhaancreation.in"
       },
       "potentialAction": {
         "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://paridhaancreation.in/search?q={search_term_string}"
-        },
+        "target": "https://paridhaancreation.in/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     },
     {
-      "@type": ["Saree Business", "Banarsi Saree Manufacturer", "Banarasi Oldest Saree Manufactuing", "TextileManufacturer", "Store"],
-      "@id": "https://www.paridhaancreation.in/#collections",
+      "@type": "Store",
+      "@id": "https://paridhaancreation.in/#store",
       "name": "Paridhaan Creation",
       "image": "https://educationsimplified.github.io/paridhaan_creation/PARIDHAAN.png",
       "url": "https://paridhaancreation.in/",
@@ -141,68 +140,16 @@ script type="application/ld+json">
         "@type": "AggregateRating",
         "ratingValue": "5.0",
         "reviewCount": "250"
-      },
-      "knowsLanguage": "en-IN"
-    },
-    {
-      "@type": "collections",
-      "@id": "https://paridhaancreation.in/#collections",
-      "name": "Paridhaan Creation",
-      "url": "https://paridhaancreation.in/",
-      "logo": {
-        "@type": "ImageObject",
-        "@id": "https://paridhaancreation.in/#logo",
-        "inLanguage": "en-IN",
-        "url": "https://paridhaancreation.in/",
-        "contentUrl": "https://paridhaancreation.in/",
-        "caption": "Paridhaan Creation Logo"
-      },
-      "sameAs": [
-        "https://paridhaancreation.blogspot.com/",
-        "https://paridhaancreation.in/",
-        "https://www.instagram.com/paridhaan_creation",
-        "https://www.facebook.com/profile.php?id=61572113506286",
-        "https://www.paridhaancreation.in/"
-      ]
-    },
-    {
-      "@type": "About Us",
-      "@id": "https://www.paridhaancreation.in/#about",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "item": {
-            "@id": "https://paridhaancreation.in/",
-            "name": "Home"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@id": "https://paridhaancreation.in/",
-            "name": "Shop"
-          }
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "item": {
-            "@id": "https://www.paridhaancreation.in/#about",
-            "name": "About Us"
-          }
-        }
-      ]
+      }
     },
     {
       "@type": "Product",
-      "@id": "https://www.paridhaancreation.in/#collections",
-      "name": "Banarasi Silk Saree", "Banarasi Suits", "Banarasi Dupatta",
-      "description": "Paridhaan Creation…Kyuki khubsurati hai aapse.. At Paridhaan Creation, we believe that true beauty lies within you, and our exquisite collection of women's ethnic wear is designed to reflect just that. Rooted in the timeless traditions of Banaras, we bring you an enchanting range of Banarasi sarees, lehengas, and ethnic ensembles that weave elegance, heritage, and modernity together. Each Banarasi saree in our collection is a testament to the centuries-old artistry of Banaras, blending intricate zari work and luxurious fabrics to create heirloom pieces that tell a story of elegance and culture. Whether it’s for a wedding, a festive celebration, or a special occasion, Paridhaan Creation is your destination for timeless fashion that speaks of.",
+      "@id": "https://paridhaancreation.in/#product",
+      "name": ["Banarasi Silk Saree", "Banarasi Suits", "Banarasi Dupatta"],
+      "description": "Paridhaan Creation offers Banarasi sarees, lehengas, and ethnic ensembles crafted by skilled artisans from Banaras.",
       "sku": "SKU-PC-BNS-001",
       "mpn": "MPN-PC-BNS-001",
-      "image": "https://www.paridhaancreation.in/#collections",
+      "image": "https://www.paridhaancreation.in/images/banarasi-saree.jpg",
       "brand": {
         "@type": "Brand",
         "name": "Paridhaan Creation"
@@ -211,8 +158,8 @@ script type="application/ld+json">
         "@type": "Offer",
         "url": "https://paridhaancreation.in/",
         "priceCurrency": "INR",
-        "price": "[Your Product Price]",
-        "availability": "https://www.paridhaancreation.in/#collections",
+        "price": "1999",
+        "availability": "https://paridhaancreation.in/",
         "seller": {
           "@type": "Organization",
           "name": "Paridhaan Creation"
@@ -223,7 +170,7 @@ script type="application/ld+json">
           "@type": "Review",
           "reviewRating": {
             "@type": "Rating",
-            "ratingValue": "5.0",
+            "ratingValue": "5",
             "bestRating": "5"
           },
           "author": {
@@ -236,7 +183,7 @@ script type="application/ld+json">
           "@type": "Review",
           "reviewRating": {
             "@type": "Rating",
-            "ratingValue": "5.0",
+            "ratingValue": "5",
             "bestRating": "5"
           },
           "author": {
@@ -261,7 +208,7 @@ script type="application/ld+json">
           "name": "How can I verify the authenticity of a Banarasi silk saree?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Authentic Banarasi sarees are known for their intricate hand-woven designs. Look for a Silk Mark label, which guarantees the purity of the silk, and check for a GI (Geographical Indication) tag, which authenticates the origin and craftsmanship from Varanasi. The back of the saree's border will also have a clean, float-free finish from the weaving process."
+            "text": "Look for a Silk Mark label and a GI tag to verify authenticity. Check the back of the saree border for a clean finish."
           }
         },
         {
@@ -269,7 +216,7 @@ script type="application/ld+json">
           "name": "Do you ship your Banarasi sarees and suits all over India?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, Paridhaan Creation offers safe and reliable shipping services for all our products across India. We ensure your order is securely packed and delivered to your doorstep."
+            "text": "Yes, we offer safe and reliable shipping services across India."
           }
         },
         {
@@ -277,7 +224,7 @@ script type="application/ld+json">
           "name": "Are your sarees and suits handloom or machine-made?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "As the oldest textile manufacturers in Varanasi, all our products are meticulously handcrafted on traditional looms by skilled artisans. We pride ourselves on preserving the authentic art of Banarasi weaving."
+            "text": "All our products are handcrafted on traditional looms by skilled artisans."
           }
         }
       ]
