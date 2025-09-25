@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -385,6 +386,7 @@ function recEvent(category, action, label, additional){
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9T4PJM9"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
     
     
@@ -495,7 +497,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <header class="bg-white/95 backdrop-blur-sm shadow-lg p-4 sticky top-10 z-50">
             <div class="container mx-auto flex justify-between items-center">
-                <a href="https://paridhaancreation.blogspot.com" class="text-4xl font-extrabold tracking-wider text-black">Paridhaan <span class="gold-accent">Creation</span></a>
+<!-- Updated link with royal font -->
+<a href="https://paridhaancreation.blogspot.com" 
+   class="text-4xl font-extrabold tracking-wider text-black" 
+   style="font-family: 'Playfair Display', serif;">
+   Paridhaan <span class="gold-accent">Creation</span>
+</a>
                 
                 <div class="hidden md:flex items-center space-x-8 text-lg font-medium">
                     <a href="#collections" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Our Collections</a>
@@ -553,78 +560,96 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <main class="flex-grow">
-            <section id="hero-carousel" class="relative min-h-screen flex items-center justify-center text-center p-8 md:p-16 overflow-hidden">
-                <div id="carousel-track" class="absolute inset-0 w-full h-full z-0">
-                   <img src="https://lh3.googleusercontent.com/p/AF1QipM6_dwBoF0_Q2F0rJCjdsmuzFjHLTP7C-sbMM28=s1360-w1360-h1020-rw" alt="Saree model 3" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
-                <div class="relative z-20 max-w-6xl">
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight tracking-tighter mb-6">
-                        The Pinnacle of Royal Elegance from the holy city of Varanasi.
-                    </h1>
-                    <p class="text-2xl md:text-3xl font-light text-gray-100 mb-12">
-                        Woven with tradition, worn by royalty.
-                    </p>
-                    <a href="https://chat.whatsapp.com/B4ysLHbIdRZ6UakK2cKqs6" target="_blank" class="bg-white text-gold-accent font-bold text-xl py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl inline-block border-2" style="border-color: var(--gold-accent);">
-                        Join Our Whatsapp Group
-                    </a>
-                    <div id="carousel-dots" class="flex justify-center mt-8 space-x-2"></div>
-                </div>
-            </section>
-            
-            <script>
-                const carouselImages = [
-                    "https://lh3.googleusercontent.com/p/AF1QipM6_dwBoF0_Q2F0rJCjdsmuzFjHLTP7C-sbMM28=s1360-w1360-h1020-rw"
-                ];
-                const track = document.getElementById("carousel-track");
-                const dotsContainer = document.getElementById("carousel-dots");
-                
-                let currentImageIndex = 0;
-                
-                function createCarousel() {
-                    track.innerHTML = '';
-                    dotsContainer.innerHTML = '';
+  <section id="hero-carousel" class="relative min-h-screen flex items-center justify-center text-center p-8 md:p-16 overflow-hidden">
+    <!-- Dynamic images will be injected here -->
+    <div id="carousel-track" class="absolute inset-0 w-full h-full z-0"></div>
 
-                    carouselImages.forEach((src, index) => {
-                        const img = document.createElement("img");
-                        img.src = src;
-                        img.alt = `Saree model ${index + 1}`;
-                        img.className = 'absolute inset-0 w-full h-full object-cover';
-                        track.appendChild(img);
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
 
-                        const dot = document.createElement('span');
-                        dot.className = 'dot';
-                        dot.addEventListener('click', () => {
-                            showImage(index);
-                        });
-                        dotsContainer.appendChild(dot);
-                    });
-                    showImage(currentImageIndex);
-                }
+    <!-- Text & CTA -->
+    <div class="relative z-20 max-w-6xl">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight tracking-tighter mb-6">
+        The Pinnacle of Royal Elegance from the holy city of Varanasi.
+      </h1>
+      <p class="text-2xl md:text-3xl font-light text-gray-100 mb-12">
+        Woven with tradition, worn by royalty.
+      </p>
+      <a href="https://chat.whatsapp.com/B4ysLHbIdRZ6UakK2cKqs6"
+         target="_blank"
+         class="bg-white text-gold-accent font-bold text-xl py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl inline-block border-2"
+         style="border-color: var(--gold-accent);">
+         Join Our Whatsapp Group
+      </a>
 
-                function showImage(index) {
-                    const images = track.querySelectorAll('img');
-                    const dots = dotsContainer.querySelectorAll('.dot');
-                    
-                    images.forEach((img, i) => {
-                        img.classList.remove('active');
-                        dots[i].classList.remove('active');
-                    });
-                    
-                    images[index].classList.add('active');
-                    dots[index].classList.add('active');
-                    currentImageIndex = index;
-                }
+      <!-- Carousel dots -->
+      <div id="carousel-dots" class="flex justify-center mt-8 space-x-2"></div>
+    </div>
+  </section>
+</main>
 
-                function nextImage() {
-                    let nextIndex = (currentImageIndex + 1) % carouselImages.length;
-                    showImage(nextIndex);
-                }
+<script>
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=397492617&single=true&output=csv";
 
-                setInterval(nextImage, 4000); // Change image every 4 seconds
+async function fetchCSV() {
+  const res = await fetch(CSV_URL);
+  const text = await res.text();
+  return text.split("\n").map(row => row.split(","));
+}
 
-                window.addEventListener('load', createCarousel);
-            </script>
+async function initCarousel() {
+  const data = await fetchCSV();
+  
+  // Assuming first row is header, rest are image URLs
+  const images = data.slice(1).map(row => row[0]).filter(Boolean);
+
+  const track = document.getElementById("carousel-track");
+  const dots = document.getElementById("carousel-dots");
+
+  images.forEach((url, i) => {
+    // Add image
+    const img = document.createElement("img");
+    img.src = url;
+    img.className = "absolute inset-0 w-full h-full object-cover transition-opacity duration-1000";
+    img.style.opacity = i === 0 ? 1 : 0;
+    track.appendChild(img);
+
+    // Add dot
+    const dot = document.createElement("button");
+    dot.className = "w-3 h-3 rounded-full " + (i === 0 ? "bg-white" : "bg-gray-400");
+    dot.addEventListener("click", () => showSlide(i));
+    dots.appendChild(dot);
+  });
+
+  let current = 0;
+  function showSlide(index) {
+    const imgs = track.querySelectorAll("img");
+    const ds = dots.querySelectorAll("button");
+    imgs.forEach((img, j) => img.style.opacity = j === index ? 1 : 0);
+    ds.forEach((d, j) => d.className = "w-3 h-3 rounded-full " + (j === index ? "bg-white" : "bg-gray-400"));
+    current = index;
+  }
+
+  // Auto-slide
+  setInterval(() => {
+    showSlide((current + 1) % images.length);
+  }, 5000);
+}
+
+initCarousel();
+</script>
+
+<!-- 🟨 Sticky Marquee Bar -->
+<section class="w-full bg-gold-accent text-white py-2 text-center text-sm font-medium sticky top-0 z-40 overflow-hidden border-y border-gold-accent">
+  <div class="inline-block whitespace-nowrap animate-marquee-ltr">
+    <span class="px-2">UZAIR TRADING & CO. - Ck 43/71 K, Chattatale, Chowk, Varanasi, Uttar Pradesh</span>
+    <span class="px-2 border-l border-white">BULK ORDERS & DECORATION EVENT & PACKAGING ITEMS AVAILABLE</span>
+    <span class="px-2 border-l border-white">CONNECT WITH US FOR A FREE QUOTE</span>
+    <span class="px-2 border-l border-white">CONTACT: +91 93357 23334</span>
+  </div>
+</section>
+
+
             
 <hr class="my-12 border-t border-light-border">
 
@@ -708,337 +733,357 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="https://elfsightcdn.com/platform.js" async></script>
 <div class="elfsight-app-9d0ab410-1a7d-4853-bed5-8492f06e51a6" data-elfsight-app-lazy></div>
 
-<!-- =====================  COLLECTION GRID  ===================== -->
-<section class="bg-stone-100 px-6 py-24 sm:py-32">
-  <div class="container mx-auto">
-    <div id="collections-grid"
-         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
-    </div>
-  </div>
-</section>
-
-<!-- Papa Parse for safe CSV parsing -->
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
-<script>
-const csvUrl =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=1086133643&single=true&output=csv";
-
-async function loadCollections() {
-  const response = await fetch(csvUrl);
-  const csvText = await response.text();
-
-  // Parse safely so commas/newlines inside cells are preserved
-  const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
-  const rows = parsed.data;
-
-  const categoryMap = {};
-  rows.forEach(row => {
-    const category = row["Category"]?.trim();
-    const image    = row["ImageUrl"]?.trim();
-    if (category && image && !categoryMap[category]) {
-      categoryMap[category] = image;
-    }
-  });
-
-  const grid = document.getElementById("collections-grid");
-  grid.innerHTML = "";
-
-  Object.entries(categoryMap).forEach(([category, imageUrl]) => {
-    const card = `
-      <a href="#collections"
-         data-category="${category}"
-         class="group block relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 hover:scale-105 hover:border-2 hover:border-amber-400">
-        <div class="relative w-full aspect-video">
-          <img src="${imageUrl}" alt="${category}"
-               class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute inset-0 bg-stone-950 bg-opacity-40 transition-opacity duration-500 group-hover:bg-opacity-10"></div>
+<section id="our-collections" class="w-full bg-white px-6 py-24 sm:py-32">
+    <div class="container mx-auto max-w-7xl">
+        <div id="collections-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
         </div>
-        <div class="absolute inset-0 flex items-center justify-center p-4">
-          <h3 class="text-4xl font-serif font-semibold text-amber-300 text-shadow-lg text-center uppercase tracking-widest leading-none">
-            ${category}
-          </h3>
-        </div>
-      </a>
-    `;
-    grid.insertAdjacentHTML("beforeend", card);
-  });
-
-  // When a card is clicked, scroll and filter products by category
-  grid.querySelectorAll("a[data-category]").forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const cat = link.dataset.category;
-      const productsSection = document.getElementById("collections");
-      productsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-
-      // Trigger Vue method if available
-      if (window.app && typeof window.app.filterByCategory === "function") {
-        window.app.filterByCategory(cat);
-      }
-    });
-  });
-}
-
-loadCollections();
-</script>
-
- <hr class="my-12 border-t border-light-border">
-
-
-<!-- =====================  PRODUCT COLLECTIONS  ===================== -->
-<section id="collections" class="container mx-auto p-4 md:p-8">
-    <!-- 🔍 Mobile Search Box -->
-    <div class="my-6 block sm:block md:hidden relative">
-        <input
-            type="text"
-            v-model.trim="searchTerm"
-            @input="searchProducts"
-            placeholder="Search products..."
-            class="w-full p-2 pl-10 rounded-full shadow-inner focus:outline-none focus:ring-2 focus:ring-gold-accent transition-shadow z-20 relative bg-gray-100 text-gray-800 placeholder-gray-500 border border-gray-300"
-        >
-        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-30 text-gray-500"></i>
     </div>
-
-    <!-- 🏷️ Categories -->
-    <section class="my-6" id="categories">
-        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">
-            Our Exquisite Collections
-        </h2>
-        <p class="text-center text-xl text-gray-700 mb-20">
-            Discover our collection of woven traditions, worn by royalty.
-        </p>
-
-        <div class="flex flex-wrap gap-2">
-            <button
-                @click="filterByCategory('All')"
-                :class="{
-                    'bg-gold-accent text-white': selectedCategory === 'All',
-                    'bg-gray-200 text-gray-700 hover:opacity-80': selectedCategory !== 'All'
-                }"
-                class="py-2 px-4 rounded-full font-semibold shadow-sm transition-all"
-            >
-                All
-            </button>
-
-            <button
-                v-for="category in categories"
-                :key="category"
-                @click="filterByCategory(category)"
-                :class="{
-                    'bg-gold-accent text-white': selectedCategory === category,
-                    'bg-gray-200 text-gray-700 hover:opacity-80': selectedCategory !== category
-                }"
-                class="py-2 px-4 rounded-full font-semibold shadow-sm transition-all"
-            >
-                {{ category }}
-            </button>
-        </div>
-    </section>
-
-    <!-- 📦 Product Grid -->
-    <section class="my-8">
-        <div
-            v-if="filteredProducts.length > 0"
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-        >
-            <div
-                v-for="product in filteredProducts"
-                :key="product.ID"
-                @click="openProductModal(product)"
-                class="product-card rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden transform hover:-translate-y-1 bg-white"
-            >
-                <!-- 🖼 Product Image -->
-                <div class="relative w-full h-64 overflow-hidden">
-                    <img
-                        :src="product.ImageUrl"
-                        :alt="product.Name"
-                        class="w-full h-full object-cover rounded-t-xl"
-                        @error="event => event.target.src='https://placehold.co/400x400/fdfaf6/b48554?text=Image+Unavailable'"
-                    >
-                </div>
-
-                <!-- 📑 Product Info -->
-                <div class="p-4">
-                    <h4
-                        class="font-bold text-xl gold-accent truncate mb-1"
-                        :title="product.Name"
-                    >
-                        {{ product.Name }}
-                    </h4>
-                    <p
-                        class="text-sm mb-2 text-gray-600 line-clamp-2"
-                        :title="product.Description"
-                    >
-                        {{ product.Description || 'No description available' }}
-                    </p>
-
-                    <div class="flex justify-between items-center">
-                        <span class="text-2xl font-semibold text-gray-900">
-                            ₹{{ product.SellingPrice || 'N/A' }}
-                        </span>
-                        <span
-                            :class="{
-                                'bg-green-700 text-white': isAvailable(product),
-                                'bg-red-700 text-white': !isAvailable(product)
-                            }"
-                            class="font-bold text-sm px-2 py-1 rounded-full"
-                        >
-                            {{ isAvailable(product) ? 'Available' : 'Unavailable' }}
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 🚫 No Products Found -->
-        <div v-else class="text-center col-span-full text-gray-600">
-            No products found.
-        </div>
-    </section>
 </section>
 
-            
+<script>
+    const csvUrl =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=1086133643&single=true&output=csv";
 
+    async function loadCollections() {
+        const response = await fetch(csvUrl);
+        const csvText = await response.text();
 
-            
-            <div id="ad-popup" style="
-                position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-                background: rgba(0,0,0,0.5); display: flex; justify-content: center;
-                align-items: center; z-index: 9999;
-            ">
-                <div style="position: relative; background: #fff; border-radius: 12px; overflow: hidden; max-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-                    <button type="button" onclick="document.getElementById('ad-popup').style.display='none'"
-                        style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 18px; line-height: 30px; z-index: 100;">
-                        ✕
-                    </button>
-                    <img src="https://tilfi.com/cdn/shop/products/SKAKJRD10056Red_Hera_PureKatanSilkKadwaGoldRoseBootaJanglaSaree70_1200x.jpg"
-                        alt="Banarasee Collection" style="width: 100%; display: block;">
-                    <div style="padding: 12px; text-align: center; background: #fff;">
-                        <h3 style="margin: 0; font-size: 16px; color: #b22222; font-weight: bold;">
-                            View our latest Banarasi Collection
+        const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
+        const rows = parsed.data;
+
+        const categoryMap = {};
+        rows.forEach(row => {
+            const category = row["Category"]?.trim();
+            const image = row["ImageUrl"]?.trim();
+            if (category && image && !categoryMap[category]) {
+                categoryMap[category] = image;
+            }
+        });
+
+        const grid = document.getElementById("collections-grid");
+        grid.innerHTML = "";
+
+        Object.entries(categoryMap).forEach(([category, imageUrl]) => {
+            // Luxury Card Template with dynamic text (from CSV)
+            const card = `
+                <a href="#collections"
+                    data-category="${category}"
+                    class="group block relative rounded-lg overflow-hidden shadow-xl transition-all duration-500 hover:scale-[1.02] border-2 border-transparent hover:border-amber-500/80">
+                    
+                    <div class="relative w-full aspect-[4/3] bg-gray-100">
+                        <img src="${imageUrl}" alt="${category} Collection"
+                            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110">
+                        
+                        <div class="absolute inset-0 bg-stone-950/20 transition-all duration-500 group-hover:bg-stone-950/10"></div>
+                    </div>
+                    
+                    <div class="absolute inset-0 flex items-end justify-start p-6 transition-all duration-500 group-hover:bg-stone-950/30">
+                        <h3 class="text-3xl font-serif font-bold text-white transition-colors duration-300 group-hover:text-amber-400 drop-shadow-lg uppercase tracking-wider leading-snug">
+                            ${category} 
                         </h3>
-                        <p style="margin: 5px 0 0; font-size: 14px; color: #333;">
-                           Exquisite styles, brought straight to your doorstep.
-                        </p>
                     </div>
-                </div>
+                </a>
+            `;
+            grid.insertAdjacentHTML("beforeend", card);
+        });
+
+        grid.querySelectorAll("a[data-category]").forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                const cat = link.dataset.category;
+                const productsSection = document.getElementById("collections");
+                productsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+
+                if (window.app && typeof window.app.filterByCategory === "function") {
+                    window.app.filterByCategory(cat);
+                }
+            });
+        });
+    }
+
+    loadCollections();
+</script>
+
+<hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
+
+
+<section id="collections" class="w-full p-4 md:p-8">
+    <div class="container mx-auto">
+        <div class="my-6 block sm:block md:hidden relative">
+            <input
+                type="text"
+                v-model.trim="searchTerm"
+                @input="searchProducts"
+                placeholder="Search products..."
+                class="w-full p-2 pl-10 rounded-full shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-500 transition-shadow z-20 relative bg-gray-100 text-gray-800 placeholder-gray-500 border border-gray-300"
+            >
+            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-30 text-gray-500"></i>
+        </div>
+
+        <section class="my-6" id="categories">
+            <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-6 text-stone-900" style="font-family: 'Playfair Display', serif;">
+                Our Exquisite Collections
+            </h2>
+            <p class="text-center text-xl text-gray-500 mb-12 italic tracking-wide">
+                Discover our collection of woven traditions, worn by royalty.
+            </p>
+
+            <div class="flex flex-wrap gap-3 justify-center mb-16">
+                <button
+                    @click="filterByCategory('All')"
+                    :class="{
+                        'bg-stone-900 text-white shadow-xl ring-2 ring-amber-500': selectedCategory === 'All',
+                        'bg-gray-100 text-stone-700 hover:bg-stone-200': selectedCategory !== 'All'
+                    }"
+                    class="py-2 px-6 rounded-full font-serif font-medium text-sm tracking-wider uppercase transition-all duration-300"
+                >
+                    All Collections
+                </button>
+
+                <button
+                    v-for="category in categories"
+                    :key="category"
+                    @click="filterByCategory(category)"
+                    :class="{
+                        'bg-stone-900 text-white shadow-xl ring-2 ring-amber-500': selectedCategory === category,
+                        'bg-gray-100 text-stone-700 hover:bg-stone-200': selectedCategory !== category
+                    }"
+                    class="py-2 px-6 rounded-full font-serif font-medium text-sm tracking-wider uppercase transition-all duration-300"
+                >
+                    {{ category }}
+                </button>
             </div>
+        </section>
 
-            
-            
-      
-<hr class="my-12 border-t border-light-border">
-
-                
-
-
-            <section id="about" class="container mx-auto px-6 py-16 bg-light-bg">
-     <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Welcome to Paridhaan Creation</h2>
-                <h2 class="text-4xl font-extrabold text-center gold-accent mb-12">Kyuki Khubsurti Hai Aapse</h2>
-                 
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="w-full md:w-1/2">
-                        <img src="https://educationsimplified.github.io/paridhaan_creation/Paridhaan creation.png" alt="Elegant Saree draped on a woman" class="rounded-3xl shadow-2xl transform transition-transform duration-500 hover:scale-105">
+        <section class="my-8">
+            <div
+                v-if="filteredProducts.length > 0"
+                class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-12"
+            >
+                <div
+                    v-for="product in filteredProducts"
+                    :key="product.ID"
+                    @click="openProductModal(product)"
+                    class="group product-card relative rounded-none shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden transform hover:-translate-y-2 bg-white border border-gray-100"
+                >
+                    <div class="relative w-full aspect-[3/4] overflow-hidden">
+                        <img
+                            :src="product.ImageUrl"
+                            :alt="product.Name"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            @error="event => event.target.src='https://placehold.co/600x800/fdfaf6/b48554?text=IMAGE+UNAVAILABLE'"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                     </div>
-                    <div class="w-full md:w-1/2 space-y-6 text-lg leading-relaxed text-light-text">
-<p>
-    <strong><em>Paridhaan Creation… Kyuki Khubsurati Hai Aapse.</em></strong><br>
-    At <strong>Paridhaan Creation</strong>, we believe that true beauty begins within you, and our
-    exquisite collection of women’s ethnic wear is thoughtfully crafted to mirror that inner elegance
-    and confidence. Every piece is more than clothing—it is a celebration of your individuality.
-</p>
 
-<p>
-    Rooted in the <strong>timeless traditions of Banaras</strong>, we bring you an enchanting range of
-    <strong>Banarasi sarees</strong>, lehengas, and bespoke ethnic ensembles that blend
-    centuries-old artistry with modern sophistication.  
-    Each saree in our collection is a living masterpiece, handwoven by skilled artisans who carry forward
-    the legacy of their forefathers. Featuring <em>intricate zari work</em>, rich silks, and luxurious textures,
-    these creations are heirlooms that embody culture, grace, and enduring beauty.
-</p>
+                    <div class="p-4 pt-3 flex flex-col justify-between h-auto">
+                        <h4
+                            class="font-serif text-xl font-bold text-stone-900 truncate mb-1"
+                            :title="product.Name"
+                        >
+                            {{ product.Name }}
+                        </h4>
+                        
+                        <p
+                            class="text-sm mb-3 text-gray-500 line-clamp-2 italic"
+                            :title="product.Description"
+                        >
+                            {{ product.Description || 'Elegantly tailored for the confident woman.' }}
+                        </p>
 
-<p>
-    From the first thread spun on the loom to the final drape around your shoulders,
-    every <strong>Paridhaan Creation</strong> saree travels a journey of dedication and passion.  
-    Whether you are dressing for <strong>weddings</strong>, festive celebrations, or intimate gatherings,
-    our ensembles are designed to make every moment memorable, radiating
-    <em>elegance</em>, <em>tradition</em>, and contemporary charm.
-</p>
-
-<p>
-    Discover the magic of <strong>Premium Banarasi Sarees—From Loom to Home</strong>, where
-    authentic craftsmanship meets uncompromising quality.  
-    With direct sourcing from artisans, we ensure fair practices, unmatched purity of fabric,
-    and a personal touch that speaks of heritage and heart.  
-    At Paridhaan Creation, you don’t just wear a saree—you carry a story of art, love,
-    and the timeless spirit of Banaras.
-</p>
-
-                        <a href="https://wa.link/ygdo3d" target="_blank" class="inline-block mt-8 font-semibold border-b-2 text-gray-600 hover:text-black border-gold-accent">
-                            <strong>Know More About Us →</strong> 
-                        </a>
-                    </div>
-                </div>
-            </section>
-
-
-
- <hr class="my-12 border-t border-light-border">
-            <section id="socialmedia" class="container mx-auto p-4 md:p-8">
-                <div class="max-w-7xl mx-auto px-6">
-                    <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Social Media Updates</h2>
-          
-                  <div class="grid grid-cols-1 md:grid-cols-3 gap-10"> 
-                    <div class="p-6 rounded-2xl bg-white border border-light-border shadow-md transition duration-500 hover:scale-105 hover:shadow-xl hover:border-gold-accent"> 
-                        <h3 class="text-xl font-bold mb-4 text-gray-900 tracking-wide">
-                            Instagram Updates
-                        </h3> <iframe src="https://www.instagram.com/paridhaan_creation/embed" 
-                        class="w-full h-80 rounded-lg border border-gray-200" frameborder="0"> </iframe> 
-                    </div> 
-                    <div class="p-6 rounded-2xl bg-white border border-light-border shadow-md transition duration-500 hover:scale-105 hover:shadow-xl hover:border-gold-accent"> 
-                        <h3 class="text-xl font-bold mb-4 text-gray-900 tracking-wide">
-                            Facebook Updates
-                        </h3> 
-                        <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61572113506286&tabs=timeline&width=340&height=500" 
-                        class="w-full h-80 rounded-lg border border-gray-200" frameborder="0" scrolling="no"> </iframe> </div>
-
-                        <div class="p-6 rounded-2xl bg-white border border-light-border shadow-md transition duration-500 hover:scale-105 hover:shadow-xl hover:border-gold-accent">
-                            <h3 class="text-xl font-bold mb-4 text-gray-900 tracking-wide">Our Store</h3>
-                           <iframe 
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.12345678901!2d83.0103158!3d25.33079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2f4104826939%3A0xed51fd336fd61b24!2sJ21%2F197-A%2C%20Rasoolpura%2C%20Alaipura%2C%20Jaitpura%2C%20Varanasi%2C%20Uttar%20Pradesh%20221002!5e0!3m2!1sen!2sin!4v1694950000000" 
-  class="w-full h-80 rounded-lg border border-gray-200" 
-  frameborder="0"
-  style="border:0;" 
-  allowfullscreen="" 
-  loading="lazy" 
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
-
-
+                        <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                            <span class="text-2xl font-bold text-amber-500">
+                                ₹{{ product.SellingPrice || 'N/A' }}
+                            </span>
+                            
+                            <span
+                                :class="{
+                                    'bg-stone-800 text-white': isAvailable(product),
+                                    'bg-red-500 text-white': !isAvailable(product)
+                                }"
+                                class="font-medium text-xs px-2 py-1 tracking-wider uppercase"
+                                style="border-radius: 4px;"
+                            >
+                                {{ isAvailable(product) ? 'In Stock' : 'Sold Out' }}
+                            </span>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+
+            <div v-else class="text-center col-span-full text-gray-600">
+                No products match your selection. Please try a different category.
+            </div>
+        </section>
+    </div>
+</section>
+
+<div id="ad-popup" style="
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); display: flex; justify-content: center;
+    align-items: center; z-index: 9999;
+">
+    <div style="position: relative; background: #fff; border-radius: 12px; overflow: hidden; max-width: 350px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+        <button type="button" onclick="document.getElementById('ad-popup').style.display='none'"
+            style="position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.6); color: #fff; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; font-size: 18px; line-height: 30px; z-index: 100;">
+            ✕
+        </button>
+        <img src="https://tilfi.com/cdn/shop/products/SKAKJRD10056Red_Hera_PureKatanSilkKadwaGoldRoseBootaJanglaSaree70_1200x.jpg"
+            alt="Banarasee Collection" style="width: 100%; display: block;">
+        <div style="padding: 12px; text-align: center; background: #fff;">
+            <h3 style="margin: 0; font-size: 16px; color: #b22222; font-weight: bold;">
+                View our latest Banarasi Collection
+            </h3>
+            <p style="margin: 5px 0 0; font-size: 14px; color: #333;">
+                Exquisite styles, brought straight to your doorstep.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
+
+
+<section id="about" class="w-full px-6 py-24">
+    <div class="container mx-auto">
+        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-3 text-stone-900" style="font-family: 'Playfair Display', serif;">
+            Welcome to Paridhaan Creation
+        </h2>
+        <h3 class="text-2xl font-semibold text-center text-amber-600 mb-16 italic tracking-wider">
+            Kyuki Khubsurti Hai Aapse
+        </h3>
+        
+        <div class="flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-[45%]">
+                <img 
+                    src="https://educationsimplified.github.io/paridhaan_creation/Paridhaan creation.png" 
+                    alt="Elegant Saree draped on a woman" 
+                    class="rounded-xl shadow-2xl border-4 border-gray-100 transform transition-transform duration-500 hover:scale-[1.03]"
+                >
+            </div>
             
+            <div class="w-full md:w-[55%] space-y-7 text-lg leading-relaxed text-gray-700 font-medium">
+                <p class="font-bold text-xl text-stone-900 mb-4" style="font-family: 'Playfair Display', serif;">
+                    "Paridhaan Creation… Kyuki Khubsurti Hai Aapse."
+                </p>
+                <p>
+                    At **Paridhaan Creation**, we believe that true beauty begins within you, and our
+                    exquisite collection of women’s ethnic wear is thoughtfully crafted to mirror that inner elegance
+                    and confidence. Every piece is more than clothing—it is a celebration of your individuality.
+                </p>
 
- <hr class="my-12 border-t border-light-border">
+                <p>
+                    Rooted in the **timeless traditions of Banaras**, we bring you an enchanting range of
+                    **Banarasi sarees**, lehengas, and bespoke ethnic ensembles that blend
+                    centuries-old artistry with modern sophistication. 
+                    Each saree in our collection is a living masterpiece, handwoven by skilled artisans who carry forward
+                    the legacy of their forefathers. Featuring *intricate zari work*, rich silks, and luxurious textures,
+                    these creations are **heirlooms** that embody culture, grace, and enduring beauty.
+                </p>
+
+                <p>
+                    From the first thread spun on the loom to the final drape around your shoulders,
+                    every **Paridhaan Creation** saree travels a journey of dedication and passion. 
+                    Whether you are dressing for weddings, festive celebrations, or intimate gatherings,
+                    our ensembles are designed to make every moment memorable, radiating
+                    *elegance*, *tradition*, and **contemporary charm**.
+                </p>
+
+                <p>
+                    Discover the magic of **Premium Banarasi Sarees—From Loom to Home**, where
+                    authentic craftsmanship meets uncompromising quality. 
+                    With direct sourcing from artisans, we ensure fair practices, unmatched purity of fabric,
+                    and a personal touch that speaks of heritage and heart. 
+                    At Paridhaan Creation, you don’t just wear a saree—you carry a story of art, love,
+                    and the timeless spirit of Banaras.
+                </p>
+                
+                <a href="https://wa.link/ygdo3d" target="_blank" class="inline-block mt-8 py-3 px-6 text-sm font-semibold uppercase tracking-wider bg-stone-900 text-white border-2 border-stone-900 hover:bg-amber-600 hover:border-amber-600 transition duration-300 shadow-lg">
+                    Know More About Us →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
 
 
+<section id="socialmedia" class="w-full p-4 md:p-8 py-24">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
+            Connect With Us
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10"> 
+            
+            <div class="p-6 rounded-xl bg-white border border-gray-200 shadow-lg 
+                            transition-all duration-500 ease-in-out 
+                            hover:scale-[1.03] hover:shadow-2xl hover:border-amber-500"> 
+                
+                <h3 class="text-2xl font-serif font-bold mb-4 text-stone-900 tracking-wide">
+                    Instagram Feed
+                </h3> 
+                <iframe src="https://www.instagram.com/paridhaan_creation/embed" 
+                    class="w-full h-80 rounded-lg border border-gray-300" 
+                    frameborder="0"> 
+                </iframe> 
+            </div> 
+            
+            <div class="p-6 rounded-xl bg-white border border-gray-200 shadow-lg 
+                            transition-all duration-500 ease-in-out 
+                            hover:scale-[1.03] hover:shadow-2xl hover:border-amber-500"> 
+                
+                <h3 class="text-2xl font-serif font-bold mb-4 text-stone-900 tracking-wide">
+                    Facebook Community
+                </h3> 
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61572113506286&tabs=timeline&width=340&height=500" 
+                    class="w-full h-80 rounded-lg border border-gray-300" 
+                    frameborder="0" 
+                    scrolling="no"> 
+                </iframe> 
+            </div>
+
+            <div class="p-6 rounded-xl bg-white border border-gray-200 shadow-lg 
+                            transition-all duration-500 ease-in-out 
+                            hover:scale-[1.03] hover:shadow-2xl hover:border-amber-500">
+                
+                <h3 class="text-2xl font-serif font-bold mb-4 text-stone-900 tracking-wide">Our Store</h3>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.12345678901!2d83.0103158!3d25.33079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2f4104826939%3A0xed51fd336fd61b24!2sJ21%2F197-A%2C%20Rasoolpura%2C%20Alaipura%2C%20Jaitpura%2C%20Varanasi%2C%20Uttar%20Pradesh%20221002!5e0!3m2!1sen!2sin!4v1694950000000" 
+                    class="w-full h-80 rounded-lg border border-gray-300" 
+                    frameborder="0"
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
 
 
-<main class="flex-grow container mx-auto px-4 py-10 md:py-20">
-    <div class="max-w-6xl mx-auto">
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-4 text-gray-800 font-serif">
+<main class="flex-grow w-full px-4 py-16 md:py-24">
+    <div class="container mx-auto max-w-6xl">
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-4 text-stone-900" style="font-family: 'Playfair Display', serif;">
             PARIDHAAN CREATION BLOG
         </h2>
-        <p class="text-center text-gray-500 max-w-3xl mx-auto mb-12 text-sm sm:text-lg">
-            Welcome to the <B>Paridhaan Creation Blog</B> —your destination for everything elegant and timeless. Explore inspiring stories of Banarasi craftsmanship, expert tips on saree styling, and behind-the-scenes glimpses of our artisan-driven process. From wedding fashion guides to care instructions for luxurious silks, our blog celebrates the heritage of Banaras while offering fresh ideas for today’s modern wardrobe. Discover trends, traditions, and the art of draping with Paridhaan Creation.
+        <p class="text-center text-gray-500 max-w-4xl mx-auto mb-16 text-sm sm:text-lg italic tracking-wide">
+            Welcome to the **Paridhaan Creation Blog** —your destination for everything elegant and timeless. Explore inspiring stories of Banarasi craftsmanship, expert tips on saree styling, and behind-the-scenes glimpses of our artisan-driven process. Discover trends, traditions, and the art of draping with Paridhaan Creation.
         </p>
 
-        <div id="featured" class="mb-16"></div>
+        <div id="featured" class="mb-20"></div>
 
-        <div id="posts" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        <div id="posts" class="grid grid-cols-1 md:grid-cols-3 gap-10"></div>
     </div>
 </main>
 
@@ -1053,30 +1098,34 @@ loadCollections();
         const featuredLink = featured.link.find(l => l.rel === "alternate").href;
         const featuredDate = new Date(featured.published.$t).toDateString();
         const featuredAuthor = featured.author[0].name.$t;
-        const featuredSnippet = featured.summary ? featured.summary.$t.substring(0, 200) + '...' : ""; 
+        const featuredSnippet = featured.summary ? featured.summary.$t.substring(0, 250) + '...' : "Discover the art of Banarasi tradition and modern elegance in our latest featured story."; 
 
         let featuredImg = "";
-        // Extract the correct image URL, prioritizing media:thumbnail
         if (featured.media$thumbnail) {
-            featuredImg = featured.media$thumbnail.url.replace("s72-c", "s800"); 
+            featuredImg = featured.media$thumbnail.url.replace("s72-c", "s1200"); 
         } else if (featured.content.$t.match(/<img[^>]+src="([^">]+)/)) {
             featuredImg = featured.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
         }
 
         // Inject Featured Post HTML
         document.getElementById("featured").innerHTML = `
-            <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-center card-bg rounded-xl shadow-xl overflow-hidden border border-light-border transform hover:scale-[1.01] transition duration-300">
-                <a href="${featuredLink}" target="_blank" class="block w-full md:w-1/2 h-64 md:h-96">
-                    <img src="${featuredImg}" alt="${featuredTitle}" class="w-full h-full object-cover">
+            <div class="flex flex-col md:flex-row gap-0 md:gap-0 items-center 
+                            bg-white rounded-xl shadow-xl overflow-hidden 
+                            border border-gray-100 transform hover:scale-[1.01] transition-all duration-500 ease-in-out">
+                <a href="${featuredLink}" target="_blank" class="block w-full md:w-1/2 h-80 md:h-full aspect-square">
+                    <img src="${featuredImg}" alt="${featuredTitle}" class="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105">
                 </a>
-                <div class="p-4 md:p-8 w-full md:w-1/2">
-                    <p class="text-xs uppercase tracking-wider gold-accent font-semibold mb-1">Featured</p>
-                    <h2 class="text-xl sm:text-3xl font-extrabold mb-3 font-serif">
-                        <a href="${featuredLink}" target="_blank" class="hover:text-gray-900">${featuredTitle}</a>
+                
+                <div class="p-6 md:p-10 w-full md:w-1/2">
+                    <p class="text-xs uppercase tracking-[0.3em] text-amber-600 font-semibold mb-2 border-b border-amber-600/50 pb-1 w-fit">Featured Insight</p>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold mb-4 text-stone-900" style="font-family: 'Playfair Display', serif;">
+                        <a href="${featuredLink}" target="_blank" class="hover:text-amber-600 transition-colors">${featuredTitle}</a>
                     </h2>
-                    <div class="text-xs sm:text-sm text-gray-500 mb-4">By **${featuredAuthor}** • ${featuredDate}</div>
-                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">${featuredSnippet}</p>
-                    <a href="${featuredLink}" target="_blank" class="inline-block gold-accent font-semibold text-sm hover:underline">Read Full Article <i class="fas fa-arrow-right ml-1"></i></a>
+                    <div class="text-xs sm:text-sm text-gray-500 mb-6 font-medium">By **${featuredAuthor}** • ${featuredDate}</div>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-6">${featuredSnippet}</p>
+                    <a href="${featuredLink}" target="_blank" class="inline-block py-2 px-4 text-sm font-semibold uppercase tracking-wider bg-stone-900 text-white hover:bg-amber-600 transition duration-300 shadow-md">
+                        Read Full Article →
+                    </a>
                 </div>
             </div>
         `;
@@ -1088,28 +1137,28 @@ loadCollections();
             const link = entry.link.find(l => l.rel === "alternate").href;
             const date = new Date(entry.published.$t).toDateString();
             const author = entry.author[0].name.$t;
-            const snippet = entry.summary ? entry.summary.$t.substring(0, 100) + '...' : "";
+            const snippet = entry.summary ? entry.summary.$t.substring(0, 120) + '...' : "Click to read the full story on heritage and elegance.";
 
             let image = "";
             if (entry.media$thumbnail) {
-                image = entry.media$thumbnail.url.replace("s72-c", "s600"); 
+                image = entry.media$thumbnail.url.replace("s72-c", "s800"); 
             } else if (entry.content.$t.match(/<img[^>]+src="([^">]+)/)) {
                 image = entry.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
             }
 
             const postEl = document.createElement("div");
-            postEl.className = "card-bg rounded-xl shadow-lg overflow-hidden border border-light-border hover:shadow-xl transition duration-300";
+            postEl.className = "bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out";
             postEl.innerHTML = `
-                <a href="${link}" target="_blank" class="block h-48">
-                    <img src="${image}" alt="${title}" class="w-full h-full object-cover">
+                <a href="${link}" target="_blank" class="block h-52 overflow-hidden">
+                    <img src="${image}" alt="${title}" class="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110">
                 </a>
-                <div class="p-4 sm:p-6">
-                    <h3 class="text-lg font-bold mb-2 font-serif">
-                        <a href="${link}" target="_blank" class="hover:gold-accent">${title}</a>
+                <div class="p-6">
+                    <h3 class="text-xl font-extrabold mb-2 text-stone-900" style="font-family: 'Playfair Display', serif;">
+                        <a href="${link}" target="_blank" class="hover:text-amber-600 transition-colors">${title}</a>
                     </h3>
-                    <div class="text-xs text-gray-500 mb-3">By ${author} • ${date}</div>
-                    <p class="text-sm text-gray-600 mb-4">${snippet}</p>
-                    <a href="${link}" target="_blank" class="text-sm gold-accent font-semibold hover:underline">Read More</a>
+                    <div class="text-xs text-gray-500 mb-4 font-medium">By **${author}** • ${date}</div>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-4">${snippet}</p>
+                    <a href="${link}" target="_blank" class="text-sm font-semibold text-amber-600 hover:text-stone-900 transition-colors duration-300">Read More →</a>
                 </div>
             `;
             container.appendChild(postEl);
@@ -1118,32 +1167,30 @@ loadCollections();
 </script>
 
 <script src="https://blog.paridhaancreation.in/feeds/posts/default?alt=json-in-script&callback=showBlogFeed&max-results=4"></script>
-<!-- Blog Button with Animated Arrow -->
-<div class="mt-10 text-center">
-  <a href="https://blog.paridhaancreation.in" target="_blank"
-     class="relative inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-[#c8a374] rounded-full shadow-md transition-all duration-300 hover:bg-amber-600 hover:shadow-lg">
-    View Our Full Blog
-    <span class="ml-2 inline-block animate-move-right">➝</span>
-  </a>
+
+<div class="mt-16 text-center">
+    <a href="blog.html" target="_blank"
+        class="relative inline-flex items-center px-8 py-3 text-lg font-semibold uppercase tracking-wider bg-stone-900 text-white rounded-none shadow-md transition-all duration-300 hover:bg-amber-600 hover:shadow-xl">
+        Visit the Full Blog Page
+        <span class="ml-3 inline-block animate-move-right">➝</span>
+    </a>
 </div>
 
 <style>
-  /* Arrow smooth right animation */
-  .animate-move-right {
-    position: relative;
-    animation: moveRight 1.5s infinite;
-  }
-  @keyframes moveRight {
-    0%, 100% {
-      transform: translateX(0);
+    /* Arrow smooth right animation */
+    .animate-move-right {
+        position: relative;
+        animation: moveRight 1.5s infinite;
     }
-    50% {
-      transform: translateX(6px);
+    @keyframes moveRight {
+        0%, 100% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translateX(6px);
+        }
     }
-  }
 </style>
-
-
 
 
 
@@ -1156,12 +1203,12 @@ loadCollections();
             <hr class="my-12 border-t border-light-border">
             
             <section id="testimonials" class="container mx-auto px-6 py-16 bg-light-bg">
-                <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Stories From Customers</h2>
+                     <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
+   Story From Customers
+        </h2>
+   
 
-<!-- Elfsight Google Reviews | Untitled Google Reviews -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-40426d39-4748-4fd5-ae8e-129da5a17e35" data-elfsight-app-lazy></div>
-
+<iframe src='https://widgets.sociablekit.com/google-reviews/iframe/25603533' frameborder='0' width='100%' height='1000'></iframe>
 
 
             </section>
@@ -1188,8 +1235,10 @@ loadCollections();
   <div class="mx-auto max-w-7xl">
 
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-12 text-amber-600">Contact Information</h2>
-  
+     <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
+            Contact Us
+        </h2>
+     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
       <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
         <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
@@ -1245,22 +1294,26 @@ loadCollections();
   <div class="container mx-auto px-6">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
 
-      <!-- Brand + About -->
-      <div class="col-span-1 md:col-span-2 text-center md:text-left group">
-        <!-- Logo with hover scale -->
-        <img src="https://educationsimplified.github.io/paridhaan_creation/PARIDHAAN.png" alt="Paridhaan Creation Logo"
-             class="w-48 mx-auto md:mx-0 mb-4 filter brightness-110 transition-transform duration-500 group-hover:scale-105">
 
-        <!-- Highlighted Name with color transition -->
-        <p class="text-4xl font-extrabold text-amber-300 mb-6 transition-colors duration-300 group-hover:text-white">
-          Paridhaan <span class="text-white">Creation</span>
-        </p>
 
-        <p class="text-[#fdfaf6] text-sm leading-relaxed transition-colors duration-300 group-hover:text-amber-100">
-          <strong>Paridhaan Creation..</strong> Kyuki Khubsurati Hai Aapse.
-        </p>
-      </div>
 
+
+
+        <div class="col-span-1 md:col-span-2 text-center md:text-left group">
+    <img src="https://educationsimplified.github.io/paridhaan_creation/PARIDHAAN.png" alt="Paridhaan Creation Logo"
+        class="w-48 mx-auto md:mx-0 mb-4 filter brightness-110 transition-transform duration-500 group-hover:scale-105">
+
+    <a href="https://paridhaancreation.blogspot.com"
+        class="text-4xl font-extrabold tracking-wider text-black block mb-6 transition-colors duration-300 group-hover:text-white"
+        style="font-family: 'Playfair Display', serif;">
+        Paridhaan <span class="text-white">Creation</span>
+    </a>
+
+    <p class="text-whitetext-sm leading-relaxed transition-colors duration-300 group-hover:text-black">
+        <strong class="text-white"> Paridhaan Creation...</strong> <i>Kyuki Khubsurati Hai Aapse.</i>
+    </p>
+</div>
+      
       <!-- Quick Links with arrow hover -->
 <div class="text-center md:text-left">
   <h3 class="text-xl font-bold text-white mb-6">Quick Links</h3>
