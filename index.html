@@ -1024,13 +1024,103 @@ loadCollections();
 
  <hr class="my-12 border-t border-light-border">
 
-<!-- Elfsight Blog | Paridhaan Creation -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-80d51bf6-0bce-4ac9-af26-41d933d28146" data-elfsight-app-lazy></div>
 
+
+
+<main class="flex-grow container mx-auto px-4 py-10 md:py-20">
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-4 text-gray-800 font-serif">
+            PARIDHAAN CREATION BLOG
+        </h2>
+        <p class="text-center text-gray-500 max-w-3xl mx-auto mb-12 text-sm sm:text-lg">
+            Welcome to the <B>Paridhaan Creation Blog</B> —your destination for everything elegant and timeless. Explore inspiring stories of Banarasi craftsmanship, expert tips on saree styling, and behind-the-scenes glimpses of our artisan-driven process. From wedding fashion guides to care instructions for luxurious silks, our blog celebrates the heritage of Banaras while offering fresh ideas for today’s modern wardrobe. Discover trends, traditions, and the art of draping with Paridhaan Creation.
+        </p>
+
+        <div id="featured" class="mb-16"></div>
+
+        <div id="posts" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+    </div>
+</main>
+
+<script>
+    function showBlogFeed(json) {
+        const entries = json.feed.entry || [];
+        if (entries.length === 0) return;
+
+        // --- Featured post (first one) ---
+        const featured = entries[0];
+        const featuredTitle = featured.title.$t;
+        const featuredLink = featured.link.find(l => l.rel === "alternate").href;
+        const featuredDate = new Date(featured.published.$t).toDateString();
+        const featuredAuthor = featured.author[0].name.$t;
+        const featuredSnippet = featured.summary ? featured.summary.$t.substring(0, 200) + '...' : ""; 
+
+        let featuredImg = "";
+        // Extract the correct image URL, prioritizing media:thumbnail
+        if (featured.media$thumbnail) {
+            featuredImg = featured.media$thumbnail.url.replace("s72-c", "s800"); 
+        } else if (featured.content.$t.match(/<img[^>]+src="([^">]+)/)) {
+            featuredImg = featured.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
+        }
+
+        // Inject Featured Post HTML
+        document.getElementById("featured").innerHTML = `
+            <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-center card-bg rounded-xl shadow-xl overflow-hidden border border-light-border transform hover:scale-[1.01] transition duration-300">
+                <a href="${featuredLink}" target="_blank" class="block w-full md:w-1/2 h-64 md:h-96">
+                    <img src="${featuredImg}" alt="${featuredTitle}" class="w-full h-full object-cover">
+                </a>
+                <div class="p-4 md:p-8 w-full md:w-1/2">
+                    <p class="text-xs uppercase tracking-wider gold-accent font-semibold mb-1">Featured</p>
+                    <h2 class="text-xl sm:text-3xl font-extrabold mb-3 font-serif">
+                        <a href="${featuredLink}" target="_blank" class="hover:text-gray-900">${featuredTitle}</a>
+                    </h2>
+                    <div class="text-xs sm:text-sm text-gray-500 mb-4">By **${featuredAuthor}** • ${featuredDate}</div>
+                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">${featuredSnippet}</p>
+                    <a href="${featuredLink}" target="_blank" class="inline-block gold-accent font-semibold text-sm hover:underline">Read Full Article <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+            </div>
+        `;
+
+        // --- Grid posts (next 3) ---
+        const container = document.getElementById("posts");
+        entries.slice(1, 4).forEach(entry => {
+            const title = entry.title.$t;
+            const link = entry.link.find(l => l.rel === "alternate").href;
+            const date = new Date(entry.published.$t).toDateString();
+            const author = entry.author[0].name.$t;
+            const snippet = entry.summary ? entry.summary.$t.substring(0, 100) + '...' : "";
+
+            let image = "";
+            if (entry.media$thumbnail) {
+                image = entry.media$thumbnail.url.replace("s72-c", "s600"); 
+            } else if (entry.content.$t.match(/<img[^>]+src="([^">]+)/)) {
+                image = entry.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
+            }
+
+            const postEl = document.createElement("div");
+            postEl.className = "card-bg rounded-xl shadow-lg overflow-hidden border border-light-border hover:shadow-xl transition duration-300";
+            postEl.innerHTML = `
+                <a href="${link}" target="_blank" class="block h-48">
+                    <img src="${image}" alt="${title}" class="w-full h-full object-cover">
+                </a>
+                <div class="p-4 sm:p-6">
+                    <h3 class="text-lg font-bold mb-2 font-serif">
+                        <a href="${link}" target="_blank" class="hover:gold-accent">${title}</a>
+                    </h3>
+                    <div class="text-xs text-gray-500 mb-3">By ${author} • ${date}</div>
+                    <p class="text-sm text-gray-600 mb-4">${snippet}</p>
+                    <a href="${link}" target="_blank" class="text-sm gold-accent font-semibold hover:underline">Read More</a>
+                </div>
+            `;
+            container.appendChild(postEl);
+        });
+    }
+</script>
+
+<script src="https://blog.paridhaancreation.in/feeds/posts/default?alt=json-in-script&callback=showBlogFeed&max-results=4"></script>
 <!-- Blog Button with Animated Arrow -->
 <div class="mt-10 text-center">
-  <a href="blog.html" target="_blank"
+  <a href="https://blog.paridhaancreation.in" target="_blank"
      class="relative inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-[#c8a374] rounded-full shadow-md transition-all duration-300 hover:bg-amber-600 hover:shadow-lg">
     View Our Full Blog
     <span class="ml-2 inline-block animate-move-right">➝</span>
@@ -1053,6 +1143,11 @@ loadCollections();
   }
 </style>
 
+
+
+
+
+            
 
 
 
