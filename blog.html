@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - PARIDHAAN CREATION</title>
+    <meta name="description" content="Explore inspiring stories of Banarasi craftsmanship, expert tips on saree styling, and behind-the-scenes glimpses from Paridhaan Creation.">
+    <link rel="icon" type="image/png" href="PARIDHAAN.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Light Theme Palette - Elegant & Traditional */
+            --light-bg: #fdfaf6; /* A soft, warm off-white, like parchment */
+            --light-text: #2c2f33; /* Deep charcoal for elegant contrast */
+            --light-card-bg: #ffffff; /* Clean white for product cards */
+            --light-border: #ece3d3; /* A muted beige for borders */
+            --gold-accent: #b48554; /* A sophisticated, vintage gold */
+        }
+        
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--light-bg); /* Default to light theme */
+            color: var(--light-text);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        /* Specific theme classes */
+        .gold-accent {
+            color: var(--gold-accent);
+        }
+
+        .bg-gold-accent {
+            background-color: var(--gold-accent);
+        }
+
+        .card-bg {
+            background-color: var(--light-card-bg);
+        }
+    </style>
+</head>
+<body class="antialiased light-theme">
+    <div id="app" class="min-h-screen flex flex-col">
+
+        <div class="w-full bg-gold-accent text-white py-2 px-4 text-center text-xs sm:text-sm font-medium sticky top-0 z-50">
+            <p><strong>Contact Us:</strong> +91 94515 35206 | <strong>Email:</strong> paridhaancreationofficial@gmail.com</p>
+        </div>
+
+        <header class="bg-white/95 backdrop-blur-sm shadow-lg p-4 sticky top-10 z-50">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="index.html" class="text-3xl sm:text-4xl font-extrabold tracking-wider text-black">Paridhaan <span class="gold-accent">Creation</span></a>
+                
+                <div class="flex items-center space-x-4 sm:space-x-8 text-base sm:text-lg font-medium">
+                    <a href="index.html" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">HOME</a>
+                    
+                    <span class="gold-accent font-bold">BLOG</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-grow container mx-auto px-4 py-10 md:py-20">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-4 text-gray-800 font-serif">
+                    The Creation Chronicle
+                </h2>
+                <p class="text-center text-gray-500 max-w-3xl mx-auto mb-12 text-sm sm:text-lg">
+                    Welcome to the **PARIDHAAN CREATION** blog — your source for Banarasi heritage, design insights, and expert styling advice.
+                </p>
+
+                <div id="featured" class="mb-16"></div>
+
+                <div id="posts" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+            </div>
+        </main>
+
+        <footer class="bg-gray-100 py-8 border-t border-light-border">
+            <div class="container mx-auto px-4 text-center">
+                <div class="flex flex-wrap justify-center space-x-6 md:space-x-12 mb-6 text-sm sm:text-base">
+                    <a href="index.html" class="text-gray-600 hover:text-gold-accent transition-colors">Home</a>
+                    <a href="index.html#collections" class="text-gray-600 hover:text-gold-accent transition-colors">Shop</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-gold-accent transition-colors">Contact Us</a>
+                    <a href="https://paridhaancreation.blogspot.com" target="_blank" class="text-gray-600 hover:text-gold-accent transition-colors">Blog Feed</a>
+                </div>
+
+                <div class="flex justify-center space-x-6 mb-4">
+                    <a href="https://www.instagram.com/paridhaan_creation/" target="_blank" class="text-xl text-gray-600 hover:text-gold-accent transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61572113506286" target="_blank" class="text-xl text-gray-600 hover:text-gold-accent transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://chat.whatsapp.com/B4ysLHbIdRZ6UakK2cKqs6" target="_blank" class="text-xl text-gray-600 hover:text-gold-accent transition-colors"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                
+                  <p class="text-xs sm:text-sm text-gray-500 mt-4">
+                    &copy; 2025 <b>PARIDHAAN CREATION.</b> All rights reserved.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function showBlogFeed(json) {
+            const entries = json.feed.entry || [];
+            if (entries.length === 0) return;
+
+            // --- Featured post (first one) ---
+            const featured = entries[0];
+            const featuredTitle = featured.title.$t;
+            const featuredLink = featured.link.find(l => l.rel === "alternate").href;
+            const featuredDate = new Date(featured.published.$t).toDateString();
+            const featuredAuthor = featured.author[0].name.$t;
+            const featuredSnippet = featured.summary ? featured.summary.$t.substring(0, 200) + '...' : ""; 
+
+            let featuredImg = "";
+            if (featured.media$thumbnail) {
+                featuredImg = featured.media$thumbnail.url.replace("s72-c", "s800"); 
+            } else if (featured.content.$t.match(/<img[^>]+src="([^">]+)/)) {
+                featuredImg = featured.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
+            }
+
+            // Featured Post: Added flex-col on mobile, adjusted image/content width for mobile
+            document.getElementById("featured").innerHTML = `
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-center card-bg rounded-xl shadow-xl overflow-hidden border border-light-border transform hover:scale-[1.01] transition duration-300">
+                    <a href="${featuredLink}" target="_blank" class="block w-full md:w-1/2 h-64 md:h-96">
+                        <img src="${featuredImg}" alt="${featuredTitle}" class="w-full h-full object-cover">
+                    </a>
+                    <div class="p-4 md:p-8 w-full md:w-1/2">
+                        <p class="text-xs uppercase tracking-wider gold-accent font-semibold mb-1">Featured</p>
+                        <h2 class="text-xl sm:text-3xl font-extrabold mb-3 font-serif">
+                            <a href="${featuredLink}" target="_blank" class="hover:text-gray-900">${featuredTitle}</a>
+                        </h2>
+                        <div class="text-xs sm:text-sm text-gray-500 mb-4">By **${featuredAuthor}** • ${featuredDate}</div>
+                        <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">${featuredSnippet}</p>
+                        <a href="${featuredLink}" target="_blank" class="inline-block gold-accent font-semibold text-sm hover:underline">Read Full Article <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+            `;
+
+            // --- Grid posts (next 3) ---
+            const container = document.getElementById("posts");
+            entries.slice(1, 4).forEach(entry => {
+                const title = entry.title.$t;
+                const link = entry.link.find(l => l.rel === "alternate").href;
+                const date = new Date(entry.published.$t).toDateString();
+                const author = entry.author[0].name.$t;
+                const snippet = entry.summary ? entry.summary.$t.substring(0, 100) + '...' : "";
+
+                let image = "";
+                if (entry.media$thumbnail) {
+                    image = entry.media$thumbnail.url.replace("s72-c", "s600"); 
+                } else if (entry.content.$t.match(/<img[^>]+src="([^">]+)/)) {
+                    image = entry.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
+                }
+
+                const postEl = document.createElement("div");
+                // Grid Post: Kept existing desktop styles, added h-48 for fixed image height
+                postEl.className = "card-bg rounded-xl shadow-lg overflow-hidden border border-light-border hover:shadow-xl transition duration-300";
+                postEl.innerHTML = `
+                    <a href="${link}" target="_blank" class="block h-48">
+                        <img src="${image}" alt="${title}" class="w-full h-full object-cover">
+                    </a>
+                    <div class="p-4 sm:p-6">
+                        <h3 class="text-lg font-bold mb-2 font-serif">
+                            <a href="${link}" target="_blank" class="hover:gold-accent">${title}</a>
+                        </h3>
+                        <div class="text-xs text-gray-500 mb-3">By ${author} • ${date}</div>
+                        <p class="text-sm text-gray-600 mb-4">${snippet}</p>
+                        <a href="${link}" target="_blank" class="text-sm gold-accent font-semibold hover:underline">Read More</a>
+                    </div>
+                `;
+                container.appendChild(postEl);
+            });
+        }
+    </script>
+
+    <script src="https://blog.paridhaancreation.in/feeds/posts/default?alt=json-in-script&callback=showBlogFeed&max-results=4"></script>
+</body>
+</html>
