@@ -588,64 +588,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 </main>
 
-<script>
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=397492617&single=true&output=csv";
-
-async function fetchCSV() {
-  const res = await fetch(CSV_URL);
-  const text = await res.text();
-  return text.split("\n").map(row => row.split(","));
-}
-
-async function initCarousel() {
-  const data = await fetchCSV();
-  
-  // Assuming first row is header, rest are image URLs
-  const images = data.slice(1).map(row => row[0]).filter(Boolean);
-
-  const track = document.getElementById("carousel-track");
-  const dots = document.getElementById("carousel-dots");
-
-  images.forEach((url, i) => {
-    // Add image
-    const img = document.createElement("img");
-    img.src = url;
-    img.className = "absolute inset-0 w-full h-full object-cover transition-opacity duration-1000";
-    img.style.opacity = i === 0 ? 1 : 0;
-    track.appendChild(img);
-
-    // Add dot
-    const dot = document.createElement("button");
-    dot.className = "w-3 h-3 rounded-full " + (i === 0 ? "bg-white" : "bg-gray-400");
-    dot.addEventListener("click", () => showSlide(i));
-    dots.appendChild(dot);
-  });
-
-  let current = 0;
-  function showSlide(index) {
-    const imgs = track.querySelectorAll("img");
-    const ds = dots.querySelectorAll("button");
-    imgs.forEach((img, j) => img.style.opacity = j === index ? 1 : 0);
-    ds.forEach((d, j) => d.className = "w-3 h-3 rounded-full " + (j === index ? "bg-white" : "bg-gray-400"));
-    current = index;
-  }
-
-  // Auto-slide
-  setInterval(() => {
-    showSlide((current + 1) % images.length);
-  }, 5000);
-}
-
-initCarousel();
-</script>
 
 <!-- 🟨 Sticky Marquee Bar -->
 <section class="w-full bg-gold-accent text-white py-2 text-center text-sm font-medium sticky top-0 z-40 overflow-hidden border-y border-gold-accent">
   <div class="inline-block whitespace-nowrap animate-marquee-ltr">
-    <span class="px-2">Paridhaan Creation | J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</span>
-    <span class="px-2 border-l border-white">Get free Delievery on the purchase above ₹ 10000</span>
+    <span class="px-2">UZAIR TRADING & CO. - Ck 43/71 K, Chattatale, Chowk, Varanasi, Uttar Pradesh</span>
+    <span class="px-2 border-l border-white">BULK ORDERS & DECORATION EVENT & PACKAGING ITEMS AVAILABLE</span>
     <span class="px-2 border-l border-white">CONNECT WITH US FOR A FREE QUOTE</span>
-    <span class="px-2 border-l border-white">CONTACT: +91 94515 35206</span>
+    <span class="px-2 border-l border-white">CONTACT: +91 93357 23334</span>
   </div>
 </section>
 
@@ -737,6 +687,8 @@ initCarousel();
   </div>
 </section>
 
+<hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
+
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -762,14 +714,15 @@ initCarousel();
             });
         });
     });
-</script>
-      
+</script>      
 
 <!-- Elfsight Slider | Untitled Slider -->
 <script src="https://elfsightcdn.com/platform.js" async></script>
 <div class="elfsight-app-9d0ab410-1a7d-4853-bed5-8492f06e51a6" data-elfsight-app-lazy></div>
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+
 
 <section id="our-collections" class="w-full bg-white px-6 py-24 sm:py-32">
     <div class="container mx-auto max-w-7xl">
@@ -784,91 +737,45 @@ initCarousel();
     </div>
 </section>
 
-<script>
-    const csvUrl =
-        "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=1086133643&single=true&output=csv";
-
-    async function loadCollections() {
-        const response = await fetch(csvUrl);
-        const csvText = await response.text();
-
-        const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
-        const rows = parsed.data;
-
-        const categoryMap = {};
-        rows.forEach(row => {
-            const category = row["Category"]?.trim();
-            const image = row["ImageUrl"]?.trim();
-            if (category && image && !categoryMap[category]) {
-                categoryMap[category] = image;
-            }
-        });
-
-        const grid = document.getElementById("collections-grid");
-        grid.innerHTML = "";
-
-        Object.entries(categoryMap).forEach(([category, imageUrl]) => {
-            // Updated Luxury Card Template with Centered Text and new Hover Effect
-            const card = `
-                <a href="#collections"
-                    data-category="${category}"
-                    class="group block relative rounded-lg overflow-hidden transition-all duration-500 hover:scale-[1.02] 
-                           shadow-2xl border border-gray-100 hover:shadow-amber-500/50 hover:shadow-3xl">
-                    
-                    <div class="relative w-full aspect-[4/3] bg-gray-900">
-                        <img src="${imageUrl}" alt="${category} Collection"
-                            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
-                        
-                        <div class="absolute inset-0 bg-stone-900/40 transition-all duration-500 group-hover:bg-stone-900/10"></div>
-                    </div>
-                    
-                    <div class="absolute inset-0 flex items-center justify-center p-6 transition-all duration-500">
-                        <h3 class="text-4xl font-serif font-extrabold text-white text-center transition-colors duration-300 drop-shadow-lg uppercase tracking-widest leading-snug">
-                            ${category} 
-                        </h3>
-                    </div>
-                </a>
-            `;
-            grid.insertAdjacentHTML("beforeend", card);
-        });
-
-        grid.querySelectorAll("a[data-category]").forEach(link => {
-            link.addEventListener("click", e => {
-                e.preventDefault();
-                const cat = link.dataset.category;
-                const productsSection = document.getElementById("collections");
-                productsSection.scrollIntoView({ behavior: "smooth", block: "start" });
-
-                if (window.app && typeof window.app.filterByCategory === "function") {
-                    window.app.filterByCategory(cat);
-                }
-            });
-        });
-    }
-
-    loadCollections();
-</script>
 
 <hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
 
 
-<section id="collections" class="w-full p-4 md:p-8">
-    <div class="container mx-auto">
-        
-        <div class="my-6 block sm:block md:hidden relative">
-            <input
-                type="text"
-                v-model.trim="searchTerm"
-                @input="searchProducts"
-                placeholder="Search products..."
-                class="w-full p-2 pl-10 rounded-full shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-500 transition-shadow z-20 relative bg-gray-100 text-gray-800 placeholder-gray-500 border border-gray-300"
-            >
-            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-30 text-gray-500"></i>
-        </div>
+<section class="flex justify-center p-4">
 
-        <section id="collections" class="w-full p-4 md:p-8">
-    <div class="container mx-auto">
+    <input type="hidden" id="catalog-link-to-copy" value="https://www.paridhaancreation.in/#collections">
+    
+    <button
+        id="copy-share-button"
+        class="
+            flex items-center justify-center
+            px-8 py-4 /* Larger size for a substantial, luxury feel */
+            text-lg font-light tracking-widest /* Thin font, wide tracking for elegance */
+            rounded-md /* Subtle, refined corner radius */
+            transition duration-300 ease-in-out transform
+            focus:outline-none focus:ring-4 focus:ring-amber-800/60 /* Deep gold focus ring */
+            
+            w-full max-w-sm md:max-w-md lg:max-w-lg
+            
+            /* High-End Luxury Dark Mode Styles */
+            bg-gray-900 text-amber-300 border border-amber-900 /* Dark background, subtle gold text/border */
+            shadow-2xl shadow-gray-900/50 hover:shadow-gray-800/70 /* Deep, subtle shadow for floating effect */
+            hover:bg-gray-800 hover:text-amber-200 /* Very subtle hover shift */
+            active:scale-[0.99] /* Minimal press-down effect */
+        "
+        onclick="copyCatalogLink()"
+    >
+        <svg id="default-icon" class="w-6 h-6 mr-3 transition duration-300 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7v4a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h3m4 0l3 3m0 0l-3 3m3-3H7m4 12v-4a1 1 0 011-1h3a1 1 0 011 1v4a1 1 0 01-1 1h-3a1 1 0 01-1-1z"></path></svg>
         
+        <svg id="success-icon" class="w-6 h-6 mr-3 hidden text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7"></path></svg>
+        
+        <span id="button-text" class="uppercase">Copy & Share Catalog Link</span>
+    </button>
+</section>
+
+
+<section id="collections" class="w-full py-4 md:py-8">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="my-6 block sm:block md:hidden relative">
             <input
                 type="text"
@@ -888,45 +795,31 @@ initCarousel();
                 Discover our collection of woven traditions, worn by royalty.
             </p>
 
-            <div class="flex flex-col md:flex-row gap-4 justify-between items-center mb-16">
-                
-                <div class="flex flex-wrap gap-3 justify-center md:justify-start">
-                    <button
-                        @click="filterByCategory('All')"
-                        :class="{
-                            'bg-stone-900 text-white shadow-xl ring-2 ring-amber-500': selectedCategory === 'All',
-                            'bg-gray-100 text-stone-700 hover:bg-stone-200': selectedCategory !== 'All'
-                        }"
-                        class="py-2 px-6 rounded-full font-serif font-medium text-sm tracking-wider uppercase transition-all duration-300"
-                    >
-                        All Collections
-                    </button>
-
-                    <button
-                        v-for="category in categories"
-                        :key="category"
-                        @click="filterByCategory(category)"
-                        :class="{
-                            'bg-stone-900 text-white shadow-xl ring-2 ring-amber-500': selectedCategory === category,
-                            'bg-gray-100 text-stone-700 hover:bg-stone-200': selectedCategory !== category
-                        }"
-                        class="py-2 px-6 rounded-full font-serif font-medium text-sm tracking-wider uppercase transition-all duration-300"
-                    >
-                        {{ category }}
-                    </button>
-                </div>
+            <div class="flex flex-wrap gap-3 justify-center mb-16">
+                <button
+                    @click="filterByCategory('All')"
+                    :class="{
+                        'bg-stone-900 text-white shadow-xl ring-2 ring-amber-500': selectedCategory === 'All',
+                        'bg-gray-100 text-stone-700 hover:bg-stone-200': selectedCategory !== 'All'
+                    }"
+                    class="py-2 px-6 rounded-full font-serif font-medium text-sm tracking-wider uppercase transition-all duration-300"
+                >
+                    All Collections
+                </button>
 
                 <button
-                    id="share-catalog-btn"
-                    class="py-2 px-6 rounded-full font-medium text-sm tracking-wider uppercase transition-all duration-300 
-                           bg-amber-500 hover:bg-amber-600 text-white shadow-lg flex items-center gap-2"
+                    v-for="category in categories"
+                    :key="category"
+                    @click="filterByCategory(category)"
+                    :class="{
+                        'bg-stone-900 text-white shadow-xl ring-2 ring-amber-500': selectedCategory === category,
+                        'bg-gray-100 text-stone-700 hover:bg-stone-200': selectedCategory !== category
+                    }"
+                    class="py-2 px-6 rounded-full font-serif font-medium text-sm tracking-wider uppercase transition-all duration-300"
                 >
-                    <i class="fas fa-link" id="share-icon"></i> 
-                    <span id="share-text">Share Catalog</span>
+                    {{ category }}
                 </button>
-                
             </div>
-
         </section>
 
         <section class="my-8">
@@ -992,51 +885,9 @@ initCarousel();
     </div>
 </section>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const shareButton = document.getElementById('share-catalog-btn');
-        const shareTextSpan = document.getElementById('share-text');
-        const shareIcon = document.getElementById('share-icon');
 
-        // 🎯 NEW: Define the specific, professional link you want to copy
-        const catalogLink = 'https://www.paridhaancreation.in/#collections'; 
 
-        if (shareButton && shareTextSpan && shareIcon) {
-            shareButton.addEventListener('click', async () => {
-                
-                try {
-                    // Use the Clipboard API to copy the fixed link
-                    await navigator.clipboard.writeText(catalogLink);
 
-                    // --- Provide Visual Feedback (Professional) ---
-                    const originalText = shareTextSpan.textContent;
-                    const originalIconClass = shareIcon.className;
-
-                    // Change button appearance to confirm copy
-                    shareTextSpan.textContent = 'Link Copied!'; // Concise message
-                    shareIcon.className = 'fas fa-check'; // Checkmark icon
-                    
-                    // Use a subtle success color
-                    shareButton.classList.add('bg-green-500', 'hover:bg-green-600');
-                    shareButton.classList.remove('bg-amber-500', 'hover:bg-amber-600');
-
-                    // Reset button appearance after 3 seconds
-                    setTimeout(() => {
-                        shareTextSpan.textContent = originalText;
-                        shareIcon.className = originalIconClass; 
-                        shareButton.classList.remove('bg-green-500', 'hover:bg-green-600');
-                        shareButton.classList.add('bg-amber-500', 'hover:bg-amber-600');
-                    }, 3000);
-
-                } catch (err) {
-                    console.error('Could not copy text: ', err);
-                    // Fallback for very old browsers: provide the link
-                    alert("Copy failed. Please manually copy this catalog link:\n\n" + catalogLink);
-                }
-            });
-        }
-    });
-</script>
 
 <div id="ad-popup" style="
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -1065,8 +916,8 @@ initCarousel();
 <hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
 
 
-<section id="about" class="w-full px-6 py-24">
-    <div class="container mx-auto">
+<section id="about" class="w-full py-24">
+    <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-3 text-stone-900" style="font-family: 'Playfair Display', serif;">
             Welcome to Paridhaan Creation
         </h2>
@@ -1085,9 +936,9 @@ initCarousel();
             
             <div class="w-full md:w-[55%] space-y-7 text-lg leading-relaxed text-gray-700 font-medium">
                 <p class="font-bold text-xl text-stone-900 mb-4" style="font-family: 'Playfair Display', serif;">
-                    "Paridhaan Creation… Kyuki Khubsurti Hai Aapse."
+                    "Paridhaan Creation... Kyuki Khubsurati Hai Aapse."
                 </p>
-                <p>
+                    <p>
     At <b>Paridhaan Creation</b>, we believe that true beauty begins within you, and our
     exquisite collection of women’s ethnic wear is thoughtfully crafted to mirror that inner elegance
     and confidence. Every piece is more than clothing—it is a celebration of your individuality.
@@ -1130,8 +981,8 @@ initCarousel();
 <hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
 
 
-<section id="socialmedia" class="w-full p-4 md:p-8 py-24">
-    <div class="max-w-7xl mx-auto px-6">
+<section id="socialmedia" class="w-full py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
             Connect With Us
@@ -1181,7 +1032,6 @@ initCarousel();
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
-            
         </div>
     </div>
 </section>
@@ -1311,28 +1161,18 @@ initCarousel();
     }
 </style>
 
-
-
+<hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
             
-
-
+<section id="testimonials" class="w-full py-16 bg-light-bg">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
+        Story From Customers
+        </h2>
+        <iframe src='https://widgets.sociablekit.com/google-reviews/iframe/25603533' frameborder='0' width='100%' height='1000'></iframe>
+    </div>
+</section>
 
 <hr class="my-12 border-t border-light-border">
-
-            <hr class="my-12 border-t border-light-border">
-            
-            <section id="testimonials" class="container mx-auto px-6 py-16 bg-light-bg">
-                     <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
-   Story From Customers
-        </h2>
-   
-
-<iframe src='https://widgets.sociablekit.com/google-reviews/iframe/25603533' frameborder='0' width='100%' height='1000'></iframe>
-
-
-            </section>
-
-            <hr class="my-12 border-t border-light-border">
             
 <section class="w-full overflow-hidden bg-[#B6824E] border-y-2 border-gold-accent py-2">
     <div class="inline-block whitespace-nowrap font-medium text-white text-sm animate-marquee-ltr">
@@ -1343,319 +1183,253 @@ initCarousel();
     </div>
 </section>
 
-<!-- Elfsight Sales Notification | Untitled Sales Notification -->
 <script src="https://elfsightcdn.com/platform.js" async></script>
 <div class="elfsight-app-ec036e32-abe5-4e43-87e5-f44f294eb45b" data-elfsight-app-lazy></div>
 
 
 <hr class="my-12 border-t border-light-border">
 
-          <section class="bg-stone-100 py-16 sm:py-24 px-4 sm:px-6 lg:px-8" id="contact">
-  <div class="mx-auto max-w-7xl">
-
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-     <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
+<section class="bg-stone-100 py-16 sm:py-24" id="contact">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
             Contact Us
         </h2>
-     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-      <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
-        <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
-            <i class="fas fa-map-marker-alt text-lg"></i>
-          </div>
-          <div class="flex-grow flex flex-col justify-center">
-            <h4 class="text-xl font-bold text-gray-800 text-center">Address</h4>
-         <a href="https://share.google/iOYSp2tP8GiWsQlZd" target="_blank" class="hover:text-amber-500 transition-colors duration-300">J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</a>  
         
-        </div>
-        </div>
-      </div>
-      
-      <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
-        <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
-            <i class="fas fa-phone-alt text-lg"></i>
-          </div>
-          <div class="flex-grow flex flex-col justify-center">
-            <h4 class="text-xl font-bold text-gray-800 text-center">Phone</h4>
-            <p class="text-gray-600 mt-1 text-center">
-              <a href="tel:+919451535206" target="_blank" class="hover:text-amber-500 transition-colors duration-300">+91 94515 35206</a>
-            </p>
-          </div>
-        </div>
-      </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+            <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
+                <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
+                        <i class="fas fa-map-marker-alt text-lg"></i>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-gray-800 text-center">Address</h4>
+                    <a href="https://share.google/iOYSp2tP8GiWsQlZd" target="_blank" class="hover:text-amber-500 transition-colors duration-300">J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</a>  
+                
+                </div>
+                </div>
+            </div>
+            
+            <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
+                <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
+                        <i class="fas fa-phone-alt text-lg"></i>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-gray-800 text-center">Phone</h4>
+                        <p class="text-gray-600 mt-1 text-center">
+                            <a href="tel:+919451535206" target="_blank" class="hover:text-amber-500 transition-colors duration-300">+91 94515 35206</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-      <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
-        <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
-          <div class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
-            <i class="fas fa-envelope text-lg"></i>
-          </div>
-          <div class="flex-grow flex flex-col justify-center">
-            <h4 class="text-xl font-bold text-gray-800 text-center">Email</h4>
-            <p class="text-gray-600 mt-1 text-center">
-              <a href="mailto:paridhaancreationofficial@gmail.com" target="_blank" class="hover:text-amber-500 transition-colors duration-300">paridhaancreationofficial@gmail.com</a>
-            </p>
-          </div>
+            <div class="group transform transition-transform duration-300 ease-in-out hover:-translate-y-1">
+                <div class="flex flex-col items-center space-y-4 rounded-xl bg-white p-6 shadow-sm border border-gray-200 h-full">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-amber-500 text-white shadow-md">
+                        <i class="fas fa-envelope text-lg"></i>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-center">
+                        <h4 class="text-xl font-bold text-gray-800 text-center">Email</h4>
+                        <p class="text-gray-600 mt-1 text-center">
+                            <a href="mailto:paridhaancreationofficial@gmail.com" target="_blank" class="hover:text-amber-500 transition-colors duration-300">paridhaancreationofficial@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </section>
 
 
-
 <section class="bg-primary-light py-10">
-  <div class="mx-auto max-w-md px-4 sm:px-6 lg:px-8 text-center">
-    
-    <h2 class="text-3xl font-extrabold text-stone-900 mb-6">
-      Subscribe to our Newsletter
-    </h2>
-
-    <form id="whatsapp-subscribe-form" class="flex flex-col sm:flex-row gap-2 justify-center">
-      
-      <select id="country-code" class="border border-gray-300 p-3 rounded-lg text-lg focus:ring-amber-500 focus:border-amber-500 w-full sm:w-auto" required>
-        <option value="+91" selected>🇮🇳 +91 (India)</option>
-        <option value="+1">🇺🇸 +1 (USA)</option>
-        <option value="+44">🇬🇧 +44 (UK)</option>
-        <option value="+971">🇦🇪 +971 (UAE)</option>
-        <option value="+61">🇦🇺 +61 (Aus)</option>
-      </select>
-      
-      <input type="tel" id="phone-number" placeholder="Enter Phone Number *" 
-             class="border border-gray-300 p-3 rounded-lg text-lg focus:ring-amber-500 focus:border-amber-500 flex-grow" required>
-      
-      <button type="submit" 
-              class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors text-lg w-full sm:w-auto min-w-[120px]">
-        Submit
-      </button>
-    </form>
-    
-    <p class="text-sm text-gray-500 mt-3">
-        By clicking submit, you will be redirected to WhatsApp.
-    </p>
-    
-  </div> </section>
-
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('whatsapp-subscribe-form');
-        const countryCode = document.getElementById('country-code');
-        const phoneNumberInput = document.getElementById('phone-number');
+    <div class="mx-auto max-w-md px-4 sm:px-6 lg:px-8 text-center">
         
-        // Target WhatsApp number for Paridhaan Creation
-        const whatsappTarget = '919451535206'; 
+        <h2 class="text-3xl font-extrabold text-stone-900 mb-6">
+            Subscribe to our Newsletter
+        </h2>
+
+        <form id="whatsapp-subscribe-form" class="flex flex-col sm:flex-row gap-2 justify-center">
+            
+            <select id="country-code" class="border border-gray-300 p-3 rounded-lg text-lg focus:ring-amber-500 focus:border-amber-500 w-full sm:w-auto" required>
+                <option value="+91" selected>🇮🇳 +91 (India)</option>
+                <option value="+1">🇺🇸 +1 (USA)</option>
+                <option value="+44">🇬🇧 +44 (UK)</option>
+                <option value="+971">🇦🇪 +971 (UAE)</option>
+                <option value="+61">🇦🇺 +61 (Aus)</option>
+            </select>
+            
+            <input type="tel" id="phone-number" placeholder="Enter Phone Number *" 
+                    class="border border-gray-300 p-3 rounded-lg text-lg focus:ring-amber-500 focus:border-amber-500 flex-grow" required>
+            
+            <button type="submit" 
+                    class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors text-lg w-full sm:w-auto min-w-[120px]">
+                Submit
+            </button>
+        </form>
         
-        // Pre-defined message
-        const message = "join me in group paridhaan creation";
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const selectedCode = countryCode.value;
-            // Clean the phone number input (remove spaces, dashes)
-            const rawPhoneNumber = phoneNumberInput.value.replace(/[^0-9]/g, '');
-            
-            // The full number including country code
-            const fullNumber = selectedCode + rawPhoneNumber;
-            
-            // URL-encode the message
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Construct the final WhatsApp API link
-            const whatsappLink = `https://wa.me/${whatsappTarget}?text=${encodedMessage} (My Number: ${fullNumber})`;
-
-            // Open the link in a new tab
-            window.open(whatsappLink, '_blank');
-            
-            // Optional: Reset the form after submission
-            form.reset();
-        });
-    });
-</script>
+        <p class="text-sm text-gray-500 mt-3">
+            By clicking submit, you will be redirected to WhatsApp.
+        </p>
+        
+    </div> </section>
 
 
-            <hr class="my-12 border-t border-light-border">
+<hr class="my-12 border-t border-light-border">
+
 <footer class="bg-[#8A5E3A] text-white pt-16 pb-8 shadow-xl relative overflow-hidden" id="contact">
-  <div class="container mx-auto px-6">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+
+            <div class="col-span-1 md:col-span-2 text-center md:text-left group">
+                <img src="https://educationsimplified.github.io/paridhaan_creation/PARIDHAAN.png" alt="Paridhaan Creation Logo"
+                    class="w-48 mx-auto md:mx-0 mb-4 filter brightness-110 transition-transform duration-500 group-hover:scale-105">
+
+                <a href="https://paridhaancreation.blogspot.com"
+                    class="text-4xl font-extrabold tracking-wider text-black block mb-6 transition-colors duration-300 group-hover:text-white"
+                    style="font-family: 'Playfair Display', serif;">
+                    Paridhaan <span class="text-white">Creation</span>
+                </a>
+
+                <p class="text-sm leading-relaxed transition-colors duration-300 group-hover:text-black">
+                    <strong class="text-white"> Paridhaan Creation...</strong> <i>Kyuki Khubsurati Hai Aapse.</i>
+                </p>
+            </div>
+            
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-bold text-white mb-6">Quick Links</h3>
+                <ul class="flex flex-col items-center md:items-start space-y-3 text-sm">
+                    <li>
+                        <a href="https://script.google.com/macros/s/AKfycbzKp2Y4jbt_dlzmpTBsLNteeFP_GVr2febY9yW3fM_BLLo9Y7FPMBrILKw5GaBWmnF2/exec"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Admin ERP Login
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#categories"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Product & Categories
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Blog Posts
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="shipping.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Shipping Return & Exchanges
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="privacy.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Privacy Policy
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="terms.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Terms & Condition
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sitemap.xml"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Sitemap
+                            </span>
+                        </a>
+                    </li>
+
+                    
+                    <li>
+                        <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Store Location
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="certificate.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Download Client Rating Certificate
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
 
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-215ef826-cea0-404c-b5fd-37ae6d12e42f" data-elfsight-app-lazy></div>
+                    
 
-
-
-
-        <div class="col-span-1 md:col-span-2 text-center md:text-left group">
-    <img src="https://educationsimplified.github.io/paridhaan_creation/PARIDHAAN.png" alt="Paridhaan Creation Logo"
-        class="w-48 mx-auto md:mx-0 mb-4 filter brightness-110 transition-transform duration-500 group-hover:scale-105">
-
-    <a href="https://www.paridhaancreation.in"
-        class="text-4xl font-extrabold tracking-wider text-black block mb-6 transition-colors duration-300 group-hover:text-white"
-        style="font-family: 'Playfair Display', serif;">
-        Paridhaan <span class="text-white">Creation</span>
-    </a>
-
-    <p class="text-whitetext-sm leading-relaxed transition-colors duration-300 group-hover:text-black">
-        <strong class="text-white"> Paridhaan Creation...</strong> <i>Kyuki Khubsurati Hai Aapse.</i>
-    </p>
-</div>
-      
-      <!-- Quick Links with arrow hover -->
-<div class="text-center md:text-left">
-  <h3 class="text-xl font-bold text-white mb-6">Quick Links</h3>
-  <ul class="flex flex-col items-center md:items-start space-y-3 text-sm">
-    <li>
-
-      <a href="https://script.google.com/macros/s/AKfycbzKp2Y4jbt_dlzmpTBsLNteeFP_GVr2febY9yW3fM_BLLo9Y7FPMBrILKw5GaBWmnF2/exec"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-           Admin ERP Login
-         </span>
-      </a>
-    </li>
-       <li>
-      <a href="data.html"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-          Data Backend Login
-         </span>
-      </a>
-    </li>
-    <li>
-      <a href="#categories"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-          Product & Categories
-         </span>
-      </a>
-    </li>
-      <li>
-      <a href="blog.html"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-          Blog Posts
-         </span>
-      </a>
-    </li>
-      <li>
-      <a href="shipping.html"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-           Shipping Return & Exchanges
-         </span>
-      </a>
-    </li>
-
-      <li>
-      <a href="privacy.html"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-           Privacy Policy
-         </span>
-      </a>
-    </li>
-
-      <li>
-      <a href="terms.html"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-           Terms & Condition
-         </span>
-      </a>
-    </li>
-
-      <li>
-      <a href="sitemap.xml"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-           Sitemap
-         </span>
-      </a>
-    </li>
-
-      
-     <li>
-      <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-           Store Location
-         </span>
-      </a>
-    </li>
-    <li>
-      <a href="certificate.html"
-         class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
-         <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
-           Download Client Rating Certificate
-         </span>
-      </a>
-    </li>
-  </ul>
-</div>
-
-
-<!-- Elfsight WhatsApp Chat | Untitled WhatsApp Chat -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-215ef826-cea0-404c-b5fd-37ae6d12e42f" data-elfsight-app-lazy></div>
-          
-
-      <!-- Contact + Social icons with hover -->
-      <div class="text-center md:text-left">
-        <h3 class="text-xl font-bold text-white mb-6">Connect With Us</h3>
-        <ul class="space-y-2 text-sm mb-6">
-          <li class="transition-colors duration-300 hover:text-amber-100">
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-bold text-white mb-6">Connect With Us</h3>
+                <ul class="space-y-2 text-sm mb-6">
+                    <li class="transition-colors duration-300 hover:text-amber-100">
                         <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank" class="hover:text-amber-100">J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</a>
-         </li>
-         <br>
-          <li class="transition-colors duration-300 hover:text-amber-100">
-            <i class="fa-solid fa-phone text-[#fffde7] mr-2"></i>
-            <a href="tel:+919451535206" class="hover:text-amber-100">+91 94515 35206</a>
-          </li>
-          <li class="transition-colors duration-300 hover:text-amber-100">
-            <i class="fa-solid fa-envelope text-[#fffde7] mr-2"></i>
-            <a href="mailto:paridhaancreationofficial@gmail.com" class="hover:text-amber-100">paridhaancreationofficial@gmail.com</a>
-          </li>
-        </ul>
-        <div class="flex justify-center md:justify-start space-x-4">
-          <a href="https://www.facebook.com/profile.php?id=61572113506286" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
-          <a href="https://www.instagram.com/paridhaan_creation/" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
-          <a href="https://chat.whatsapp.com/B4ysLHbIdRZ6UakK2cKqs6" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-whatsapp text-xl"></i></a>
-          <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fas fa-map-marker-alt text-xl"></i></a>
-          <a href= "mailto:paridhaancreationofficial@gmail.com" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fas fa-envelope text-xl"></i></a>
-        </div>
-      </div>
+                    </li>
+                    <br>
+                    <li class="transition-colors duration-300 hover:text-amber-100">
+                        <i class="fa-solid fa-phone text-[#fffde7] mr-2"></i>
+                        <a href="tel:+919451535206" class="hover:text-amber-100">+91 94515 35206</a>
+                    </li>
+                    <li class="transition-colors duration-300 hover:text-amber-100">
+                        <i class="fa-solid fa-envelope text-[#fffde7] mr-2"></i>
+                        <a href="mailto:paridhaancreationofficial@gmail.com" class="hover:text-amber-100">paridhaancreationofficial@gmail.com</a>
+                    </li>
+                </ul>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="https://www.facebook.com/profile.php?id=61572113506286" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="https://www.instagram.com/paridhaan_creation/" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://chat.whatsapp.com/B4ysLHbIdRZ6UakK2cKqs6" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-whatsapp text-xl"></i></a>
+                    <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fas fa-map-marker-alt text-xl"></i></a>
+                    <a href= "mailto:paridhaancreationofficial@gmail.com" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fas fa-envelope text-xl"></i></a>
+                </div>
+            </div>
 
+        </div>
+
+        <div class="border-t border-[#c8a374] mt-12 pt-6 text-center text-[#fdfaf6] text-sm transition-colors duration-300 hover:text-amber-100">
+    <p>
+        © <span id="current-year"><script>document.write(new Date().getFullYear())</script></span>
+        Paridhaan Creation. All rights reserved.
+    </p>
+    
     </div>
 
-    <!-- Bottom Bar -->
-  <div class="border-t border-[#c8a374] mt-12 pt-6 text-center text-[#fdfaf6] text-sm transition-colors duration-300 hover:text-amber-100">
-  <p>
-    &copy; <span id="current-year"><script>document.write(new Date().getFullYear())</script></span>
-    Paridhaan Creation. All rights reserved.
-  </p>
-  
-</div>
-
-  </div>
-  <!-- Elfsight Visitor Counter | Untitled Visitor Counter -->
-
-
-  <script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-99092b30-faad-45e3-a910-ff53bff6ac05" data-elfsight-app-lazy></div>
-<div class="border-t border-[#c8a374] mt-12 pt-6 text-center text-[#fdfaf6] text-sm transition-colors duration-300 hover:text-amber-100">
-    <p>
-    Developed by 
-    <a href="https://uzairb2b.blogspot.com" target="_blank" class="underline hover:text-[#c8a374]">
-      Uzair B2B Services
-    </a>
-  </p>
-</div>
-
+    </div>
+    
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-99092b30-faad-45e3-a910-ff53bff6ac05" data-elfsight-app-lazy></div>
+    <div class="border-t border-[#c8a374] mt-12 pt-6 text-center text-[#fdfaf6] text-sm transition-colors duration-300 hover:text-amber-100">
+        <p>
+        Developed by 
+        <a href="https://uzairb2b.blogspot.com" target="_blank" class="underline hover:text-[#c8a374]">
+            Uzair B2B Services
+        </a></p>
+    </div>
 </footer>
-
-        </main>
 
         <div v-if="showProductModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-[100]">
             <div class="rounded-xl shadow-2xl overflow-hidden max-w-4xl w-full flex flex-col lg:flex-row relative card-bg text-gray-800">
@@ -1903,6 +1677,249 @@ initCarousel();
             link.addEventListener('click', closeMenu);
         });
     </script>
-       
+         <script>
+
+
+//all the script of the product in one
+
+//image consoral
+
+
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=397492617&single=true&output=csv";
+
+async function fetchCSV() {
+  const res = await fetch(CSV_URL);
+  const text = await res.text();
+  return text.split("\n").map(row => row.split(","));
+}
+
+async function initCarousel() {
+  const data = await fetchCSV();
+  
+  // Assuming first row is header, rest are image URLs
+  const images = data.slice(1).map(row => row[0]).filter(Boolean);
+
+  const track = document.getElementById("carousel-track");
+  const dots = document.getElementById("carousel-dots");
+
+  images.forEach((url, i) => {
+    // Add image
+    const img = document.createElement("img");
+    img.src = url;
+    img.className = "absolute inset-0 w-full h-full object-cover transition-opacity duration-1000";
+    img.style.opacity = i === 0 ? 1 : 0;
+    track.appendChild(img);
+
+    // Add dot
+    const dot = document.createElement("button");
+    dot.className = "w-3 h-3 rounded-full " + (i === 0 ? "bg-white" : "bg-gray-400");
+    dot.addEventListener("click", () => showSlide(i));
+    dots.appendChild(dot);
+  });
+
+  let current = 0;
+  function showSlide(index) {
+    const imgs = track.querySelectorAll("img");
+    const ds = dots.querySelectorAll("button");
+    imgs.forEach((img, j) => img.style.opacity = j === index ? 1 : 0);
+    ds.forEach((d, j) => d.className = "w-3 h-3 rounded-full " + (j === index ? "bg-white" : "bg-gray-400"));
+    current = index;
+  }
+
+  // Auto-slide
+  setInterval(() => {
+    showSlide((current + 1) % images.length);
+  }, 5000);
+}
+
+initCarousel();
+
+
+
+//CATEGORY COLLECTION
+
+        const csvUrl =
+        "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=1086133643&single=true&output=csv";
+
+    async function loadCollections() {
+        const response = await fetch(csvUrl);
+        const csvText = await response.text();
+
+        const parsed = Papa.parse(csvText, { header: true, skipEmptyLines: true });
+        const rows = parsed.data;
+
+        const categoryMap = {};
+        rows.forEach(row => {
+            const category = row["Category"]?.trim();
+            const image = row["ImageUrl"]?.trim();
+            if (category && image && !categoryMap[category]) {
+                categoryMap[category] = image;
+            }
+        });
+
+        const grid = document.getElementById("collections-grid");
+        grid.innerHTML = "";
+
+        Object.entries(categoryMap).forEach(([category, imageUrl]) => {
+            // Updated Luxury Card Template with Centered Text and new Hover Effect
+            const card = `
+                <a href="#collections"
+                    data-category="${category}"
+                    class="group block relative rounded-lg overflow-hidden transition-all duration-500 hover:scale-[1.02] 
+                           shadow-2xl border border-gray-100 hover:shadow-amber-500/50 hover:shadow-3xl">
+                    
+                    <div class="relative w-full aspect-[4/3] bg-gray-900">
+                        <img src="${imageUrl}" alt="${category} Collection"
+                            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
+                        
+                        <div class="absolute inset-0 bg-stone-900/40 transition-all duration-500 group-hover:bg-stone-900/10"></div>
+                    </div>
+                    
+                    <div class="absolute inset-0 flex items-center justify-center p-6 transition-all duration-500">
+                        <h3 class="text-4xl font-serif font-extrabold text-white text-center transition-colors duration-300 drop-shadow-lg uppercase tracking-widest leading-snug">
+                            ${category} 
+                        </h3>
+                    </div>
+                </a>
+            `;
+            grid.insertAdjacentHTML("beforeend", card);
+        });
+
+        grid.querySelectorAll("a[data-category]").forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                const cat = link.dataset.category;
+                const productsSection = document.getElementById("collections");
+                productsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+
+                if (window.app && typeof window.app.filterByCategory === "function") {
+                    window.app.filterByCategory(cat);
+                }
+            });
+        });
+    }
+
+    loadCollections();
+
+
+    //catelog button
+
+    function copyCatalogLink() {
+        const linkInput = document.getElementById('catalog-link-to-copy');
+        const button = document.getElementById('copy-share-button');
+        const buttonText = document.getElementById('button-text');
+        const defaultIcon = document.getElementById('default-icon');
+        const successIcon = document.getElementById('success-icon');
+        const linkToCopy = linkInput.value;
+
+        // Base/Default Amber classes to reset to
+        const defaultClasses = ['bg-amber-100', 'text-amber-800', 'hover:bg-amber-200'];
+        // Success Green classes
+        const successClasses = ['bg-green-500', 'text-white', 'shadow-lg', 'shadow-green-500/40', 'hover:bg-green-600'];
+        // Error Red classes
+        const errorClasses = ['bg-red-500', 'text-white', 'shadow-lg', 'shadow-red-500/40'];
+        
+        // Remove all state-specific classes before proceeding
+        button.classList.remove(...successClasses, ...errorClasses);
+        button.classList.add(...defaultClasses);
+
+        // 1. Set 'Copying' State
+        buttonText.textContent = 'Copying...';
+        button.disabled = true;
+
+        // 2. Perform the Copy Operation using the modern Clipboard API
+        navigator.clipboard.writeText(linkToCopy)
+            .then(() => {
+                // SUCCESS STATE
+                buttonText.textContent = 'Link Copied!';
+
+                // Change Icons
+                defaultIcon.classList.add('hidden');
+                successIcon.classList.remove('hidden');
+
+                // Change Tailwind Styles to Green
+                button.classList.remove(...defaultClasses);
+                button.classList.add(...successClasses);
+
+                // 3. Reset State after 2 seconds
+                setTimeout(() => {
+                    // Reset Text
+                    buttonText.textContent = 'Copy & Share Catalog Link';
+
+                    // Reset Icons
+                    defaultIcon.classList.remove('hidden');
+                    successIcon.classList.add('hidden');
+
+                    // Reset Tailwind Styles back to Amber
+                    button.classList.remove(...successClasses);
+                    button.classList.add(...defaultClasses);
+                    
+                    button.disabled = false;
+                }, 2000);
+
+            })
+            .catch(err => {
+                // ERROR STATE
+                console.error('Failed to copy text: ', err);
+                buttonText.textContent = 'Copy Failed!';
+                
+                // Change Tailwind Styles to Red
+                button.classList.remove(...defaultClasses);
+                button.classList.add(...errorClasses);
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    buttonText.textContent = 'Copy & Share Catalog Link';
+                    button.classList.remove(...errorClasses);
+                    button.classList.add(...defaultClasses);
+                    button.disabled = false;
+                }, 2000);
+            });
+    }
+
+
+   
+
+
+    //news letter
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('whatsapp-subscribe-form');
+        const countryCode = document.getElementById('country-code');
+        const phoneNumberInput = document.getElementById('phone-number');
+        
+        // Target WhatsApp number for Paridhaan Creation
+        const whatsappTarget = '919451535206'; 
+        
+        // Pre-defined message
+        const message = "join me in group paridhaan creation";
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const selectedCode = countryCode.value;
+            // Clean the phone number input (remove spaces, dashes)
+            const rawPhoneNumber = phoneNumberInput.value.replace(/[^0-9]/g, '');
+            
+            // The full number including country code
+            const fullNumber = selectedCode + rawPhoneNumber;
+            
+            // URL-encode the message
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Construct the final WhatsApp API link
+            const whatsappLink = `https://wa.me/${whatsappTarget}?text=${encodedMessage} (My Number: ${fullNumber})`;
+
+            // Open the link in a new tab
+            window.open(whatsappLink, '_blank');
+            
+            // Optional: Reset the form after submission
+            form.reset();
+        });
+    });
+
+
+
+         </script>
 </body>
 </html>
