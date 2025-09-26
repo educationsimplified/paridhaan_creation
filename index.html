@@ -687,9 +687,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<hr class="w-full h-px my-16 bg-amber-500 border-0 shadow-xl" />
-
-
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Selects all links with the class 'js-smooth-scroll'
@@ -716,6 +713,155 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
 </script>      
 
+
+<!-- Section now spans full width (no max-w) and has a light background -->
+<section class="py-16 overflow-hidden bg-gray-50">
+    <div class="px-4 sm:px-6 lg:px-8">
+        
+     
+
+        <!-- Marquee Wrapper (Handles overflow and hover pause events) -->
+        <div id="marquee-wrapper" class="relative overflow-hidden">
+            
+            <!-- Marquee Scroller (This element will be moved by JavaScript) -->
+            <div id="marquee-scroller" class="flex flex-nowrap" style="width: max-content;">
+                
+                <!-- 1. Original Set of Logos (Used to calculate loop width) -->
+                <div id="original-track" class="flex items-center space-x-16 px-4">
+                    <!-- Increased space-x-16 for a more open, free-flowing look -->
+                    
+                    <!-- LOGO STYLING: Grayscale and subtle opacity by default, full color and scale on hover -->
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/12a-80G-1.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 1">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/Captur11e.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 2">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/g20-logo.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 3">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/ngo-darpan.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 4">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/PngItem_2411963.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 5">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/startinup.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 6">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/startup.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 7">
+                    </div>
+                </div>
+
+                <!-- 2. Duplicated Set of Logos (MANDATORY for seamless looping) -->
+                <div class="flex items-center space-x-16 px-4">
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/12a-80G-1.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 1 Duplicate">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/Captur11e.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 2 Duplicate">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/g20-logo.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 3 Duplicate">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/ngo-darpan.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 4 Duplicate">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/PngItem_2411963.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 5 Duplicate">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/startinup.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 6 Duplicate">
+                    </div>
+                    <div class="flex-shrink-0 p-4 transition duration-300 ease-in-out transform hover:scale-110">
+                        <img src="https://rifmjpru.com/img/vendors/startup.webp" class="h-12 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300" alt="Partner Logo 7 Duplicate">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript for Marquee Movement and Control -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const wrapper = document.getElementById('marquee-wrapper');
+        const scroller = document.getElementById('marquee-scroller');
+        const originalTrack = document.getElementById('original-track');
+
+        if (!wrapper || !scroller || !originalTrack) {
+            console.error("Marquee elements not found. Cannot start JS animation.");
+            return;
+        }
+
+        let contentWidth = 0;
+        let scrollPosition = 0;
+        const scrollSpeed = 0.5; // Adjust this value to control speed (pixels per frame)
+        let animationFrameId = null;
+        let isPaused = false;
+
+        // 1. Function to measure the width of the original content
+        function measureContentWidth() {
+            // contentWidth is the exact width of the first set of logos. 
+            // When scrollPosition reaches -contentWidth, we loop back to 0.
+            contentWidth = originalTrack.offsetWidth;
+            if (contentWidth > 0) {
+                // Once measured, start the animation
+                runAnimation();
+            } else {
+                // If 0, try again after a brief delay (ensures images are loaded/rendered)
+                setTimeout(measureContentWidth, 100);
+            }
+        }
+
+        // 2. Main animation loop using requestAnimationFrame
+        function runAnimation() {
+            if (isPaused) return;
+
+            // Shift position to the left
+            scrollPosition -= scrollSpeed;
+
+            // Check for loop condition
+            if (scrollPosition <= -contentWidth) {
+                // Reset to 0 for a seamless loop
+                scrollPosition = 0;
+            }
+
+            // Apply the shift using CSS transform for better performance
+            scroller.style.transform = `translateX(${scrollPosition}px)`;
+
+            // Request the next frame
+            animationFrameId = requestAnimationFrame(runAnimation);
+        }
+
+        // 3. Hover control (Pausing/Resuming)
+        wrapper.addEventListener('mouseenter', () => {
+            isPaused = true;
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+        });
+
+        wrapper.addEventListener('mouseleave', () => {
+            isPaused = false;
+            // Only start if not already running (which it shouldn't be, but good practice)
+            if (animationFrameId === null) {
+                runAnimation();
+            }
+        });
+        
+        // Start the measurement process
+        measureContentWidth();
+    });
+</script>
+
+
+
+
+        
 <!-- Elfsight Slider | Untitled Slider -->
 <script src="https://elfsightcdn.com/platform.js" async></script>
 <div class="elfsight-app-9d0ab410-1a7d-4853-bed5-8492f06e51a6" data-elfsight-app-lazy></div>
