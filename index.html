@@ -863,8 +863,179 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         
 <!-- Elfsight Slider | Untitled Slider -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-9d0ab410-1a7d-4853-bed5-8492f06e51a6" data-elfsight-app-lazy></div>
+<section class="py-12 md:py-24 bg-[#fcfaf7] overflow-hidden">
+  <div id="image-slider" class="relative w-full max-w-7xl mx-auto h-[450px] md:h-[600px] overflow-hidden rounded-3xl shadow-2xl shadow-gray-200 group">
+    
+    <!-- Slides will be injected here -->
+    <div id="slides-container" class="w-full h-full relative"></div>
+
+    <!-- Arrows -->
+    <button class="arrow absolute top-1/2 left-6 transform -translate-y-1/2 size-12 flex items-center justify-center bg-white/20 text-white rounded-full backdrop-blur-sm z-30 transition duration-300 opacity-0 group-hover:opacity-100 hidden md:flex hover:bg-white/40 focus:outline-none"
+      data-direction="prev" aria-label="Previous Slide">
+      <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <button class="arrow absolute top-1/2 right-6 transform -translate-y-1/2 size-12 flex items-center justify-center bg-white/20 text-white rounded-full backdrop-blur-sm z-30 transition duration-300 opacity-0 group-hover:opacity-100 hidden md:flex hover:bg-white/40 focus:outline-none"
+      data-direction="next" aria-label="Next Slide">
+      <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Dots -->
+    <div id="dots-container" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30"></div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS7Ev2WR-ORm07S5N7KpRYHIEgGeUwxgxA3cTWW687oeT1BVOgrbX8zndkND2_cF8MWd4eCXK0ymq8k/pub?gid=397492617&single=true&output=csv";
+    const slidesContainer = document.getElementById("slides-container");
+    const dotsContainer = document.getElementById("dots-container");
+
+    if (!slidesContainer || !dotsContainer) return console.error("❌ Slider container not found!");
+
+    // 🔹 Robust CSV parser that safely handles commas inside quotes
+    function parseCSV(text) {
+      const rows = [];
+      let current = '', row = [], insideQuotes = false;
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"' && insideQuotes && next === '"') {
+          current += '"'; // escaped quote
+          i++;
+        } else if (char === '"') {
+          insideQuotes = !insideQuotes;
+        } else if (char === ',' && !insideQuotes) {
+          row.push(current.trim());
+          current = '';
+        } else if ((char === '\n' || char === '\r') && !insideQuotes) {
+          if (current || row.length > 0) {
+            row.push(current.trim());
+            rows.push(row);
+            row = [];
+            current = '';
+          }
+        } else {
+          current += char;
+        }
+      }
+
+      if (current || row.length > 0) {
+        row.push(current.trim());
+        rows.push(row);
+      }
+
+      return rows;
+    }
+
+    async function initializeSlider() {
+      try {
+        const response = await fetch(csvUrl);
+        if (!response.ok) throw new Error("Network error fetching CSV");
+        const csvText = await response.text();
+
+        const data = parseCSV(csvText).filter(r => r.length > 1);
+        const headers = data[0].map(h => h.trim());
+        const rows = data.slice(1);
+
+        const slidesData = rows.map(cells =>
+          Object.fromEntries(cells.map((v, i) => [headers[i], v || ""]))
+        );
+
+        if (!slidesData.length) return console.warn("No slides found.");
+
+        slidesData.forEach((slide, index) => {
+          const slideDiv = document.createElement("div");
+          slideDiv.className = `slide absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ${index === 0 ? 'opacity-100 z-20' : 'opacity-0 z-0'}`;
+          slideDiv.dataset.index = index;
+
+          slideDiv.innerHTML = `
+            <img src="${slide["image link"] || ''}" alt="${slide["Image Heading"] || 'Slide'}" class="w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center p-8 text-white text-center">
+              <div class="max-w-xl">
+                ${slide["Badge Tag"] ? `<span class="inline-block px-4 py-1 text-xs font-light tracking-widest uppercase border border-white/50 mb-4">${slide["Badge Tag"]}</span>` : ""}
+                ${slide["Image Heading"] ? `<h2 class="font-serif text-3xl md:text-5xl font-light mb-4 leading-tight drop-shadow-lg">${slide["Image Heading"]}</h2>` : ""}
+                ${slide["Image Description"] ? `<p class="font-sans text-lg md:text-xl max-w-xl mb-8 font-extralight opacity-80 hidden sm:block">${slide["Image Description"]}</p>` : ""}
+                <a href="https://community.paridhaancreation.in" target="_blank" rel="noopener" class="inline-block px-8 py-2 text-sm font-medium tracking-widest uppercase border border-white text-white hover:bg-white hover:text-black transition duration-300">Shop Now</a>
+              </div>
+            </div>
+          `;
+          slidesContainer.appendChild(slideDiv);
+        });
+
+        // 🎯 Slider Logic
+        const slides = document.querySelectorAll(".slide");
+        const arrows = document.querySelectorAll(".arrow");
+        const slideInterval = 6000;
+        let currentIndex = 0, intervalId;
+
+        function showSlide(index) {
+          currentIndex = (index + slides.length) % slides.length;
+          slides.forEach((slide, i) => {
+            slide.style.opacity = i === currentIndex ? '1' : '0';
+            slide.style.zIndex = i === currentIndex ? '20' : '0';
+          });
+          updateDots();
+        }
+
+        function nextSlide() { showSlide(currentIndex + 1); }
+        function prevSlide() { showSlide(currentIndex - 1); }
+
+        function createDots() {
+          slides.forEach((_, i) => {
+            const dot = document.createElement("button");
+            dot.classList.add("dot-item", "size-2.5", "rounded-full", "bg-white/40", "hover:bg-white", "transition", "duration-300");
+            dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+            dot.addEventListener("click", () => {
+              stopAutoSlide();
+              showSlide(i);
+              startAutoSlide();
+            });
+            dotsContainer.appendChild(dot);
+          });
+        }
+
+        function updateDots() {
+          dotsContainer.querySelectorAll(".dot-item").forEach((dot, i) => {
+            dot.style.backgroundColor = i === currentIndex ? '#ffffff' : 'rgba(255,255,255,0.4)';
+          });
+        }
+
+        function startAutoSlide() {
+          stopAutoSlide();
+          intervalId = setInterval(nextSlide, slideInterval);
+        }
+
+        function stopAutoSlide() {
+          clearInterval(intervalId);
+        }
+
+        arrows.forEach(arrow => {
+          arrow.addEventListener("click", () => {
+            stopAutoSlide();
+            arrow.dataset.direction === "next" ? nextSlide() : prevSlide();
+            startAutoSlide();
+          });
+        });
+
+        createDots();
+        showSlide(0);
+        startAutoSlide();
+
+      } catch (err) {
+        console.error("Slider initialization failed:", err);
+      }
+    }
+
+    initializeSlider();
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
