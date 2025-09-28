@@ -1251,7 +1251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="flex flex-col md:flex-row items-center gap-16">
             <div class="w-full md:w-[45%]">
                 <img 
-                    src="https://educationsimplified.github.io/paridhaan_creation/Paridhaan creation.png" 
+                    src="Paridhaan creation.png" 
                     alt="Elegant Saree draped on a woman" 
                     class="rounded-xl shadow-2xl border-4 border-gray-100 transform transition-transform duration-500 hover:scale-[1.03]"
                 >
@@ -1505,7 +1505,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 </script>
 
-<script src="https://blog.paridhaancreation.in/feeds/posts/default?alt=json-in-script&callback=showBlogFeed&max-results=4"></script>
+<script src="https://paridhaancreationblog.blogspot.com/feeds/posts/default?alt=json-in-script&callback=showBlogFeed&max-results=4"></script>
 
 <div class="mt-16 text-center">
     <a href="blog.html" target="_blank"
@@ -1651,7 +1651,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
 
             <div class="col-span-1 md:col-span-2 text-center md:text-left group">
-                <img src="https://educationsimplified.github.io/paridhaan_creation/PARIDHAAN.png" alt="Paridhaan Creation Logo"
+                <img src="PARIDHAAN.png" alt="Paridhaan Creation Logo"
                     class="w-48 mx-auto md:mx-0 mb-4 filter brightness-110 transition-transform duration-500 group-hover:scale-105">
 
                 <a href="https://paridhaancreation.in"
@@ -1871,6 +1871,11 @@ document.addEventListener('DOMContentLoaded', () => {
             {{ message.text }}
         </div>
     </div>
+
+
+
+
+
 
     <script>
         const app = new Vue({
@@ -2300,5 +2305,35 @@ initCarousel();
 
 
          </script>
+
+        <script>
+        (function() {
+            var whatsapp_settings = {
+                buttonName: 'WHATSAPP',
+                brandImageUrl: '<span class="wapp-txtImg">P</span>',
+                brandName: 'PARIDHAAN CREATION',
+                brandStatusText: 'Typically replies within a day',
+                buttonSize: 'medium',
+                buttonPosition: 'bottom-right',
+                phoneNumber: '94515 35206',
+                welcomeMessage: 'Welcome to Paridhaan Creation',
+                prefillMessages: 'I am looking for:',
+                replyOptions: 'Banarasi Sarees ,Banarasi Suits'
+            };
+            var script = document.createElement('script');
+            script.src = 'https://oweb.zohowebstatic.com/sites/oweb/js/r/whatsapp-widget-generator.js';
+            script.async = true;
+            script.onload = function() {
+                if (typeof widget_whatsappButton === 'function') {
+                    widget_whatsappButton(whatsapp_settings);
+                } else {
+                    console.error('WhatsApp Widget function could not be found after script load.');
+                }
+            };
+            document.body.appendChild(script);
+        })();
+        </script>
+
+
 </body>
 </html>
