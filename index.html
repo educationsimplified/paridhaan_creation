@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -498,7 +499,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <header class="bg-white/95 backdrop-blur-sm shadow-lg p-4 sticky top-10 z-50">
             <div class="container mx-auto flex justify-between items-center">
 <!-- Updated link with royal font -->
-<a href="https://paridhaancreation.blogspot.com" 
+<a href="https://paridhaancreation.in" 
    class="text-4xl font-extrabold tracking-wider text-black" 
    style="font-family: 'Playfair Display', serif;">
    Paridhaan <span class="gold-accent">Creation</span>
@@ -1553,9 +1554,6 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 </section>
 
-<script src="https://elfsightcdn.com/platform.js" async></script>
-<div class="elfsight-app-ec036e32-abe5-4e43-87e5-f44f294eb45b" data-elfsight-app-lazy></div>
-
 
 <hr class="my-12 border-t border-light-border">
 
@@ -1573,7 +1571,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex-grow flex flex-col justify-center">
                         <h4 class="text-xl font-bold text-gray-800 text-center">Address</h4>
-                    <a href="https://share.google/iOYSp2tP8GiWsQlZd" target="_blank" class="hover:text-amber-500 transition-colors duration-300">J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</a>  
+                    <a href="https://share.google/iOYSp2tP8GiWsQlZd" target="_blank" class="hover:text-amber-500 transition-colors duration-300">J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</a>  
                 
                 </div>
                 </div>
@@ -2306,33 +2304,190 @@ initCarousel();
 
          </script>
 
-        <script>
-        (function() {
-            var whatsapp_settings = {
-                buttonName: 'WHATSAPP',
-                brandImageUrl: '<span class="wapp-txtImg">P</span>',
-                brandName: 'PARIDHAAN CREATION',
-                brandStatusText: 'Typically replies within a day',
-                buttonSize: 'medium',
-                buttonPosition: 'bottom-right',
-                phoneNumber: '94515 35206',
-                welcomeMessage: 'Welcome to Paridhaan Creation',
-                prefillMessages: 'I am looking for:',
-                replyOptions: 'Banarasi Sarees ,Banarasi Suits'
-            };
-            var script = document.createElement('script');
-            script.src = 'https://oweb.zohowebstatic.com/sites/oweb/js/r/whatsapp-widget-generator.js';
-            script.async = true;
-            script.onload = function() {
-                if (typeof widget_whatsappButton === 'function') {
-                    widget_whatsappButton(whatsapp_settings);
-                } else {
-                    console.error('WhatsApp Widget function could not be found after script load.');
-                }
-            };
-            document.body.appendChild(script);
-        })();
-        </script>
+
+
+<!-- WhatsApp Chat Widget - Professional Sleek Version -->
+<style>
+  .whatsapp-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+    font-family: 'Inter', sans-serif;
+  }
+  .wa-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .wa-btn:hover { transform: scale(1.05); }
+  .wa-panel {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    width: 320px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transform-origin: bottom right;
+    animation: fadeIn 0.25s ease-out;
+    display: none;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .wa-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+  }
+  .wa-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .wa-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .wa-name {
+    font-weight: 600;
+    font-size: 15px;
+  }
+  .wa-status {
+    font-size: 12px;
+    opacity: 0.9;
+  }
+  .wa-body {
+    padding: 14px;
+    font-size: 14px;
+    color: #333;
+  }
+  .wa-body p {
+    margin-bottom: 8px;
+  }
+  .wa-quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .wa-quick button {
+    border: none;
+    background: #f3f4f6;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #111827;
+  }
+  .wa-quick button:hover { background: #e5e7eb; }
+  .wa-footer {
+    padding: 10px 14px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    gap: 6px;
+  }
+  .wa-input {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  .wa-send {
+    border: none;
+    background: #25D366;
+    color: white;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .wa-send:hover { background: #128C7E; }
+</style>
+
+<div class="whatsapp-widget">
+  <!-- Floating Button -->
+  <div class="wa-btn" id="waOpenBtn" title="Chat with us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="28" height="28">
+      <path d="M12.04 2.002a9.89 9.89 0 00-9.88 9.88 9.84 9.84 0 001.36 5.06L2 22l5.22-1.49a9.9 9.9 0 004.82 1.25h.01a9.88 9.88 0 009.88-9.88 9.84 9.84 0 00-2.9-7.02 9.86 9.86 0 00-7-2.88zM12 20.16h-.01a8.13 8.13 0 01-4.15-1.13l-.3-.18-3.1.88.88-3.02-.19-.31A8.1 8.1 0 013.84 12a8.15 8.15 0 018.16-8.17 8.1 8.1 0 015.78 2.39 8.12 8.12 0 012.39 5.78A8.15 8.15 0 0112 20.16zm4.48-6.1c-.25-.13-1.49-.74-1.72-.82-.23-.09-.4-.13-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24a7.55 7.55 0 01-1.4-1.74c-.15-.25 0-.38.11-.51.11-.12.25-.31.37-.46.12-.15.16-.25.24-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.88-.21-.5-.42-.43-.57-.44h-.49c-.17 0-.45.06-.68.31-.23.25-.89.87-.89 2.12 0 1.25.91 2.45 1.04 2.62.13.17 1.77 2.7 4.28 3.78.6.26 1.06.41 1.42.52.6.19 1.15.16 1.59.1.49-.07 1.49-.6 1.7-1.19.21-.59.21-1.1.15-1.19-.06-.1-.23-.16-.48-.29z"/>
+    </svg>
+  </div>
+
+  <!-- Chat Panel -->
+  <div class="wa-panel" id="waPanel">
+    <div class="wa-header">
+      <div class="wa-avatar">
+        <img src="https://www.paridhaancreation.in/PARIDHAAN.png" alt="Support">
+      </div>
+      <div>
+        <div class="wa-name">Paridhaan Creation</div>
+        <div class="wa-status">Online — typically replies in 1h</div>
+      </div>
+      <div style="margin-left:auto; cursor:pointer;" id="waCloseBtn">✕</div>
+    </div>
+
+    <div class="wa-body">
+      <p>👋 Hello! Kaise Main Aapki Help Kr skti Hu?</p>
+      <div class="wa-quick">
+        <button data-msg="Hello! I'm interested in Banarasi sarees.">Banarasi Sarees</button>
+        <button data-msg="What are your latest arrivals?">New Arrivals</button>
+        <button data-msg="Do you offer Cash on Delivery?">COD & Shipping</button>
+      </div>
+    </div>
+
+    <div class="wa-footer">
+      <input id="waMsg" class="wa-input" type="text" placeholder="Type your message..." />
+      <button id="waSend" class="wa-send">Send</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const waOpenBtn = document.getElementById('waOpenBtn');
+  const waPanel = document.getElementById('waPanel');
+  const waCloseBtn = document.getElementById('waCloseBtn');
+  const waSend = document.getElementById('waSend');
+  const waMsg = document.getElementById('waMsg');
+  const quickBtns = document.querySelectorAll('.wa-quick button');
+  const phone = '919451535206';
+
+  waOpenBtn.addEventListener('click', () => {
+    waPanel.style.display = waPanel.style.display === 'block' ? 'none' : 'block';
+  });
+
+  waCloseBtn.addEventListener('click', () => {
+    waPanel.style.display = 'none';
+  });
+
+  quickBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      waMsg.value = btn.getAttribute('data-msg');
+      waMsg.focus();
+    });
+  });
+
+  waSend.addEventListener('click', () => {
+    const msg = encodeURIComponent(waMsg.value.trim() || "Hi! I’d like to know more about your products.");
+    window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+  });
+</script>
 
 
 </body>
