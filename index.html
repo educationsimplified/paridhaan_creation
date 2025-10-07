@@ -500,6 +500,108 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 
+
+    <div id="app" class="min-h-screen flex flex-col">
+        <div class="w-full bg-gold-accent text-white py-2 text-center text-sm font-medium sticky top-0 z-50">
+            <p><strong>Contact Us:</strong> +91 94515 35206 | <strong>Email:</strong> paridhaancreationofficial@gmail.com</p>
+        </div>
+
+        <header class="bg-white/95 backdrop-blur-sm shadow-lg p-4 sticky top-10 z-50">
+            <div class="container mx-auto flex justify-between items-center">
+<!-- Updated link with royal font -->
+<a href="https://paridhaancreation.in" 
+   class="text-4xl font-extrabold tracking-wider text-black" 
+   style="font-family: 'Playfair Display', serif;">
+   Paridhaan <span class="gold-accent">Creation</span>
+</a>
+                
+                <div class="hidden md:flex items-center space-x-8 text-lg font-medium">
+                    <a href="#collections" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Our Collections</a>
+                    <a href="https://share.google/D17PSeMLZ7XBuczJA" target="_blank" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Rate us on Google</a>
+                    <a href="#about" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">About Us</a>
+                    
+                    <a href="#socialmedia" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Social Media</a>
+                    <a href="#testimonials" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Testimonials</a>
+                   
+                    <a href="#contact" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Contact</a>
+                    
+
+
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="text" v-model="searchTerm" @input="searchProducts" placeholder="Search..." class="p-2 pl-10 rounded-full shadow-inner focus:outline-none focus:ring-2 focus:ring-gold-accent transition-shadow bg-gray-100 text-gray-800 placeholder-gray-500 border border-gray-300">
+                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                        </div>
+                        <div @click="openCartModal" class="relative cursor-pointer hover:text-gold-accent transition-colors text-gray-700">
+                            <i class="fas fa-shopping-cart fa-lg"></i>
+                            <span v-if="cartItemsCount > 0" class="absolute -top-2 -right-2 bg-gold-accent text-white rounded-full text-xs font-bold w-5 h-5 flex items-center justify-center">{{ cartItemsCount }}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4 md:hidden">
+                    <div @click="openCartModal" class="relative cursor-pointer hover:text-gold-accent transition-colors text-gray-700">
+                        <i class="fas fa-shopping-cart fa-lg"></i>
+                        <span v-if="cartItemsCount > 0" class="absolute -top-2 -right-2 bg-gold-accent text-white rounded-full text-xs font-bold w-5 h-5 flex items-center justify-center">{{ cartItemsCount }}</span>
+                    </div>
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-gold-accent focus:outline-none">
+                        <i class="fas fa-bars fa-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div id="mobile-menu-overlay" class="mobile-menu fixed top-0 right-0 w-full h-full bg-white/95 z-50 flex flex-col justify-center items-center backdrop-blur-lg md:hidden">
+            <button id="close-menu-button" class="absolute top-8 right-8 focus:outline-none text-gray-800 hover:text-gray-600">
+                <i class="fas fa-times fa-2x"></i>
+            </button>
+            <div class="flex flex-col space-y-12 text-3xl font-bold text-center">
+                <a href="#collections" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Our Collection</a>
+                <a href="https://share.google/D17PSeMLZ7XBuczJA" target="_blank" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Rate us on Google</a>
+                <a href="#about" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">About Us</a>
+                <a href="#socialmedia" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Social Media</a>
+                <a href="#testimonials" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Testimonials</a>
+
+                <a href="#contact" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Contact</a>
+
+
+
+
+            </div>
+        </div>
+
+        <main class="flex-grow">
+  <section id="hero-carousel" class="relative min-h-screen flex items-center justify-center text-center p-8 md:p-16 overflow-hidden">
+    <!-- Dynamic images will be injected here -->
+    <div id="carousel-track" class="absolute inset-0 w-full h-full z-0"></div>
+
+    <!-- Dark overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+
+    <!-- Text & CTA -->
+    <div class="relative z-20 max-w-6xl">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight tracking-tighter mb-6">
+        The Pinnacle of Royal Elegance from the holy city of Varanasi.
+      </h1>
+      <p class="text-2xl md:text-3xl font-light text-gray-100 mb-12">
+        Woven with tradition, worn by royalty.
+      </p>
+      <a href="https://chat.whatsapp.com/B4ysLHbIdRZ6UakK2cKqs6"
+         target="_blank"
+         class="bg-white text-gold-accent font-bold text-xl py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl inline-block border-2"
+         style="border-color: var(--gold-accent);">
+         Join Our Whatsapp Group
+      </a>
+
+      <!-- Carousel dots -->
+      <div id="carousel-dots" class="flex justify-center mt-8 space-x-2"></div>
+    </div>
+  </section>
+</main>
+
+
+
+
 <div id="loader">
     <div class="logo-container">
         <i class="fa-solid fa-indian-rupee-sign rupee-symbol"></i>
@@ -624,103 +726,10 @@ body {
 });
 </script>
 
-    <div id="app" class="min-h-screen flex flex-col">
-        <div class="w-full bg-gold-accent text-white py-2 text-center text-sm font-medium sticky top-0 z-50">
-            <p><strong>Contact Us:</strong> +91 94515 35206 | <strong>Email:</strong> paridhaancreationofficial@gmail.com</p>
-        </div>
-
-        <header class="bg-white/95 backdrop-blur-sm shadow-lg p-4 sticky top-10 z-50">
-            <div class="container mx-auto flex justify-between items-center">
-<!-- Updated link with royal font -->
-<a href="https://paridhaancreation.in" 
-   class="text-4xl font-extrabold tracking-wider text-black" 
-   style="font-family: 'Playfair Display', serif;">
-   Paridhaan <span class="gold-accent">Creation</span>
-</a>
-                
-                <div class="hidden md:flex items-center space-x-8 text-lg font-medium">
-                    <a href="#collections" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Our Collections</a>
-                    <a href="https://share.google/D17PSeMLZ7XBuczJA" target="_blank" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Rate us on Google</a>
-                    <a href="#about" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">About Us</a>
-                    
-                    <a href="#socialmedia" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Social Media</a>
-                    <a href="#testimonials" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Testimonials</a>
-                   
-                    <a href="#contact" class="hover:text-gold-accent transition-colors duration-300 text-gray-700">Contact</a>
-                    
-
-
-                    <div class="flex items-center space-x-4">
-                        <div class="relative">
-                            <input type="text" v-model="searchTerm" @input="searchProducts" placeholder="Search..." class="p-2 pl-10 rounded-full shadow-inner focus:outline-none focus:ring-2 focus:ring-gold-accent transition-shadow bg-gray-100 text-gray-800 placeholder-gray-500 border border-gray-300">
-                            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"></i>
-                        </div>
-                        <div @click="openCartModal" class="relative cursor-pointer hover:text-gold-accent transition-colors text-gray-700">
-                            <i class="fas fa-shopping-cart fa-lg"></i>
-                            <span v-if="cartItemsCount > 0" class="absolute -top-2 -right-2 bg-gold-accent text-white rounded-full text-xs font-bold w-5 h-5 flex items-center justify-center">{{ cartItemsCount }}</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex items-center space-x-4 md:hidden">
-                    <div @click="openCartModal" class="relative cursor-pointer hover:text-gold-accent transition-colors text-gray-700">
-                        <i class="fas fa-shopping-cart fa-lg"></i>
-                        <span v-if="cartItemsCount > 0" class="absolute -top-2 -right-2 bg-gold-accent text-white rounded-full text-xs font-bold w-5 h-5 flex items-center justify-center">{{ cartItemsCount }}</span>
-                    </div>
-                    <button id="mobile-menu-button" class="text-gray-700 hover:text-gold-accent focus:outline-none">
-                        <i class="fas fa-bars fa-lg"></i>
-                    </button>
-                </div>
-            </div>
-        </header>
-
-        <div id="mobile-menu-overlay" class="mobile-menu fixed top-0 right-0 w-full h-full bg-white/95 z-50 flex flex-col justify-center items-center backdrop-blur-lg md:hidden">
-            <button id="close-menu-button" class="absolute top-8 right-8 focus:outline-none text-gray-800 hover:text-gray-600">
-                <i class="fas fa-times fa-2x"></i>
-            </button>
-            <div class="flex flex-col space-y-12 text-3xl font-bold text-center">
-                <a href="#collections" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Our Collection</a>
-                <a href="https://share.google/D17PSeMLZ7XBuczJA" target="_blank" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Rate us on Google</a>
-                <a href="#about" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">About Us</a>
-                <a href="#socialmedia" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Social Media</a>
-                <a href="#testimonials" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Testimonials</a>
-
-                <a href="#contact" class="hover:text-gold-accent transition-colors duration-300 text-gray-600" onclick="closeMenu()">Contact</a>
 
 
 
 
-            </div>
-        </div>
-
-        <main class="flex-grow">
-  <section id="hero-carousel" class="relative min-h-screen flex items-center justify-center text-center p-8 md:p-16 overflow-hidden">
-    <!-- Dynamic images will be injected here -->
-    <div id="carousel-track" class="absolute inset-0 w-full h-full z-0"></div>
-
-    <!-- Dark overlay -->
-    <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
-
-    <!-- Text & CTA -->
-    <div class="relative z-20 max-w-6xl">
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-tight tracking-tighter mb-6">
-        The Pinnacle of Royal Elegance from the holy city of Varanasi.
-      </h1>
-      <p class="text-2xl md:text-3xl font-light text-gray-100 mb-12">
-        Woven with tradition, worn by royalty.
-      </p>
-      <a href="https://chat.whatsapp.com/B4ysLHbIdRZ6UakK2cKqs6"
-         target="_blank"
-         class="bg-white text-gold-accent font-bold text-xl py-4 px-12 rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl inline-block border-2"
-         style="border-color: var(--gold-accent);">
-         Join Our Whatsapp Group
-      </a>
-
-      <!-- Carousel dots -->
-      <div id="carousel-dots" class="flex justify-center mt-8 space-x-2"></div>
-    </div>
-  </section>
-</main>
 
 
 <!-- 🟨 Sticky Marquee Bar -->
