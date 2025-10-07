@@ -602,129 +602,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 
-<div id="loader">
-    <div class="logo-container">
-        <i class="fa-solid fa-indian-rupee-sign rupee-symbol"></i>
-        
-        <h1 class="brand-name">Paridhaan Creation</h1>
-    </div>
-</div>
-
-<div id="mainContent" class="hidden">
-   
-</div>
-
-<style>
-/* --- Font Links (Combined for clarity) --- */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
-
-/* --- Color Variables from the Source --- */
-:root {
-    --brand-gold: #c39a3f; /* Antique Gold */
-    --main-bg: #f5f5f5;    /* Near-white background */
-    --text-color: #333;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--main-bg);
-    color: var(--text-color);
-    overflow: hidden; /* Prevent scroll during load */
-    margin: 0;
-    padding: 0;
-}
-
-/* --- Loader Styles (Copied Exactly) --- */
-#loader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(--main-bg);
-    z-index: 9999;
-    transition: opacity 0.5s ease-in-out; /* Adjusted transition for simple JS */
-    opacity: 1;
-}
-
-.loader-hidden {
-    opacity: 0 !important;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.logo-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    /* The original animation to make the logo appear elegantly */
-    opacity: 0; 
-    transform: translateY(20px);
-    animation: fadeInAndSlideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}
-
-.rupee-symbol {
-    font-size: 5rem;
-    color: var(--brand-gold);
-    animation: pulse-and-glow 1s infinite ease-in-out;
-    filter: drop-shadow(0 0 8px rgba(195, 154, 63, 0.7));
-    margin-bottom: 0.5rem;
-}
-
-.brand-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.5rem; /* ~40px - perfect size */
-    font-weight: 600;
-    letter-spacing: 0.2rem;
-    text-transform: uppercase;
-    color: #222; /* Dark, but not harsh black */
-}
-
-/* --- Animations (Copied Exactly) --- */
-@keyframes pulse-and-glow {
-    0% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(195, 154, 63, 0.7)); }
-    50% { transform: scale(1.05); filter: drop-shadow(0 0 15px rgba(195, 154, 63, 1)); }
-    100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(195, 154, 63, 0.7)); }
-}
-
-@keyframes fadeInAndSlideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const loader = document.getElementById('loader');
-    const mainContent = document.getElementById('mainContent');
-    
-    // Set duration for smooth transition
-    const visibleDuration = 1500; 
-    const fadeDuration = 500; 
-
-    // Start the timer to hide the loader after the visible duration
-    setTimeout(() => {
-        
-        // 1. Initiate the fade out effect
-        loader.style.opacity = '0';
-        
-        // 2. Wait for the CSS transition to fully complete
-        setTimeout(() => {
-            // 3. Fully hide the loader element and show main content
-            loader.classList.add('hidden');
-            mainContent.classList.remove('hidden');
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        }, fadeDuration); 
-
-    }, visibleDuration); 
-});
-</script>
 
 
 
@@ -742,9 +619,31 @@ body {
   </div>
 </section>
 
+<hr class="my-12 border-t border-light-border">
+
+
+<!-- Tailwind partner section -->
+<section aria-label="Our partner" class="py-6 bg-slate-50 border-t border-slate-100">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <a href="https://jsdl.in/DT-60RWEUBBCVG" target="_blank" rel="noopener noreferrer"
+       class="group flex items-center gap-4 p-3 sm:p-4 rounded-lg hover:shadow-lg transition-transform transform hover:-translate-y-1">
+      <div class="flex-shrink-0 bg-white p-2 rounded-md border border-slate-200">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Justdial_Logo.svg/2560px-Justdial_Logo.svg.png" alt="Justdial - Partner" class="h-10 w-auto">
+      </div>
+      <div>
+        <p class="text-xs text-slate-500">Proudly partnered with Justdial.com</p>
+        <h3 class="text-sm sm:text-base font-semibold text-slate-900">Official Verified Seller</h3>
+      </div>
+      <svg class="ml-auto h-5 w-5 text-slate-400 group-hover:text-slate-600" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M14 3h7v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 14L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M21 21H3V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</section>
 
             
-<hr class="my-12 border-t border-light-border">
 
           <!-- Elfsight Website Translator | Untitled Website Translator -->
 <script src="https://elfsightcdn.com/platform.js" async></script>
