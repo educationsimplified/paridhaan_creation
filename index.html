@@ -2,6 +2,7 @@
 
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -401,8 +402,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             --light-bg: #fdfaf6; /* A soft, warm off-white, like parchment */
             --light-text: #2c2f33; /* Deep charcoal for elegant contrast */
             --light-card-bg: #ffffff; /* Clean white for product cards */
-            --light-border: #ece3d3; /* A muted beige for borders */
-            --gold-accent: #b48554; /* A sophisticated, vintage gold */
+            --light-border: #F5BD02; /* A muted beige for borders */
+            --gold-accent: #9B1C31; /* A sophisticated, vintage RED */
         }
         
         /* Base styles */
@@ -1124,19 +1125,20 @@ document.addEventListener('DOMContentLoaded', () => {
         id="copy-share-button"
         class="
             flex items-center justify-center
-            px-8 py-4 /* Larger size for a substantial, luxury feel */
-            text-lg font-light tracking-widest /* Thin font, wide tracking for elegance */
-            rounded-md /* Subtle, refined corner radius */
+            px-10 py-4 /* Slightly more width/padding for grandeur */
+            text-xl font-serif font-bold tracking-widest /* Serif font, bold for traditional strength */
+            rounded-none /* Square edges for a more traditional look */
+            border-4 border-amber-400 /* Thick gold border for opulence */
             transition duration-300 ease-in-out transform
-            focus:outline-none focus:ring-4 focus:ring-amber-800/60 /* Deep gold focus ring */
+            focus:outline-none focus:ring-4 focus:ring-amber-200/60 /* Lighter gold focus ring */
             
             w-full max-w-sm md:max-w-md lg:max-w-lg
             
-            /* High-End Luxury Dark Mode Styles */
-            bg-gray-900 text-amber-300 border border-amber-900 /* Dark background, subtle gold text/border */
-            shadow-2xl shadow-gray-900/50 hover:shadow-gray-800/70 /* Deep, subtle shadow for floating effect */
-            hover:bg-gray-800 hover:text-amber-200 /* Very subtle hover shift */
-            active:scale-[0.99] /* Minimal press-down effect */
+            /* Royal Red & Gold Traditional Styles */
+            bg-red-900 text-amber-100 /* Deep, regal red background with light gold text */
+            shadow-xl shadow-red-900/50 hover:shadow-red-800/70 /* Rich, subtle shadow */
+            hover:bg-red-800 hover:text-amber-50 /* Slight color change on hover */
+            active:scale-[0.98] /* Gentle press-down effect */
         "
         onclick="copyCatalogLink()"
     >
@@ -1149,35 +1151,36 @@ document.addEventListener('DOMContentLoaded', () => {
 </section>
 
 
-<section id="collections" class="w-full py-4 md:py-8">
+<section id="collections" class="w-full py-8 md:py-12 bg-amber-50/50 /* Light Royal Background */">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        
         <div class="my-6 block sm:block md:hidden relative">
             <input
                 type="text"
                 v-model.trim="searchTerm"
                 @input="searchProducts"
-                placeholder="Search products..."
-                class="w-full p-2 pl-10 rounded-full shadow-inner focus:outline-none focus:ring-2 focus:ring-amber-500 transition-shadow z-20 relative bg-gray-100 text-gray-800 placeholder-gray-500 border border-gray-300"
+                placeholder="Search Banarasi Sarees..."
+                class="w-full p-3 pl-10 rounded-full shadow-lg focus:outline-none focus:ring-4 focus:ring-amber-500 transition-shadow z-20 relative bg-white text-red-900 placeholder-amber-900/70 border-2 border-amber-400 font-serif"
             >
-            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-30 text-gray-500"></i>
+            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none z-30 text-red-900"></i>
         </div>
 
         <section class="my-6" id="categories">
-            <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-6 text-stone-900" style="font-family: 'Playfair Display', serif;">
+            <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-6 text-red-900 /* Consistent Royal Red */" style="font-family: 'Playfair Display', serif;">
                 Our Exquisite Collections
             </h2>
-            <p class="text-center text-xl text-gray-500 mb-12 italic tracking-wide">
+            <p class="text-center text-xl text-amber-900 mb-12 italic tracking-wider font-serif">
                 Discover our collection of woven traditions, worn by royalty.
             </p>
 
-            <div class="flex flex-wrap gap-3 justify-center mb-16">
+            <div class="flex flex-wrap gap-4 justify-center mb-16 border-b-2 border-amber-400 pb-4">
                 <button
                     @click="filterByCategory('All')"
                     :class="{
-                        'bg-stone-900 text-white shadow-xl ring-2 ring-amber-500': selectedCategory === 'All',
-                        'bg-gray-100 text-stone-700 hover:bg-stone-200': selectedCategory !== 'All'
+                        'bg-red-900 text-amber-100 shadow-xl ring-2 ring-amber-500 border-2 border-amber-400': selectedCategory === 'All',
+                        'bg-amber-50 text-red-900 hover:bg-amber-100 border-2 border-amber-300': selectedCategory !== 'All'
                     }"
-                    class="py-2 px-6 rounded-full font-serif font-medium text-sm tracking-wider uppercase transition-all duration-300"
+                    class="py-2.5 px-8 rounded-md font-serif font-bold text-sm tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                     All Collections
                 </button>
@@ -1187,10 +1190,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     :key="category"
                     @click="filterByCategory(category)"
                     :class="{
-                        'bg-stone-900 text-white shadow-xl ring-2 ring-amber-500': selectedCategory === category,
-                        'bg-gray-100 text-stone-700 hover:bg-stone-200': selectedCategory !== category
+                        'bg-red-900 text-amber-100 shadow-xl ring-2 ring-amber-500 border-2 border-amber-400': selectedCategory === category,
+                        'bg-amber-50 text-red-900 hover:bg-amber-100 border-2 border-amber-300': selectedCategory !== category
                     }"
-                    class="py-2 px-6 rounded-full font-serif font-medium text-sm tracking-wider uppercase transition-all duration-300"
+                    class="py-2.5 px-8 rounded-md font-serif font-bold text-sm tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-lg"
                 >
                     {{ category }}
                 </button>
@@ -1206,7 +1209,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     v-for="product in filteredProducts"
                     :key="product.ID"
                     @click="openProductModal(product)"
-                    class="group product-card relative rounded-none shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer overflow-hidden transform hover:-translate-y-2 bg-white border border-gray-100"
+                    class="group product-card relative rounded-none /* TRADITIONAL: Square Edges */ 
+                           shadow-xl shadow-amber-900/10 hover:shadow-2xl hover:shadow-red-900/30 /* Premium Hover Shadow */
+                           transition-all duration-500 cursor-pointer overflow-hidden transform hover:-translate-y-2 
+                           bg-amber-50 /* Light Gold/Cream Background */
+                           border-2 border-amber-300 hover:border-red-900 /* GOLD ZARI Border Change */"
                 >
                     <div class="relative w-full aspect-[3/4] overflow-hidden">
                         <img
@@ -1215,35 +1222,35 @@ document.addEventListener('DOMContentLoaded', () => {
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             @error="event => event.target.src='https://placehold.co/600x800/fdfaf6/b48554?text=IMAGE+UNAVAILABLE'"
                         >
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-red-900/20 to-transparent"></div>
                     </div>
 
                     <div class="p-4 pt-3 flex flex-col justify-between h-auto">
                         <h4
-                            class="font-serif text-xl font-bold text-stone-900 truncate mb-1"
+                            class="font-serif text-xl font-extrabold text-red-900 /* ROYAL RED Heading */ truncate mb-1 group-hover:text-amber-700 transition-colors"
                             :title="product.Name"
                         >
                             {{ product.Name }}
                         </h4>
                         
                         <p
-                            class="text-sm mb-3 text-gray-500 line-clamp-2 italic"
+                            class="text-sm mb-3 text-amber-900/80 line-clamp-2 italic"
                             :title="product.Description"
                         >
-                            {{ product.Description || 'Elegantly tailored for the confident woman.' }}
+                            {{ product.Description || 'Exquisitely hand-woven Banarasi silk saree.' }}
                         </p>
 
-                        <div class="flex justify-between items-center pt-2 border-t border-gray-100">
-                            <span class="text-2xl font-bold text-amber-500">
+                        <div class="flex justify-between items-center pt-2 border-t-2 border-amber-300/50 /* Gold Divider */">
+                            <span class="text-3xl font-extrabold text-red-800 /* ROYAL RED Price */">
                                 ₹{{ product.SellingPrice || 'N/A' }}
                             </span>
                             
                             <span
                                 :class="{
-                                    'bg-stone-800 text-white': isAvailable(product),
-                                    'bg-red-500 text-white': !isAvailable(product)
+                                    'bg-red-900 text-amber-100': isAvailable(product), /* IN STOCK: Royal Red & Gold */
+                                    'bg-gray-400 text-stone-900': !isAvailable(product) /* SOLD OUT: Neutral (non-royal) */
                                 }"
-                                class="font-medium text-xs px-2 py-1 tracking-wider uppercase"
+                                class="font-medium text-xs px-2 py-1 tracking-wider uppercase border border-amber-400"
                                 style="border-radius: 4px;"
                             >
                                 {{ isAvailable(product) ? 'In Stock' : 'Sold Out' }}
@@ -1253,13 +1260,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
 
-            <div v-else class="text-center col-span-full text-gray-600">
-                No products match your selection. Please try a different category.
+            <div v-else class="text-center col-span-full text-red-900 font-serif text-xl">
+                No products match your selection. Please try a different category or search term.
             </div>
         </section>
     </div>
 </section>
-
 
 
 
@@ -1320,7 +1326,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <section id="about" class="w-full py-24">
     <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-3 text-stone-900" style="font-family: 'Playfair Display', serif;">
+        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-3 text-stone-900" style="font-family: 'Playfair Display', serif; color: #9B1C31;" >
             Welcome to Paridhaan Creation
         </h2>
         <h3 class="text-2xl font-semibold text-center text-amber-600 mb-16 italic tracking-wider">
@@ -1372,9 +1378,23 @@ document.addEventListener('DOMContentLoaded', () => {
     and the timeless spirit of Banaras.
 </p>
                 
-                <a href="https://wa.link/ygdo3d" target="_blank" class="inline-block mt-8 py-3 px-6 text-sm font-semibold uppercase tracking-wider bg-stone-900 text-white border-2 border-stone-900 hover:bg-amber-600 hover:border-amber-600 transition duration-300 shadow-lg">
-                    Know More About Us →
-                </a>
+ <a href="https://wa.link/ygdo3d" target="_blank" class="
+    inline-block mt-8 py-4 px-8 /* Larger size for presence */
+    text-lg font-serif font-bold uppercase tracking-widest /* Bold, traditional font style */
+    
+    /* Royal Red and Gold Zari Styling */
+    bg-red-900 text-amber-100 /* Deep Red background, Light Gold text */
+    border-4 border-amber-400 /* Thick, prominent Gold border */
+    rounded-none /* Square edges for a classic look */
+
+    transition duration-300 shadow-xl shadow-red-900/50
+    
+    /* Hover Effect: Darker Red, Brighter Gold */
+    hover:bg-red-800 hover:text-amber-50 hover:shadow-red-800/70
+    hover:border-amber-300
+">
+    Know More About Us →
+</a>
 
 
 <div class="w-full flex flex-col items-center">
@@ -1433,55 +1453,113 @@ document.addEventListener('DOMContentLoaded', () => {
 <section id="socialmedia" class="w-full py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
+        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif; color: #9B1C31;">
             Connect With Us
         </h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10"> 
+<div class="grid grid-cols-1 md:grid-cols-3 gap-10"> 
             
-            <div class="p-6 rounded-xl bg-white border border-gray-200 shadow-lg 
-                            transition-all duration-500 ease-in-out 
-                            hover:scale-[1.03] hover:shadow-2xl hover:border-amber-500"> 
-                
-                <h3 class="text-2xl font-serif font-bold mb-4 text-stone-900 tracking-wide">
-                    Instagram Feed
-                </h3> 
-                <iframe src="https://www.instagram.com/paridhaan_creation/embed" 
-                    class="w-full h-80 rounded-lg border border-gray-300" 
-                    frameborder="0"> 
-                </iframe> 
-            </div> 
-            
-            <div class="p-6 rounded-xl bg-white border border-gray-200 shadow-lg 
-                            transition-all duration-500 ease-in-out 
-                            hover:scale-[1.03] hover:shadow-2xl hover:border-amber-500"> 
-                
-                <h3 class="text-2xl font-serif font-bold mb-4 text-stone-900 tracking-wide">
-                    Facebook Community
-                </h3> 
-                <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61572113506286&tabs=timeline&width=340&height=500" 
-                    class="w-full h-80 rounded-lg border border-gray-300" 
-                    frameborder="0" 
-                    scrolling="no"> 
-                </iframe> 
-            </div>
-
-            <div class="p-6 rounded-xl bg-white border border-gray-200 shadow-lg 
-                            transition-all duration-500 ease-in-out 
-                            hover:scale-[1.03] hover:shadow-2xl hover:border-amber-500">
-                
-                <h3 class="text-2xl font-serif font-bold mb-4 text-stone-900 tracking-wide">Our Store</h3>
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.12345678901!2d83.0103158!3d25.33079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2f4104826939%3A0xed51fd336fd61b24!2sJ21%2F197-A%2C%20Rasoolpura%2C%20Alaipura%2C%20Jaitpura%2C%20Varanasi%2C%20Uttar%20Pradesh%20221002!5e0!3m2!1sen!2sin!4v1694950000000" 
-                    class="w-full h-80 rounded-lg border border-gray-300" 
-                    frameborder="0"
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
+    <div class="
+        p-8 rounded-lg /* Slightly rounded for a softer premium look */
+        bg-amber-50 border border-amber-200 /* Soft cream/gold background with a delicate gold border */
+        shadow-xl shadow-amber-900/10 /* Subtle, rich shadow */
+        relative overflow-hidden /* For the zoom effect to work nicely */
+        transition-all duration-700 ease-in-out /* Slower, more elegant transitions */
+        group /* Allows for group-hover effects on children */
+        
+        /* Royal Red & Golden Thread details on hover */
+        hover:border-red-900 hover:shadow-red-900/20 /* Red border and shadow on hover */
+    "> 
+        
+        <h3 class="
+            text-3xl font-serif font-extrabold mb-4 
+            text-red-900 /* Royal Red heading text */
+            tracking-wide /* Traditional, legible tracking */
+            group-hover:text-amber-700 /* Gold text on hover for a royal contrast */
+            transition-colors duration-500 ease-in-out
+        ">
+            Instagram Feed
+        </h3> 
+        <div class="overflow-hidden rounded-md border border-amber-300 group-hover:border-red-800 transition-all duration-500">
+            <iframe src="https://www.instagram.com/paridhaan_creation/embed" 
+                class="
+                    w-full h-80 rounded-md 
+                    transform group-hover:scale-110 /* Zoom-in effect on iframe */
+                    transition-transform duration-700 ease-in-out
+                " 
+                frameborder="0"> 
+            </iframe> 
         </div>
+    </div> 
+    
+    <div class="
+        p-8 rounded-lg 
+        bg-amber-50 border border-amber-200 
+        shadow-xl shadow-amber-900/10 
+        relative overflow-hidden 
+        transition-all duration-700 ease-in-out 
+        group 
+        hover:border-red-900 hover:shadow-red-900/20
+    "> 
+        
+        <h3 class="
+            text-3xl font-serif font-extrabold mb-4 
+            text-red-900 
+            tracking-wide 
+            group-hover:text-amber-700 
+            transition-colors duration-500 ease-in-out
+        ">
+            Facebook Community
+        </h3> 
+        <div class="overflow-hidden rounded-md border border-amber-300 group-hover:border-red-800 transition-all duration-500">
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https://www.facebook.com/profile.php?id=61572113506286&tabs=timeline&width=340&height=500" 
+                class="
+                    w-full h-80 rounded-md 
+                    transform group-hover:scale-110 /* Zoom-in effect on iframe */
+                    transition-transform duration-700 ease-in-out
+                " 
+                frameborder="0" 
+                scrolling="no"> 
+            </iframe> 
+        </div>
+    </div>
+
+    <div class="
+        p-8 rounded-lg 
+        bg-amber-50 border border-amber-200 
+        shadow-xl shadow-amber-900/10 
+        relative overflow-hidden 
+        transition-all duration-700 ease-in-out 
+        group 
+        hover:border-red-900 hover:shadow-red-900/20
+    ">
+        
+        <h3 class="
+            text-3xl font-serif font-extrabold mb-4 
+            text-red-900 
+            tracking-wide 
+            group-hover:text-amber-700 
+            transition-colors duration-500 ease-in-out
+        ">
+            Our Store
+        </h3>
+        <div class="overflow-hidden rounded-md border border-amber-300 group-hover:border-red-800 transition-all duration-500">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.12345678901!2d83.0103158!3d25.33079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2f4104826939%3A0xed51fd336fd61b24!2sJ21%2F197-A%2C%20Rasoolpura%2C%20Alaipura%2C%20Jaitpura%2C%20Varanasi%2C%20Uttar%20Pradesh%20221002!5e0!3m2!1sen!2sin!4v1694950000000" 
+                class="
+                    w-full h-80 rounded-md 
+                    transform group-hover:scale-110 /* Zoom-in effect on iframe */
+                    transition-transform duration-700 ease-in-out
+                " 
+                frameborder="0"
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</div>
     </div>
 </section>
 
@@ -1490,13 +1568,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <main class="flex-grow w-full px-4 py-16 md:py-24">
     <div class="container mx-auto max-w-6xl">
-        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-4 text-stone-900" style="font-family: 'Playfair Display', serif;">
-            PARIDHAAN CREATION BLOG
-        </h2>
-<p class="text-center text-gray-700 max-w-4xl mx-auto mb-16 text-sm sm:text-lg tracking-wide">
+<h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-4 text-red-900 /* ROYAL RED */" style="font-family: 'Playfair Display', serif;">
+    PARIDHAAN CREATION BLOG
+</h2>
+<p class="text-center text-amber-800 /* GOLDEN THREAD SUBTLETY */ max-w-4xl mx-auto mb-16 text-sm sm:text-lg tracking-wide">
     Welcome to the <b>Paridhaan Creation Journal</b> —your ultimate resource for timeless elegance and cultural heritage. Delve into the inspiring narratives of <b>Banarasi craftsmanship</b>, uncover expert guidance on traditional styling, and enjoy behind-the-scenes insights into our artisan-driven creation process. Discover the perfect fusion of tradition, trend, and the exquisite art of the drape with Paridhaan Creation.
 </p>
-
 
 
 <div id="featured" class="mb-20"></div>
@@ -1525,74 +1602,92 @@ document.addEventListener('DOMContentLoaded', () => {
             featuredImg = featured.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
         }
 
-        // Inject Featured Post HTML
-        document.getElementById("featured").innerHTML = `
-            <div class="flex flex-col md:flex-row gap-0 md:gap-0 items-center 
-                            bg-white rounded-xl shadow-xl overflow-hidden 
-                            border border-gray-100 transform hover:scale-[1.01] transition-all duration-500 ease-in-out">
-                <a href="${featuredLink}" target="_blank" class="block w-full md:w-1/2 h-80 md:h-full aspect-square">
-                    <img src="${featuredImg}" alt="${featuredTitle}" class="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105">
-                </a>
-                
-                <div class="p-6 md:p-10 w-full md:w-1/2">
-                    <p class="text-xs uppercase tracking-[0.3em] text-amber-600 font-semibold mb-2 border-b border-amber-600/50 pb-1 w-fit">Featured Insight</p>
-                    <h2 class="text-2xl sm:text-4xl font-extrabold mb-4 text-stone-900" style="font-family: 'Playfair Display', serif;">
-                        <a href="${featuredLink}" target="_blank" class="hover:text-amber-600 transition-colors">${featuredTitle}</a>
-                    </h2>
-                    <div class="text-xs sm:text-sm text-gray-500 mb-6 font-medium">By **${featuredAuthor}** • ${featuredDate}</div>
-                    <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-6">${featuredSnippet}</p>
-                    <a href="${featuredLink}" target="_blank" class="inline-block py-2 px-4 text-sm font-semibold uppercase tracking-wider bg-stone-900 text-white hover:bg-amber-600 transition duration-300 shadow-md">
-                        Read Full Article →
-                    </a>
-                </div>
-            </div>
-        `;
+// Inject Featured Post HTML
+document.getElementById("featured").innerHTML = `
+    <div class="flex flex-col md:flex-row gap-0 md:gap-0 items-center 
+        bg-white rounded-xl shadow-2xl overflow-hidden 
+        border-4 border-amber-400 /* Premium Gold Border */
+        transform hover:scale-[1.01] transition-all duration-500 ease-in-out hover:shadow-red-900/40">
+        <a href="${featuredLink}" target="_blank" class="block w-full md:w-1/2 h-80 md:h-full aspect-square">
+            <img src="${featuredImg}" alt="${featuredTitle}" class="w-full h-full object-cover transform transition-transform duration-700 hover:scale-105">
+        </a>
+        
+        <div class="p-6 md:p-10 w-full md:w-1/2">
+            <p class="text-xs uppercase tracking-[0.3em] text-red-900 /* Royal Red Accent */ font-extrabold mb-2 border-b border-amber-500 /* Gold Underline */ pb-1 w-fit">Featured Insight</p>
+            <h2 class="text-2xl sm:text-4xl font-extrabold mb-4 text-red-900 /* Royal Red Heading */" style="font-family: 'Playfair Display', serif;">
+                <a href="${featuredLink}" target="_blank" class="hover:text-amber-700 /* Gold Hover */ transition-colors">${featuredTitle}</a>
+            </h2>
+            <div class="text-xs sm:text-sm text-amber-800 /* Goldish Grey Metadata */ mb-6 font-medium">By **${featuredAuthor}** • ${featuredDate}</div>
+            <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-6">${featuredSnippet}</p>
+            <a href="${featuredLink}" target="_blank" class="inline-block py-3 px-6 text-sm font-semibold uppercase tracking-wider bg-red-900 /* Royal Red Button */ text-amber-100 /* Gold Text */ hover:bg-red-800 hover:text-amber-50 transition duration-300 shadow-xl shadow-red-900/40">
+                Read Full Article →
+            </a>
+        </div>
+    </div>
+`;
 
-        // --- Grid posts (next 3) ---
-        const container = document.getElementById("posts");
-        entries.slice(1, 4).forEach(entry => {
-            const title = entry.title.$t;
-            const link = entry.link.find(l => l.rel === "alternate").href;
-            const date = new Date(entry.published.$t).toDateString();
-            const author = entry.author[0].name.$t;
-            const snippet = entry.summary ? entry.summary.$t.substring(0, 120) + '...' : "Click to read the full story on heritage and elegance.";
+// --- Grid posts (next 3) ---
+const container = document.getElementById("posts");
+entries.slice(1, 4).forEach(entry => {
+    const title = entry.title.$t;
+    const link = entry.link.find(l => l.rel === "alternate").href;
+    const date = new Date(entry.published.$t).toDateString();
+    const author = entry.author[0].name.$t;
+    const snippet = entry.summary ? entry.summary.$t.substring(0, 120) + '...' : "Click to read the full story on heritage and elegance.";
 
-            let image = "";
-            if (entry.media$thumbnail) {
-                image = entry.media$thumbnail.url.replace("s72-c", "s800"); 
-            } else if (entry.content.$t.match(/<img[^>]+src="([^">]+)/)) {
-                image = entry.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
-            }
-
-            const postEl = document.createElement("div");
-            postEl.className = "bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-in-out";
-            postEl.innerHTML = `
-                <a href="${link}" target="_blank" class="block h-52 overflow-hidden">
-                    <img src="${image}" alt="${title}" class="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110">
-                </a>
-                <div class="p-6">
-                    <h3 class="text-xl font-extrabold mb-2 text-stone-900" style="font-family: 'Playfair Display', serif;">
-                        <a href="${link}" target="_blank" class="hover:text-amber-600 transition-colors">${title}</a>
-                    </h3>
-                    <div class="text-xs text-gray-500 mb-4 font-medium">By **${author}** • ${date}</div>
-                    <p class="text-sm text-gray-700 leading-relaxed mb-4">${snippet}</p>
-                    <a href="${link}" target="_blank" class="text-sm font-semibold text-amber-600 hover:text-stone-900 transition-colors duration-300">Read More →</a>
-                </div>
-            `;
-            container.appendChild(postEl);
-        });
+    let image = "";
+    if (entry.media$thumbnail) {
+        image = entry.media$thumbnail.url.replace("s72-c", "s800"); 
+    } else if (entry.content.$t.match(/<img[^>]+src="([^">]+)/)) {
+        image = entry.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
     }
+
+    const postEl = document.createElement("div");
+    postEl.className = "bg-white rounded-xl shadow-xl overflow-hidden border-2 border-amber-300 /* Subtle Gold Border */ hover:shadow-2xl hover:border-red-900 hover:-translate-y-1 transition-all duration-300 ease-in-out";
+    postEl.innerHTML = `
+        <a href="${link}" target="_blank" class="block h-52 overflow-hidden">
+            <img src="${image}" alt="${title}" class="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110">
+        </a>
+        <div class="p-6">
+            <h3 class="text-xl font-extrabold mb-2 text-red-900 /* Royal Red Heading */" style="font-family: 'Playfair Display', serif;">
+                <a href="${link}" target="_blank" class="hover:text-amber-700 /* Gold Hover */ transition-colors">${title}</a>
+            </h3>
+            <div class="text-xs text-amber-800 /* Goldish Grey Metadata */ mb-4 font-medium">By **${author}** • ${date}</div>
+            <p class="text-sm text-gray-700 leading-relaxed mb-4">${snippet}</p>
+            <a href="${link}" target="_blank" class="text-sm font-semibold text-red-800 /* Royal Red Link */ hover:text-amber-700 /* Gold Hover */ transition-colors duration-300">Read More →</a>
+        </div>
+    `;
+    container.appendChild(postEl);
+});    }
 </script>
 
 <script src="https://paridhaancreationblog.blogspot.com/feeds/posts/default?alt=json-in-script&callback=showBlogFeed&max-results=4"></script>
 
-<div class="mt-16 text-center">
-    <a href="blog.html" target="_blank"
-        class="relative inline-flex items-center px-8 py-3 text-lg font-semibold uppercase tracking-wider bg-stone-900 text-white rounded-none shadow-md transition-all duration-300 hover:bg-amber-600 hover:shadow-xl">
-        Visit the Full Blog Page
+
+
+<div class="flex justify-center w-full">
+    <a href="blog.html" target="_blank" class="
+        inline-block mt-8 py-4 px-8 /* Larger size for presence */
+        text-lg font-serif font-bold uppercase tracking-widest /* Bold, traditional font style */
+        
+        /* Royal Red and Gold Zari Styling */
+        bg-red-900 text-amber-100 /* Deep Red background, Light Gold text */
+        border-4 border-amber-400 /* Thick, prominent Gold border */
+        rounded-none /* Square edges for a classic look */
+
+        transition duration-300 shadow-xl shadow-red-900/50
+        
+        /* Hover Effect: Darker Red, Brighter Gold */
+        hover:bg-red-800 hover:text-amber-50 hover:shadow-red-800/70
+        hover:border-amber-300
+    ">
+        Visit the Full Blog Page 
         <span class="ml-3 inline-block animate-move-right">➝</span>
     </a>
 </div>
+
+
+
 
 <style>
     /* Arrow smooth right animation */
@@ -1623,13 +1718,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <hr class="my-12 border-t border-light-border">
             
-<section class="w-full overflow-hidden bg-[#B6824E] border-y-2 border-gold-accent py-2">
-    <div class="inline-block whitespace-nowrap font-medium text-white text-sm animate-marquee-ltr">
-        J 21/197 A, near Jaitpura, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttarpradesh - PARIDHAAN CREATION |
-        FREE HOME DELIVERY ON THE PURCHASE ABOVE 10K |
-        "We bring our products to your home. Browse, select, and buy the saree you adore." |
-        CONTACT US: +91 94515 35206
-    </div>
+<!-- 🟨 Sticky Marquee Bar -->
+<section class="w-full bg-gold-accent text-white py-2 text-center text-sm font-medium sticky top-0 z-40 overflow-hidden border-y border-gold-accent">
+  <div class="inline-block whitespace-nowrap animate-marquee-ltr">
+    <span class="px-2">PARIDHAAN CREATION. - J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</span>
+    <span class="px-2 border-l border-white">EXQUISITE BANARASI SAREES & DRESS MATERIALS</span>
+    <span class="px-2 border-l border-white">BOOK A PRIVATE CONSULTATION FOR INQUIRIES OR PRIVATE VIEWING</span>
+      <span class="px-2 border-l border-white">CONTACT: +91 94515 35206</span>
+  </div>
 </section>
 
 
@@ -1637,7 +1733,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <section class="bg-stone-100 py-16 sm:py-24" id="contact">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif;">
+        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-stone-900" style="font-family: 'Playfair Display', serif; color: #9B1C31;">
             Contact Us
         </h2>
         
@@ -1689,16 +1785,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-<section class="bg-primary-light py-10">
-    <div class="mx-auto max-w-md px-4 sm:px-6 lg:px-8 text-center">
+<section class="bg-amber-50 py-16 border-y-4 border-amber-400">
+    <div class="mx-auto max-w-xl px-4 sm:px-6 lg:px-8 text-center">
         
-        <h2 class="text-3xl font-extrabold text-stone-900 mb-6">
-            Subscribe to our Newsletter
+        <h2 class="text-4xl sm:text-5xl font-serif font-extrabold text-red-900 mb-4 tracking-wider">
+            Join Our Royal Circle
         </h2>
+        
+        <p class="text-lg text-amber-900 mb-8 font-serif">
+            Receive exclusive Banarasi updates and artisan insights directly via WhatsApp.
+        </p>
 
-        <form id="whatsapp-subscribe-form" class="flex flex-col sm:flex-row gap-2 justify-center">
+        <form id="whatsapp-subscribe-form" class="
+            shadow-2xl shadow-red-900/30 p-6 bg-white rounded-lg border-4 border-amber-400 
+            grid grid-cols-1 sm:grid-cols-5 gap-3 items-stretch /* items-stretch ensures elements fill height */
+        ">
             
-            <select id="country-code" class="border border-gray-300 p-3 rounded-lg text-lg focus:ring-amber-500 focus:border-amber-500 w-full sm:w-auto" required>
+            <select id="country-code" class="
+                sm:col-span-2 
+                border-2 border-amber-600 p-3 text-lg rounded-md 
+                focus:ring-red-900 focus:border-red-900 text-red-900 font-medium
+                transition duration-300 h-full /* Ensure full height for perfect alignment */
+            " required>
                 <option value="+91" selected>🇮🇳 +91 (India)</option>
                 <option value="+1">🇺🇸 +1 (USA)</option>
                 <option value="+44">🇬🇧 +44 (UK)</option>
@@ -1707,41 +1815,62 @@ document.addEventListener('DOMContentLoaded', () => {
             </select>
             
             <input type="tel" id="phone-number" placeholder="Enter Phone Number *" 
-                    class="border border-gray-300 p-3 rounded-lg text-lg focus:ring-amber-500 focus:border-amber-500 flex-grow" required>
+                class="
+                    sm:col-span-3 
+                    border-2 border-amber-600 p-3 text-lg rounded-md 
+                    focus:ring-red-900 focus:border-red-900 text-red-900 
+                    h-full /* Ensure full height for perfect alignment */
+                " required>
             
             <button type="submit" 
-                    class="bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors text-lg w-full sm:w-auto min-w-[120px]">
-                Submit
+                    class="
+                        sm:col-span-5 sm:mt-2 /* Button spans all columns below the inputs on desktop */
+                        bg-red-900 hover:bg-red-800 text-amber-100 font-bold 
+                        py-3 px-6 rounded-md transition-all duration-300 text-lg 
+                        shadow-lg shadow-red-900/50 border-2 border-amber-500
+                    ">
+                Connect on WhatsApp
             </button>
         </form>
         
-        <p class="text-sm text-gray-500 mt-3">
-            By clicking submit, you will be redirected to WhatsApp.
+        <p class="text-sm text-amber-900 mt-5 font-serif">
+            By clicking submit, you will be redirected to WhatsApp to receive our exclusive Banarasi updates.
         </p>
         
-    </div> </section>
+    </div> 
+</section>
 
 
 <hr class="my-12 border-t border-light-border">
 
-<footer class="bg-[#8A5E3A] text-white pt-16 pb-8 shadow-xl relative overflow-hidden" id="contact">
+<footer class="bg-[#9B1C31] text-white pt-16 pb-8 shadow-xl relative overflow-hidden" id="contact">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
 
-            <div class="col-span-1 md:col-span-2 text-center md:text-left group">
-                <img src="PARIDHAAN.png" alt="Paridhaan Creation Logo"
-                    class="w-48 mx-auto md:mx-0 mb-4 filter brightness-110 transition-transform duration-500 group-hover:scale-105">
+          <div class="col-span-1 md:col-span-2 text-center md:text-left group">
+    <img src="PARIDHAAN.png" alt="Paridhaan Creation Logo"
+        class="w-48 mx-auto md:mx-0 mb-4 filter brightness-110 transition-transform duration-500 group-hover:scale-105">
 
-                <a href="https://paridhaancreation.in"
-                    class="text-4xl font-extrabold tracking-wider text-black block mb-6 transition-colors duration-300 group-hover:text-white"
-                    style="font-family: 'Playfair Display', serif;">
-                    Paridhaan <span class="text-white">Creation</span>
-                </a>
+    <a href="https://paridhaancreation.in"
+        class="
+            text-4xl font-extrabold tracking-wider 
+            text-amber-300 /* DEFAULT: Light Gold Text for contrast on Royal Red background */
+            block mb-6 transition-colors duration-300 
+            group-hover:text-amber-50 /* HOVER: Shifts to a brighter, more brilliant Gold */
+        "
+        style="font-family: 'Playfair Display', serif;">
+        Paridhaan <span class="text-amber-100">Creation</span>
+    </a>
 
-                <p class="text-sm leading-relaxed transition-colors duration-300 group-hover:text-black">
-                    <strong class="text-white"> Paridhaan Creation...</strong> <i>Kyuki Khubsurati Hai Aapse.</i>
-                </p>
-            </div>
+    <p class="
+        text-sm leading-relaxed 
+        text-amber-100 /* DEFAULT: Very light gold/cream text for legibility */
+        transition-colors duration-300 
+        group-hover:text-amber-50 /* HOVER: Subtle shift to brighter gold/cream */
+    ">
+        <strong class="text-amber-300"> Paridhaan Creation...</strong> <i>Kyuki Khubsurati Hai Aapse.</i>
+    </p>
+</div>
             
             <div class="text-center md:text-left">
                 <h3 class="text-xl font-bold text-white mb-6">Quick Links</h3>
@@ -1842,20 +1971,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="text-center md:text-left">
                 <h3 class="text-xl font-bold text-white mb-6">Connect With Us</h3>
-                <ul class="space-y-2 text-sm mb-6">
-                    <li class="transition-colors duration-300 hover:text-amber-100">
-                        <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank" class="hover:text-amber-100">J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</a>
-                    </li>
-                    <br>
-                    <li class="transition-colors duration-300 hover:text-amber-100">
-                        <i class="fa-solid fa-phone text-[#fffde7] mr-2"></i>
-                        <a href="tel:+919451535206" class="hover:text-amber-100">+91 94515 35206</a>
-                    </li>
-                    <li class="transition-colors duration-300 hover:text-amber-100">
-                        <i class="fa-solid fa-envelope text-[#fffde7] mr-2"></i>
-                        <a href="mailto:paridhaancreationofficial@gmail.com" class="hover:text-amber-100">paridhaancreationofficial@gmail.com</a>
-                    </li>
-                </ul>
+               <ul class="space-y-2 text-sm mb-6">
+    <li class="transition-colors duration-300 hover:text-amber-100">
+        <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank" class="hover:text-amber-100">
+            J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002
+        </a>
+    </li>
+    
+    <li class="h-4"></li> <li class="transition-colors duration-300 hover:text-amber-100">
+        <i class="fa-solid fa-phone text-[#fffde7] mr-2"></i>
+        <a href="tel:+919451535206" class="hover:text-amber-100">+91 94515 35206</a>
+    </li>
+    
+    <li class="transition-colors duration-300 hover:text-amber-100">
+        <i class="fa-solid fa-envelope text-[#fffde7] mr-2"></i>
+        <a href="mailto:paridhaancreationofficial@gmail.com" class="hover:text-amber-100">paridhaancreationofficial@gmail.com</a>
+    </li>
+</ul>
                 <div class="flex justify-center md:justify-start space-x-4">
                     <a href="https://www.facebook.com/profile.php?id=61572113506286" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
                     <a href="https://www.instagram.com/paridhaan_creation/" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
@@ -1946,7 +2078,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="gold-accent">₹{{ cartTotal.toFixed(2) }}</span>
                 </div>
                 <button @click="checkout" :disabled="cartItems.length === 0" class="text-white font-bold py-3 px-6 rounded-lg transition-colors w-full mt-4" :class="{'bg-green-500 hover:bg-green-600': cartItems.length > 0, 'bg-gray-400 cursor-not-allowed': cartItems.length === 0}">
-                    Checkout
+                    Inquire Now!
                 </button>
             </div>
         </div>
@@ -2230,26 +2362,33 @@ initCarousel();
 
         Object.entries(categoryMap).forEach(([category, imageUrl]) => {
             // Updated Luxury Card Template with Centered Text and new Hover Effect
-            const card = `
-                <a href="#collections"
-                    data-category="${category}"
-                    class="group block relative rounded-lg overflow-hidden transition-all duration-500 hover:scale-[1.02] 
-                           shadow-2xl border border-gray-100 hover:shadow-amber-500/50 hover:shadow-3xl">
-                    
-                    <div class="relative w-full aspect-[4/3] bg-gray-900">
-                        <img src="${imageUrl}" alt="${category} Collection"
-                            class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100">
-                        
-                        <div class="absolute inset-0 bg-stone-900/40 transition-all duration-500 group-hover:bg-stone-900/10"></div>
-                    </div>
-                    
-                    <div class="absolute inset-0 flex items-center justify-center p-6 transition-all duration-500">
-                        <h3 class="text-4xl font-serif font-extrabold text-white text-center transition-colors duration-300 drop-shadow-lg uppercase tracking-widest leading-snug">
-                            ${category} 
-                        </h3>
-                    </div>
-                </a>
-            `;
+          const card = `
+    <a href="#collections"
+        data-category="${category}"
+        class="group block relative rounded-none /* TRADITIONAL: Square edges */ overflow-hidden transition-all duration-500 hover:scale-[1.03] /* Increased zoom for premium feel */
+            shadow-2xl shadow-red-900/40 /* ROYAL: Base Red Shadow */
+            border-4 border-amber-400 /* GOLD ZARI: Thick Gold Border */
+            hover:shadow-3xl hover:shadow-amber-500/60 /* HOVER: Brilliant Gold Shadow */">
+        
+        <div class="relative w-full aspect-[4/3] bg-red-900 /* ROYAL: Base Red color behind image */">
+            <img src="${imageUrl}" alt="${category} Collection"
+                class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 opacity-90 group-hover:opacity-100 /* Subtle opacity shift for richness */">
+            
+            <div class="absolute inset-0 bg-amber-900/40 transition-all duration-500 group-hover:bg-amber-900/10"></div>
+        </div>
+        
+        <div class="absolute inset-0 flex items-center justify-center p-6 transition-all duration-500">
+            <h3 class="text-5xl font-serif font-extrabold 
+                        text-amber-100 /* GOLD: Light Gold Text */
+                        text-center transition-colors duration-300 
+                        drop-shadow-xl drop-shadow-red-900/80 /* ROYAL: Red drop shadow for depth */
+                        uppercase tracking-widest leading-snug
+                        group-hover:text-amber-50 /* HOVER: Brighter Gold */">
+                ${category} 
+            </h3>
+        </div>
+    </a>
+`;
             grid.insertAdjacentHTML("beforeend", card);
         });
 
@@ -2392,59 +2531,71 @@ initCarousel();
 
 
 
-<!-- WhatsApp Chat Widget - Professional Sleek Version -->
 <style>
   .whatsapp-widget {
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 99999;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Playfair Display', serif; /* Changed to a royal, traditional font */
   }
+  
+  /* --- 1. Royal Button Styling --- */
   .wa-btn {
-    width: 60px;
-    height: 60px;
+    width: 65px; /* Slightly larger for a substantial feel */
+    height: 65px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #25D366, #128C7E);
+    /* Royal Red Gradient */
+    background: linear-gradient(135deg, #800000, #b30000); /* Deep Royal Red */
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+    /* Gold Shadow for Zari effect */
+    box-shadow: 0 8px 24px rgba(255, 215, 0, 0.45); /* Rich Gold Shadow */
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 3px solid #FFD700; /* Gold Zari border */
   }
-  .wa-btn:hover { transform: scale(1.05); }
+  .wa-btn:hover { transform: scale(1.1); } /* More noticeable hover */
+  
+  /* --- 2. Royal Panel Styling --- */
   .wa-panel {
     position: absolute;
-    bottom: 75px;
+    bottom: 80px;
     right: 0;
-    width: 320px;
+    width: 340px; /* Slightly wider for a more desktop feel */
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    border-radius: 12px; /* Subtle rounding */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     overflow: hidden;
     transform-origin: bottom right;
     animation: fadeIn 0.25s ease-out;
     display: none;
+    border: 1px solid #FFD700; /* Gold Panel Outline */
   }
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px) scale(0.98); }
     to { opacity: 1; transform: translateY(0) scale(1); }
   }
+  
+  /* --- 3. Royal Header Styling (The top bar) --- */
   .wa-header {
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 12px 14px;
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
+    /* Rich Red Background */
+    background: linear-gradient(135deg, #800000, #b30000); /* Deep Royal Red */
+    color: #FFD700; /* Gold text */
+    border-bottom: 2px solid #FFD700; /* Gold separator */
   }
   .wa-avatar {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     overflow: hidden;
+    border: 2px solid #FFD700; /* Gold frame for the avatar */
   }
   .wa-avatar img {
     width: 100%;
@@ -2452,16 +2603,18 @@ initCarousel();
     object-fit: cover;
   }
   .wa-name {
-    font-weight: 600;
-    font-size: 15px;
+    font-weight: 700;
+    font-size: 16px;
   }
   .wa-status {
-    font-size: 12px;
-    opacity: 0.9;
+    font-size: 13px;
+    color: #ffd700cc; /* Muted gold */
   }
+  
+  /* --- 4. Panel Body and Quick Replies --- */
   .wa-body {
-    padding: 14px;
-    font-size: 14px;
+    padding: 18px 14px;
+    font-size: 15px;
     color: #333;
   }
   .wa-body p {
@@ -2470,42 +2623,56 @@ initCarousel();
   .wa-quick {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 8px;
+    gap: 8px;
+    margin-top: 10px;
   }
   .wa-quick button {
-    border: none;
-    background: #f3f4f6;
-    border-radius: 999px;
-    padding: 6px 10px;
-    font-size: 13px;
+    border: 1px solid #FFD700; /* Gold Zari border on quick replies */
+    background: #fff8e1; /* Very light gold/cream background */
+    border-radius: 4px; /* Square/traditional corners */
+    padding: 8px 12px;
+    font-size: 14px;
     cursor: pointer;
-    color: #111827;
+    color: #800000; /* Royal Red text */
+    font-weight: 500;
+    transition: background 0.3s ease;
   }
-  .wa-quick button:hover { background: #e5e7eb; }
+  .wa-quick button:hover { 
+    background: #f7e6b8; /* Richer cream/gold on hover */
+    box-shadow: 0 1px 4px rgba(128, 0, 0, 0.2);
+  }
+  
+  /* --- 5. Footer (Input/Send) --- */
   .wa-footer {
     padding: 10px 14px;
-    border-top: 1px solid #f3f4f6;
+    border-top: 2px solid #f7e6b8; /* Light gold separator */
     display: flex;
     gap: 6px;
   }
   .wa-input {
     flex: 1;
-    border: 1px solid #e5e7eb;
+    border: 1px solid #FFD700; /* Gold input border */
     border-radius: 999px;
     padding: 8px 12px;
     font-size: 13px;
+    color: #800000; /* Royal Red text inside input */
   }
   .wa-send {
     border: none;
-    background: #25D366;
-    color: white;
+    /* Rich Red Button */
+    background: #800000; 
+    color: #FFD700; /* Gold Send Text */
     border-radius: 999px;
     padding: 8px 14px;
     font-size: 13px;
     cursor: pointer;
+    font-weight: 600;
+    border: 1px solid #FFD700; /* Gold border */
   }
-  .wa-send:hover { background: #128C7E; }
+  .wa-send:hover { 
+    background: #b30000; /* Lighter red on hover */
+    box-shadow: 0 1px 6px rgba(128, 0, 0, 0.4);
+  }
 </style>
 
 <div class="whatsapp-widget">
