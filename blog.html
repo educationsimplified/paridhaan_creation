@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +26,7 @@
             --light-text: #2c2f33; /* Deep charcoal for elegant contrast */
             --light-card-bg: #ffffff; /* Clean white for product cards */
             --light-border: #ece3d3; /* A muted beige for borders */
-            --gold-accent: #b48554; /* A sophisticated, vintage gold */
+            --gold-accent: #9B1C31; /* A sophisticated, vintage gold */
         }
         
         /* Base styles */
@@ -80,6 +81,21 @@
             </div>
         </header>
 
+            <style>
+     /* Marquee animation */
+        @keyframes marquee-ltr {
+          0%   { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .animate-marquee-ltr {
+          animation: marquee-ltr 30s linear infinite;
+          display: inline-block;
+        }
+</style>
+
+
+
+
         <main class="flex-grow container mx-auto px-4 py-10 md:py-20">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-center mb-4 text-gray-800 font-serif">
@@ -93,104 +109,498 @@
 
                 <div id="posts" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
             </div>
+                    <!-- 🟨 Sticky Marquee Bar -->
+
+
         </main>
+                <!-- 🟨 Sticky Marquee Bar -->
+<div class="w-full bg-gold-accent text-white py-2 text-center text-sm font-medium sticky top-0 z-40 overflow-hidden border-y border-gold-accent">
+  <div class="inline-block whitespace-nowrap animate-marquee-ltr">
+    <span class="px-2">PARIDHAAN CREATION. - J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</span>
+    <span class="px-2 border-l border-white">EXQUISITE BANARASI SAREES & DRESS MATERIALS</span>
+    <span class="px-2 border-l border-white">BOOK A PRIVATE CONSULTATION FOR INQUIRIES OR PRIVATE VIEWING</span>
+      <span class="px-2 border-l border-white">CONTACT: +91 94515 35206</span>
+  </div>
 
-        <footer class="bg-gray-100 py-8 border-t border-light-border">
-            <div class="container mx-auto px-4 text-center">
-                <div class="flex flex-wrap justify-center space-x-6 md:space-x-12 mb-6 text-sm sm:text-base">
-                    <a href="index.html" class="text-gray-600 hover:text-gold-accent transition-colors">Home</a>
-                    <a href="index.html#collections" class="text-gray-600 hover:text-gold-accent transition-colors">Shop</a>
-                    <a href="index.html#contact" class="text-gray-600 hover:text-gold-accent transition-colors">Contact Us</a>
-                    <a href="https://paridhaancreation.blogspot.com" target="_blank" class="text-gray-600 hover:text-gold-accent transition-colors">Blog Feed</a>
-                </div>
+</div>
 
-                <div class="flex justify-center space-x-6 mb-4">
-                    <a href="https://www.instagram.com/paridhaan_creation/" target="_blank" class="text-xl text-gray-600 hover:text-gold-accent transition-colors"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61572113506286" target="_blank" class="text-xl text-gray-600 hover:text-gold-accent transition-colors"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://chat.whatsapp.com/B4ysLHbIdRZ6UakK2cKqs6" target="_blank" class="text-xl text-gray-600 hover:text-gold-accent transition-colors"><i class="fab fa-whatsapp"></i></a>
-                </div>
-                
-                  <p class="text-xs sm:text-sm text-gray-500 mt-4">
-                    &copy; 2025 <b>PARIDHAAN CREATION.</b> All rights reserved.
+
+
+<style>
+  .whatsapp-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+    font-family: 'Playfair Display', serif; /* Changed to a royal, traditional font */
+  }
+  
+  /* --- 1. Royal Button Styling --- */
+  .wa-btn {
+    width: 65px; /* Slightly larger for a substantial feel */
+    height: 65px;
+    border-radius: 50%;
+    /* Royal Red Gradient */
+    background: linear-gradient(135deg, #800000, #b30000); /* Deep Royal Red */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Gold Shadow for Zari effect */
+    box-shadow: 0 8px 24px rgba(255, 215, 0, 0.45); /* Rich Gold Shadow */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid #FFD700; /* Gold Zari border */
+  }
+  .wa-btn:hover { transform: scale(1.1); } /* More noticeable hover */
+  
+  /* --- 2. Royal Panel Styling --- */
+  .wa-panel {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 340px; /* Slightly wider for a more desktop feel */
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 12px; /* Subtle rounding */
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    overflow: hidden;
+    transform-origin: bottom right;
+    animation: fadeIn 0.25s ease-out;
+    display: none;
+    border: 1px solid #FFD700; /* Gold Panel Outline */
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  
+  /* --- 3. Royal Header Styling (The top bar) --- */
+  .wa-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    /* Rich Red Background */
+    background: linear-gradient(135deg, #800000, #b30000); /* Deep Royal Red */
+    color: #FFD700; /* Gold text */
+    border-bottom: 2px solid #FFD700; /* Gold separator */
+  }
+  .wa-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #FFD700; /* Gold frame for the avatar */
+  }
+  .wa-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .wa-name {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .wa-status {
+    font-size: 13px;
+    color: #ffd700cc; /* Muted gold */
+  }
+  
+  /* --- 4. Panel Body and Quick Replies --- */
+  .wa-body {
+    padding: 18px 14px;
+    font-size: 15px;
+    color: #333;
+  }
+  .wa-body p {
+    margin-bottom: 8px;
+  }
+  .wa-quick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .wa-quick button {
+    border: 1px solid #FFD700; /* Gold Zari border on quick replies */
+    background: #fff8e1; /* Very light gold/cream background */
+    border-radius: 4px; /* Square/traditional corners */
+    padding: 8px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #800000; /* Royal Red text */
+    font-weight: 500;
+    transition: background 0.3s ease;
+  }
+  .wa-quick button:hover { 
+    background: #f7e6b8; /* Richer cream/gold on hover */
+    box-shadow: 0 1px 4px rgba(128, 0, 0, 0.2);
+  }
+  
+  /* --- 5. Footer (Input/Send) --- */
+  .wa-footer {
+    padding: 10px 14px;
+    border-top: 2px solid #f7e6b8; /* Light gold separator */
+    display: flex;
+    gap: 6px;
+  }
+  .wa-input {
+    flex: 1;
+    border: 1px solid #FFD700; /* Gold input border */
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #800000; /* Royal Red text inside input */
+  }
+  .wa-send {
+    border: none;
+    /* Rich Red Button */
+    background: #800000; 
+    color: #FFD700; /* Gold Send Text */
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+    border: 1px solid #FFD700; /* Gold border */
+  }
+  .wa-send:hover { 
+    background: #b30000; /* Lighter red on hover */
+    box-shadow: 0 1px 6px rgba(128, 0, 0, 0.4);
+  }
+</style>
+
+<div class="whatsapp-widget">
+  <!-- Floating Button -->
+  <div class="wa-btn" id="waOpenBtn" title="Chat with us on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="28" height="28">
+      <path d="M12.04 2.002a9.89 9.89 0 00-9.88 9.88 9.84 9.84 0 001.36 5.06L2 22l5.22-1.49a9.9 9.9 0 004.82 1.25h.01a9.88 9.88 0 009.88-9.88 9.84 9.84 0 00-2.9-7.02 9.86 9.86 0 00-7-2.88zM12 20.16h-.01a8.13 8.13 0 01-4.15-1.13l-.3-.18-3.1.88.88-3.02-.19-.31A8.1 8.1 0 013.84 12a8.15 8.15 0 018.16-8.17 8.1 8.1 0 015.78 2.39 8.12 8.12 0 012.39 5.78A8.15 8.15 0 0112 20.16zm4.48-6.1c-.25-.13-1.49-.74-1.72-.82-.23-.09-.4-.13-.57.13-.17.25-.66.82-.8.99-.15.17-.29.19-.54.06-.25-.13-1.05-.39-2-1.24a7.55 7.55 0 01-1.4-1.74c-.15-.25 0-.38.11-.51.11-.12.25-.31.37-.46.12-.15.16-.25.24-.42.08-.17.04-.32-.02-.45-.06-.13-.57-1.37-.78-1.88-.21-.5-.42-.43-.57-.44h-.49c-.17 0-.45.06-.68.31-.23.25-.89.87-.89 2.12 0 1.25.91 2.45 1.04 2.62.13.17 1.77 2.7 4.28 3.78.6.26 1.06.41 1.42.52.6.19 1.15.16 1.59.1.49-.07 1.49-.6 1.7-1.19.21-.59.21-1.1.15-1.19-.06-.1-.23-.16-.48-.29z"/>
+    </svg>
+  </div>
+
+  <!-- Chat Panel -->
+  <div class="wa-panel" id="waPanel">
+    <div class="wa-header">
+      <div class="wa-avatar">
+        <img src="https://www.paridhaancreation.in/PARIDHAAN.png" alt="Support">
+      </div>
+      <div>
+        <div class="wa-name">Paridhaan Creation</div>
+        <div class="wa-status">Online — typically replies in 1h</div>
+      </div>
+      <div style="margin-left:auto; cursor:pointer;" id="waCloseBtn">✕</div>
+    </div>
+
+    <div class="wa-body">
+      <p>👋 Hello! Kaise Main Aapki Help Kr skti Hu?</p>
+      <div class="wa-quick">
+        <button data-msg="Hello! I'm interested in Banarasi sarees.">Banarasi Sarees</button>
+        <button data-msg="What are your latest arrivals?">New Arrivals</button>
+        <button data-msg="Do you offer Cash on Delivery?">COD & Shipping</button>
+      </div>
+    </div>
+
+    <div class="wa-footer">
+      <input id="waMsg" class="wa-input" type="text" placeholder="Type your message..." />
+      <button id="waSend" class="wa-send">Send</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const waOpenBtn = document.getElementById('waOpenBtn');
+  const waPanel = document.getElementById('waPanel');
+  const waCloseBtn = document.getElementById('waCloseBtn');
+  const waSend = document.getElementById('waSend');
+  const waMsg = document.getElementById('waMsg');
+  const quickBtns = document.querySelectorAll('.wa-quick button');
+  const phone = '919451535206';
+
+  waOpenBtn.addEventListener('click', () => {
+    waPanel.style.display = waPanel.style.display === 'block' ? 'none' : 'block';
+  });
+
+  waCloseBtn.addEventListener('click', () => {
+    waPanel.style.display = 'none';
+  });
+
+  quickBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      waMsg.value = btn.getAttribute('data-msg');
+      waMsg.focus();
+    });
+  });
+
+  waSend.addEventListener('click', () => {
+    const msg = encodeURIComponent(waMsg.value.trim() || "Hi! I’d like to know more about your products.");
+    window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
+  });
+</script>
+
+
+
+<footer class="bg-[#9B1C31] text-white pt-16 pb-8 shadow-xl relative overflow-hidden" id="contact">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+
+            <div class="col-span-1 md:col-span-2 text-center md:text-left group">
+                <img src="PARIDHAAN.png" alt="Paridhaan Creation Logo"
+                    class="w-48 mx-auto md:mx-0 mb-4 filter brightness-110 transition-transform duration-500 group-hover:scale-105">
+
+                <a href="https://paridhaancreation.in"
+                    class="text-4xl font-extrabold tracking-wider text-black block mb-6 transition-colors duration-300 group-hover:text-white"
+                    style="font-family: 'Playfair Display', serif;">
+                    Paridhaan <span class="text-white">Creation</span>
+                </a>
+
+                <p class="text-sm leading-relaxed transition-colors duration-300 group-hover:text-black">
+                    <strong class="text-white"> Paridhaan Creation...</strong> <i>Kyuki Khubsurati Hai Aapse.</i>
                 </p>
             </div>
-        </footer>
+            
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-bold text-white mb-6">Quick Links</h3>
+                <ul class="flex flex-col items-center md:items-start space-y-3 text-sm">
+                    <li>
+                        <a href="https://script.google.com/macros/s/AKfycbzKp2Y4jbt_dlzmpTBsLNteeFP_GVr2febY9yW3fM_BLLo9Y7FPMBrILKw5GaBWmnF2/exec"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Admin ERP Login
+                            </span>
+                        </a>
+                    </li>
+                   
+                     <li>
+                        <a href="data.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Backend Database Login
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#categories"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Product & Categories
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="blog.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Blog Posts
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="shipping.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Shipping Return & Exchanges
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="privacy.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Privacy Policy
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="terms.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Terms & Condition
+                            </span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sitemap.xml"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Sitemap
+                            </span>
+                        </a>
+                    </li>
+
+                    
+                    <li>
+                        <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Store Location
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="certificate.html"
+                            class="group relative flex items-center justify-center md:justify-start text-[#fdfaf6] hover:text-white transition-all duration-300">
+                            <span class="after:content-['→'] after:ml-2 after:opacity-0 group-hover:after:opacity-100 after:transition-opacity">
+                                Download Client Rating Certificate
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-215ef826-cea0-404c-b5fd-37ae6d12e42f" data-elfsight-app-lazy></div>
+                    
+
+            <div class="text-center md:text-left">
+                <h3 class="text-xl font-bold text-white mb-6">Connect With Us</h3>
+                <ul class="space-y-2 text-sm mb-6">
+                    <li class="transition-colors duration-300 hover:text-amber-100">
+                        <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank" class="hover:text-amber-100">J21/197-A, Rasoolpura, Alaipura, Jaitpura, Varanasi, Uttar Pradesh 221002</a>
+                    </li>
+                    <br>
+                    <li class="transition-colors duration-300 hover:text-amber-100">
+                        <i class="fa-solid fa-phone text-[#fffde7] mr-2"></i>
+                        <a href="tel:+919451535206" class="hover:text-amber-100">+91 94515 35206</a>
+                    </li>
+                    <li class="transition-colors duration-300 hover:text-amber-100">
+                        <i class="fa-solid fa-envelope text-[#fffde7] mr-2"></i>
+                        <a href="mailto:paridhaancreationofficial@gmail.com" class="hover:text-amber-100">paridhaancreationofficial@gmail.com</a>
+                    </li>
+                </ul>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <a href="https://www.facebook.com/profile.php?id=61572113506286" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="https://www.instagram.com/paridhaan_creation/" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://chat.whatsapp.com/B4ysLHbIdRZ6UakK2cKqs6" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fab fa-whatsapp text-xl"></i></a>
+                    <a href="https://share.google/m8XeiHC685a7fhv1F" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fas fa-map-marker-alt text-xl"></i></a>
+                    <a href= "mailto:paridhaancreationofficial@gmail.com" target="_blank" class="text-[#fdfaf6] hover:text-amber-200 transition-colors duration-300"><i class="fas fa-envelope text-xl"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+<br>
+   
+<!-- hitwebcounter Code START -->
+<a href="https://www.hitwebcounter.com/" target="_blank">
+<img src="https://hitwebcounter.com/counter/counter.php?page=21446263&style=0030&nbdigits=6&type=page&initCount=260" title="Conversion Tools" Alt="Conversion Tools"   border="0" /></a>                                    
+                                    
+        <div class="border-t border-[#c8a374] mt-12 pt-6 text-center text-[#fdfaf6] text-sm transition-colors duration-300 hover:text-amber-100">
+  
+  
+            <p>
+        © <span id="current-year"><script>document.write(new Date().getFullYear())</script></span>
+        Paridhaan Creation. All rights reserved.
+    </p>
+    <p>
+        Developed by 
+        <a href="https://uzairb2b.blogspot.com" target="_blank" class="underline hover:text-[#c8a374]">
+            Uzair B2B Services
+        </a></p>
+
+  
+
+
+    </div>
+
+
+</footer>
     </div>
 
     <script>
-        function showBlogFeed(json) {
-            const entries = json.feed.entry || [];
-            if (entries.length === 0) return;
+    function showBlogFeed(json) {
+        const entries = json.feed.entry || [];
+        if (entries.length === 0) return;
 
-            // --- Featured post (first one) ---
-            const featured = entries[0];
-            const featuredTitle = featured.title.$t;
-            const featuredLink = featured.link.find(l => l.rel === "alternate").href;
-            const featuredDate = new Date(featured.published.$t).toDateString();
-            const featuredAuthor = featured.author[0].name.$t;
-            const featuredSnippet = featured.summary ? featured.summary.$t.substring(0, 200) + '...' : ""; 
+        // --- Featured post (first one) ---
+        const featured = entries[0];
+        const featuredTitle = featured.title.$t;
+        const featuredLink = featured.link.find(l => l.rel === "alternate").href;
+        const featuredDate = new Date(featured.published.$t).toDateString();
+        const featuredAuthor = featured.author[0].name.$t;
+        const featuredSnippet = featured.summary ? featured.summary.$t.substring(0, 200) + '...' : ""; 
 
-            let featuredImg = "";
-            if (featured.media$thumbnail) {
-                featuredImg = featured.media$thumbnail.url.replace("s72-c", "s800"); 
-            } else if (featured.content.$t.match(/<img[^>]+src="([^">]+)/)) {
-                featuredImg = featured.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
+        let featuredImg = "";
+        if (featured.media$thumbnail) {
+            featuredImg = featured.media$thumbnail.url.replace("s72-c", "s800"); 
+        } else if (featured.content.$t.match(/<img[^>]+src="([^">]+)/)) {
+            featuredImg = featured.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
+        }
+
+        // --- FEATURED POST HTML (Royal Design) ---
+        document.getElementById("featured").innerHTML = `
+            <div class="
+                flex flex-col md:flex-row gap-0 md:gap-0 items-stretch
+                bg-amber-50 rounded-none /* TRADITIONAL: Square edges, Light Gold background */
+                shadow-2xl shadow-red-900/40 overflow-hidden 
+                border-4 border-amber-400 /* GOLD ZARI: Thick gold border */
+                transform hover:scale-[1.01] transition duration-300
+            ">
+                <a href="${featuredLink}" target="_blank" class="block w-full md:w-1/2 h-64 md:h-96 relative overflow-hidden group">
+                    <img src="${featuredImg}" alt="${featuredTitle}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-red-900/10 transition-colors duration-500 group-hover:bg-red-900/0"></div>
+                </a>
+                <div class="p-6 md:p-10 w-full md:w-1/2 flex flex-col justify-center">
+                    <p class="text-sm uppercase tracking-widest text-red-900 font-bold mb-2">Featured Insight</p>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mb-4 font-serif text-red-900">
+                        <a href="${featuredLink}" target="_blank" class="hover:text-amber-700">${featuredTitle}</a>
+                    </h2>
+                    <div class="text-sm text-amber-900 mb-4 font-serif italic">By **${featuredAuthor}** • ${featuredDate}</div>
+                    <p class="text-base text-stone-700 leading-relaxed mb-6">${featuredSnippet}</p>
+                    
+                    <a href="${featuredLink}" target="_blank" class="
+                        inline-block py-2 px-6 
+                        bg-amber-400 text-red-900 font-bold uppercase tracking-widest
+                        border border-red-900 rounded-none
+                        hover:bg-amber-300 transition duration-300
+                    ">
+                        Read Full Article <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        `;
+
+        // --- Grid posts (next 3) ---
+        const container = document.getElementById("posts");
+        entries.slice(1, 4).forEach(entry => {
+            const title = entry.title.$t;
+            const link = entry.link.find(l => l.rel === "alternate").href;
+            const date = new Date(entry.published.$t).toDateString();
+            const author = entry.author[0].name.$t;
+            const snippet = entry.summary ? entry.summary.$t.substring(0, 100) + '...' : "";
+
+            let image = "";
+            if (entry.media$thumbnail) {
+                image = entry.media$thumbnail.url.replace("s72-c", "s600"); 
+            } else if (entry.content.$t.match(/<img[^>]+src="([^">]+)/)) {
+                image = entry.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
             }
 
-            // Featured Post: Added flex-col on mobile, adjusted image/content width for mobile
-            document.getElementById("featured").innerHTML = `
-                <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-center card-bg rounded-xl shadow-xl overflow-hidden border border-light-border transform hover:scale-[1.01] transition duration-300">
-                    <a href="${featuredLink}" target="_blank" class="block w-full md:w-1/2 h-64 md:h-96">
-                        <img src="${featuredImg}" alt="${featuredTitle}" class="w-full h-full object-cover">
-                    </a>
-                    <div class="p-4 md:p-8 w-full md:w-1/2">
-                        <p class="text-xs uppercase tracking-wider gold-accent font-semibold mb-1">Featured</p>
-                        <h2 class="text-xl sm:text-3xl font-extrabold mb-3 font-serif">
-                            <a href="${featuredLink}" target="_blank" class="hover:text-gray-900">${featuredTitle}</a>
-                        </h2>
-                        <div class="text-xs sm:text-sm text-gray-500 mb-4">By **${featuredAuthor}** • ${featuredDate}</div>
-                        <p class="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">${featuredSnippet}</p>
-                        <a href="${featuredLink}" target="_blank" class="inline-block gold-accent font-semibold text-sm hover:underline">Read Full Article <i class="fas fa-arrow-right ml-1"></i></a>
-                    </div>
+            const postEl = document.createElement("div");
+            // Grid Post: Royal Styling
+            postEl.className = "bg-amber-50 rounded-none shadow-xl shadow-amber-900/20 overflow-hidden border-2 border-amber-300 hover:shadow-red-900/30 transition duration-300 transform hover:-translate-y-1";
+            postEl.innerHTML = `
+                <a href="${link}" target="_blank" class="block h-56 relative overflow-hidden group">
+                    <img src="${image}" alt="${title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </a>
+                <div class="p-6">
+                    <h3 class="text-xl font-extrabold mb-2 font-serif text-red-900">
+                        <a href="${link}" target="_blank" class="hover:text-amber-700">${title}</a>
+                    </h3>
+                    <div class="text-xs text-amber-900/80 mb-3 font-serif">By ${author} • ${date}</div>
+                    <p class="text-sm text-stone-700 mb-4">${snippet}</p>
+                    <a href="${link}" target="_blank" class="
+                        text-sm font-bold uppercase tracking-wider text-red-900 hover:text-amber-700 hover:underline
+                    ">Read More <i class="fas fa-arrow-right ml-1"></i></a>
                 </div>
             `;
-
-            // --- Grid posts (next 3) ---
-            const container = document.getElementById("posts");
-            entries.slice(1, 4).forEach(entry => {
-                const title = entry.title.$t;
-                const link = entry.link.find(l => l.rel === "alternate").href;
-                const date = new Date(entry.published.$t).toDateString();
-                const author = entry.author[0].name.$t;
-                const snippet = entry.summary ? entry.summary.$t.substring(0, 100) + '...' : "";
-
-                let image = "";
-                if (entry.media$thumbnail) {
-                    image = entry.media$thumbnail.url.replace("s72-c", "s600"); 
-                } else if (entry.content.$t.match(/<img[^>]+src="([^">]+)/)) {
-                    image = entry.content.$t.match(/<img[^>]+src="([^">]+)/)[1];
-                }
-
-                const postEl = document.createElement("div");
-                // Grid Post: Kept existing desktop styles, added h-48 for fixed image height
-                postEl.className = "card-bg rounded-xl shadow-lg overflow-hidden border border-light-border hover:shadow-xl transition duration-300";
-                postEl.innerHTML = `
-                    <a href="${link}" target="_blank" class="block h-48">
-                        <img src="${image}" alt="${title}" class="w-full h-full object-cover">
-                    </a>
-                    <div class="p-4 sm:p-6">
-                        <h3 class="text-lg font-bold mb-2 font-serif">
-                            <a href="${link}" target="_blank" class="hover:gold-accent">${title}</a>
-                        </h3>
-                        <div class="text-xs text-gray-500 mb-3">By ${author} • ${date}</div>
-                        <p class="text-sm text-gray-600 mb-4">${snippet}</p>
-                        <a href="${link}" target="_blank" class="text-sm gold-accent font-semibold hover:underline">Read More</a>
-                    </div>
-                `;
-                container.appendChild(postEl);
-            });
-        }
-    </script>
+            container.appendChild(postEl);
+        });
+    } // FIX: Added the necessary closing bracket for the showBlogFeed function
+</script>
 
     <script src="https://paridhaancreationblog.blogspot.com/feeds/posts/default?alt=json-in-script&callback=showBlogFeed&max-results=4"></script>
 </body>
